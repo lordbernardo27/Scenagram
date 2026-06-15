@@ -30,8 +30,8 @@ class SGTheme {
       ),
 
       chipTheme: ChipThemeData(
-        backgroundColor: const Color(0xFFEFF2F9),
-        labelStyle: const TextStyle(
+        backgroundColor: Color(0xFFEFF2F9),
+        labelStyle: TextStyle(
           color: Color(0xFF111827),
           fontWeight: FontWeight.w700,
         ),

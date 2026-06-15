@@ -2,7 +2,6 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 import 'core/theme/app_theme.dart';
-import 'core/theme/design_tokens.dart';
 
 void main() => runApp(const ScenagramApp());
 
@@ -15,7 +14,6 @@ class ScenagramApp extends StatelessWidget {
       title: 'Scenagram',
       debugShowCheckedModeBanner: false,
       theme: SGTheme.light(),
-      darkTheme: SGTheme.dark(),
       themeMode: ThemeMode.light,
       initialRoute: '/',
       routes: {
@@ -40,7 +38,7 @@ String? badgeForHeat(int heat) {
 String sceneTypeLabel(SceneType t) {
   switch (t) {
     case SceneType.confession:
-      return 'Confession';
+      return 'Confess';
     case SceneType.dilemma:
       return 'Dilemma';
     case SceneType.drama:
@@ -61,41 +59,532 @@ IconData sceneTypeIcon(SceneType t) {
     case SceneType.confession:
       return Icons.favorite_rounded;
     case SceneType.dilemma:
-      return Icons.balance_rounded;
+      return Icons.help_center_rounded;
     case SceneType.drama:
-      return Icons.theater_comedy_rounded;
+      return Icons.local_fire_department_rounded;
     case SceneType.media:
-      return Icons.video_library_rounded;
+      return Icons.play_circle_fill_rounded;
     case SceneType.celebration:
       return Icons.celebration_rounded;
     case SceneType.hotTake:
-      return Icons.local_fire_department_rounded;
+      return Icons.bolt_rounded;
     case SceneType.event:
-      return Icons.event_note_rounded;
+      return Icons.event_available_rounded;
   }
 }
 
 Color sceneTypeColor(SceneType t) {
   switch (t) {
     case SceneType.confession:
-      return const Color(0xFFC026D3);
+      return const Color(0xFF8B5CF6); // Confess ? purple
     case SceneType.dilemma:
-      return const Color(0xFF4F46E5);
+      return const Color(0xFFF59E0B); // Dilemma ? amber
     case SceneType.drama:
-      return const Color(0xFFE11D48);
+      return const Color(0xFFE11D48); // Drama ? red
     case SceneType.media:
-      return const Color(0xFF111827);
+      return const Color(0xFF2563EB); // Media ? blue
     case SceneType.celebration:
-      return const Color(0xFFF59E0B);
+      return const Color(0xFF16A34A); // Celebration ? green
     case SceneType.hotTake:
-      return const Color(0xFFEA580C);
+      return const Color(0xFFEA580C); // Hot Take ? orange
     case SceneType.event:
-      return const Color(0xFFEC4899);
+      return const Color(0xFF0D9488); // Event ? teal
+  }
+}
+
+class SceneTypeMeta {
+  final String label;
+  final IconData icon;
+  final Color color;
+  final String purpose;
+  final String uiStyle;
+  final List<String> priorityLanes;
+
+  const SceneTypeMeta({
+    required this.label,
+    required this.icon,
+    required this.color,
+    required this.purpose,
+    required this.uiStyle,
+    required this.priorityLanes,
+  });
+}
+
+SceneTypeMeta sceneTypeMeta(SceneType t) {
+  return SceneTypeMeta(
+    label: sceneTypeLabel(t),
+    icon: sceneTypeIcon(t),
+    color: sceneTypeColor(t),
+    purpose: sceneTypePurpose(t),
+    uiStyle: sceneTypeUiStyle(t),
+    priorityLanes: sceneTypePriorityLanes(t),
+  );
+}
+
+class SceneTypePrediction {
+  final SceneType type;
+  final double confidence;
+
+  const SceneTypePrediction({
+    required this.type,
+    required this.confidence,
+  });
+}
+
+SceneTypePrediction detectSceneTypeWithConfidence(String text) {
+  final type = detectSceneType(text);
+  final t = text.toLowerCase();
+
+  double confidence = 0.62;
+
+  if (type == SceneType.confession &&
+      (t.contains('confess') ||
+       t.contains('secret') ||
+       t.contains('ashamed'))) {
+    confidence = 0.90;
+  }
+
+  if (type == SceneType.dilemma &&
+      (t.contains('should i') ||
+       t.contains('what should i do') ||
+       t.contains('help me decide'))) {
+    confidence = 0.91;
+  }
+
+  if (type == SceneType.drama &&
+      (t.contains('fight') ||
+       t.contains('argument') ||
+       t.contains('betrayed') ||
+       t.contains('cheated'))) {
+    confidence = 0.88;
+  }
+
+  if (type == SceneType.celebration &&
+      (t.contains('birthday') ||
+       t.contains('graduated') ||
+       t.contains('wedding') ||
+       t.contains('won'))) {
+    confidence = 0.89;
+  }
+
+  if (type == SceneType.hotTake &&
+      (t.contains('hot take') ||
+       t.contains('unpopular opinion') ||
+       t.contains('controversial'))) {
+    confidence = 0.90;
+  }
+
+  if (type == SceneType.event &&
+      (t.contains('event') ||
+       t.contains('concert') ||
+       t.contains('festival') ||
+       t.contains('match'))) {
+    confidence = 0.87;
+  }
+
+  if (type == SceneType.media) {
+    confidence = 0.72;
+  }
+
+  return SceneTypePrediction(
+    type: type,
+    confidence: confidence,
+  );
+}
+
+SceneType detectSceneType(String text) {
+  final t = text.toLowerCase().trim();
+
+  if (t.isEmpty) return SceneType.media;
+
+  bool hasAny(List<String> words) => words.any((w) => t.contains(w));
+
+  if (hasAny([
+    'confess',
+    'secret',
+    'i have never told',
+    'i feel guilty',
+    'ashamed',
+  ])) {
+    return SceneType.confession;
+  }
+
+  if (hasAny([
+    'should i',
+    'what should i do',
+    'help me decide',
+    'decision',
+    'choice',
+    'dilemma',
+  ])) {
+    return SceneType.dilemma;
+  }
+
+  if (hasAny([
+    'fight',
+    'argument',
+    'betrayed',
+    'cheated',
+    'disrespect',
+    'drama',
+    'conflict',
+  ])) {
+    return SceneType.drama;
+  }
+
+  if (hasAny([
+    'birthday',
+    'graduated',
+    'wedding',
+    'promotion',
+    'celebrate',
+    'won',
+    'achievement',
+  ])) {
+    return SceneType.celebration;
+  }
+
+  if (hasAny([
+    'hot take',
+    'unpopular opinion',
+    'controversial',
+    'everyone is wrong',
+    'my opinion',
+  ])) {
+    return SceneType.hotTake;
+  }
+
+  if (hasAny([
+    'event',
+    'concert',
+    'festival',
+    'conference',
+    'match',
+    'tournament',
+    'live at',
+  ])) {
+    return SceneType.event;
+  }
+
+  return SceneType.media;
+}
+
+bool isSceneTypeMismatch({
+  required SceneType selectedType,
+  required String text,
+}) {
+  return detectSceneType(text) != selectedType;
+}
+
+bool shouldFlagSceneForModeration(String text) {
+  final t = text.toLowerCase().trim();
+
+  if (t.isEmpty) return false;
+
+  final riskyWords = [
+    'spam',
+    'scam',
+    'kill',
+    'threat',
+    'attack',
+    'idiot',
+    'stupid',
+    'shut up',
+  ];
+
+  final hasRiskyWord =
+      riskyWords.any((w) => t.contains(w));
+
+  final hasManyLinks =
+      RegExp(r'https?://').allMatches(t).length >= 2;
+
+  final isAllCapsLong =
+      text.length > 30 &&
+      text == text.toUpperCase();
+
+  return hasRiskyWord ||
+         hasManyLinks ||
+         isAllCapsLong;
+}
+
+String sceneModerationReason(String text) {
+  final t = text.toLowerCase().trim();
+
+  if (RegExp(r'https?://').allMatches(t).length >= 2) {
+    return 'Possible spam links';
+  }
+
+  if (text.length > 30 &&
+      text == text.toUpperCase()) {
+    return 'Possible shouting or aggressive formatting';
+  }
+
+  if (t.contains('spam') || t.contains('scam')) {
+    return 'Possible spam content';
+  }
+
+  if (t.contains('idiot') ||
+      t.contains('stupid') ||
+      t.contains('shut up')) {
+    return 'Possible abusive language';
+  }
+
+  if (t.contains('kill') ||
+      t.contains('threat') ||
+      t.contains('attack')) {
+    return 'Possible threatening language';
+  }
+
+  return 'Needs moderation review';
+}
+
+String sceneTypeFeedRoute(SceneType t) {
+  switch (t) {
+    case SceneType.confession:
+      return '/feed/confess';
+    case SceneType.dilemma:
+      return '/feed/dilemma';
+    case SceneType.drama:
+      return '/feed/drama';
+    case SceneType.media:
+      return '/feed/media';
+    case SceneType.celebration:
+      return '/feed/celebration';
+    case SceneType.hotTake:
+      return '/feed/hot-take';
+    case SceneType.event:
+      return '/feed/event';
+  }
+}
+
+String sceneTypePurpose(SceneType t) {
+  switch (t) {
+    case SceneType.confession:
+      return 'Vulnerability, honesty, secrets, and emotional release.';
+    case SceneType.dilemma:
+      return 'Decision-making, moral conflict, and choice-based discussion.';
+    case SceneType.drama:
+      return 'Conflict, tension, chaos, controversy, and public reactions.';
+    case SceneType.media:
+      return 'Captured moments, visual witnessing, videos, clips, and images.';
+    case SceneType.celebration:
+      return 'Joy, milestones, achievements, wins, and positive moments.';
+    case SceneType.hotTake:
+      return 'Strong opinions, controversial claims, and bold viewpoints.';
+    case SceneType.event:
+      return 'Shared real-world experiences, gatherings, and live moments.';
+  }
+}
+
+String sceneTypeUiStyle(SceneType t) {
+  switch (t) {
+    case SceneType.confession:
+      return 'Soft, intimate, emotionally safe UI.';
+    case SceneType.dilemma:
+      return 'Split-decision, interactive, judgment-oriented UI.';
+    case SceneType.drama:
+      return 'High-energy, intense, active UI.';
+    case SceneType.media:
+      return 'Immersive, visual-first, cinematic UI.';
+    case SceneType.celebration:
+      return 'Uplifting, vibrant, rewarding UI.';
+    case SceneType.hotTake:
+      return 'Bold, sharp, opinion-focused UI.';
+    case SceneType.event:
+      return 'Live, dynamic, community-driven UI.';
+  }
+}
+
+List<String> sceneTypePriorityLanes(SceneType t) {
+  switch (t) {
+    case SceneType.confession:
+      return ['Advice', 'Reaction', 'Analysis', 'Comedy', 'Debate'];
+    case SceneType.dilemma:
+      return ['Debate', 'Advice', 'Analysis', 'Reaction', 'Comedy'];
+    case SceneType.drama:
+      return ['Reaction', 'Debate', 'Comedy', 'Analysis', 'Advice'];
+    case SceneType.media:
+      return ['Reaction', 'Analysis', 'Comedy', 'Debate', 'Advice'];
+    case SceneType.celebration:
+      return ['Reaction', 'Comedy', 'Advice', 'Analysis', 'Debate'];
+    case SceneType.hotTake:
+      return ['Debate', 'Reaction', 'Analysis', 'Comedy', 'Advice'];
+    case SceneType.event:
+      return ['Reaction', 'Analysis', 'Comedy', 'Debate', 'Advice'];
   }
 }
 
 List<String> lanesForType(SceneType t) {
-  return kUniversalLanes;
+  return sceneTypePriorityLanes(t);
+}
+
+
+class PerspectiveLanePrediction {
+  final String lane;
+  final double confidence;
+
+  const PerspectiveLanePrediction({
+    required this.lane,
+    required this.confidence,
+  });
+}
+
+PerspectiveLanePrediction detectPerspectiveLaneWithConfidence(
+  String text,
+) {
+  final lane = detectPerspectiveLane(text);
+
+  double confidence = 0.60;
+
+  final t = text.toLowerCase();
+
+  if (lane == 'Advice' &&
+      (t.contains('should') ||
+       t.contains('recommend') ||
+       t.contains('advice'))) {
+    confidence = 0.90;
+  }
+
+  if (lane == 'Debate' &&
+      (t.contains('agree') ||
+       t.contains('disagree') ||
+       t.contains('wrong'))) {
+    confidence = 0.88;
+  }
+
+  if (lane == 'Analysis' &&
+      (t.contains('because') ||
+       t.contains('evidence') ||
+       t.contains('reason'))) {
+    confidence = 0.87;
+  }
+
+  if (lane == 'Comedy' &&
+      (t.contains('lol') ||
+       t.contains('haha'))) {
+    confidence = 0.92;
+  }
+
+  if (lane == 'Reaction') {
+    confidence = 0.75;
+  }
+
+  return PerspectiveLanePrediction(
+    lane: lane,
+    confidence: confidence,
+  );
+}
+
+String detectPerspectiveLane(String text) {
+  final t = text.toLowerCase().trim();
+
+  if (t.isEmpty) return 'Reaction';
+
+  final comedyWords = ['lol', 'haha', 'funny', 'joke', '??', '??', 'lmao'];
+  final adviceWords = ['should', 'try', 'recommend', 'advice', 'suggest', 'you can', 'you should'];
+  final debateWords = ['disagree', 'wrong', 'but', 'however', 'not true', 'i oppose'];
+  final analysisWords = ['because', 'reason', 'evidence', 'data', 'study', 'means', 'therefore'];
+  final reactionWords = ['wow', 'crazy', 'shocking', 'unbelievable', 'insane', 'wild'];
+
+  bool hasAny(List<String> words) => words.any((w) => t.contains(w));
+
+  if (hasAny(comedyWords)) return 'Comedy';
+  if (hasAny(adviceWords)) return 'Advice';
+  if (hasAny(debateWords)) return 'Debate';
+  if (hasAny(analysisWords)) return 'Analysis';
+  if (hasAny(reactionWords)) return 'Reaction';
+
+  return 'Reaction';
+}
+
+bool isPerspectiveLaneMismatch({
+  required String selectedLane,
+  required String text,
+}) {
+  final suggested = detectPerspectiveLane(text);
+  return suggested != selectedLane;
+}
+
+bool shouldFlagPerspectiveForModeration(String text) {
+  final t = text.toLowerCase().trim();
+
+  if (t.isEmpty) return false;
+
+  final riskyWords = [
+    'spam',
+    'scam',
+    'idiot',
+    'stupid',
+    'shut up',
+    'kill',
+    'threat',
+  ];
+
+  final hasRiskyWord = riskyWords.any((w) => t.contains(w));
+  final hasManyLinks = RegExp(r'https?://').allMatches(t).length >= 2;
+  final isAllCapsLong = text.length > 20 && text == text.toUpperCase();
+
+  return hasRiskyWord || hasManyLinks || isAllCapsLong;
+}
+
+
+const bool kPerspectiveAutoRoutingEnabled = false;
+
+class PerspectiveRoutingDecision {
+  final String originalLane;
+  final String suggestedLane;
+  final double confidence;
+  final bool autoRouteEligible;
+
+  const PerspectiveRoutingDecision({
+    required this.originalLane,
+    required this.suggestedLane,
+    required this.confidence,
+    required this.autoRouteEligible,
+  });
+}
+
+PerspectiveRoutingDecision buildPerspectiveRoutingDecision({
+  required String selectedLane,
+  required String text,
+}) {
+  final prediction =
+      detectPerspectiveLaneWithConfidence(text);
+
+  return PerspectiveRoutingDecision(
+    originalLane: selectedLane,
+    suggestedLane: prediction.lane,
+    confidence: prediction.confidence,
+    autoRouteEligible:
+        prediction.confidence >= 0.90 &&
+        prediction.lane != selectedLane,
+  );
+}
+
+String perspectiveModerationReason(String text) {
+  final t = text.toLowerCase().trim();
+
+  if (RegExp(r'https?://').allMatches(t).length >= 2) {
+    return 'Possible spam links';
+  }
+
+  if (text.length > 20 && text == text.toUpperCase()) {
+    return 'Possible shouting or aggressive formatting';
+  }
+
+  if (t.contains('scam') || t.contains('spam')) {
+    return 'Possible spam or scam language';
+  }
+
+  if (t.contains('idiot') || t.contains('stupid') || t.contains('shut up')) {
+    return 'Possible abusive language';
+  }
+
+  if (t.contains('kill') || t.contains('threat')) {
+    return 'Possible threatening language';
+  }
+
+  return 'Needs review';
 }
 
 /* ---------------------------
@@ -112,11 +601,11 @@ enum SceneType {
 }
 
 const List<String> kUniversalLanes = [
-  'Reactions',
   'Comedy',
-  'Advice',
   'Analysis',
   'Debate',
+  'Reaction',
+  'Advice',
 ];
 
 /* ---------------------------
@@ -144,16 +633,16 @@ class Scene {
 ---------------------------- */
 final List<Scene> homeScenes = [
   Scene(
-    type: SceneType.drama,
-    caption:
-        'Just now: A heated argument broke out at a public event after a well-known influencer allegedly disrespected a small business owner on stage. The crowd quickly took sides. Watch and share your thoughts.',
-    heat: 4,
-  ),
-  Scene(
     type: SceneType.media,
     caption:
         'A short educational clip explains why some traditional habits still work better than modern shortcuts.',
     heat: 3,
+  ),
+  Scene(
+    type: SceneType.drama,
+    caption:
+        'Just now: A heated argument broke out at a public event after a well-known influencer allegedly disrespected a small business owner on stage. The crowd quickly took sides. Watch and share your thoughts.',
+    heat: 4,
   ),
   Scene(
     type: SceneType.event,
@@ -163,7 +652,7 @@ final List<Scene> homeScenes = [
   ),
 ];
 
-int totalReactionsPosted = 0;
+int totalPerspectivesPosted = 0;
 
 /* ---------------------------
    APP FRAME
@@ -555,7 +1044,7 @@ class _TopBadgeIcon extends StatelessWidget {
               count,
               style: const TextStyle(
                 color: Colors.white,
-                fontSize: 10,
+                fontSize: 9,
                 fontWeight: FontWeight.w700,
               ),
             ),
@@ -825,18 +1314,19 @@ class _SceneTypeStrip extends StatelessWidget {
           bottom: BorderSide(color: Color(0xFFEAEAF0)),
         ),
       ),
-      child: ListView.separated(
-        scrollDirection: Axis.horizontal,
-        itemCount: SceneType.values.length,
-        separatorBuilder: (_, __) => const SizedBox(width: 10),
-        itemBuilder: (context, index) {
-          final type = SceneType.values[index];
-          return _SceneTypeTab(
-            type: type,
-            selected: selected == type,
-            onTap: () => onSelect?.call(type),
-          );
-        },
+      child: Center(
+        child: Wrap(
+          alignment: WrapAlignment.center,
+          spacing: 12,
+          runSpacing: 12,
+          children: SceneType.values.map((type) {
+            return _SceneTypeTab(
+              type: type,
+              selected: selected == type,
+              onTap: () => onSelect?.call(type),
+            );
+          }).toList(),
+        ),
       ),
     );
   }
@@ -1330,69 +1820,63 @@ class _ApprovedFeedCardState extends State<ApprovedFeedCard> {
                       ),
                     ),
                     const SizedBox(height: 18),
-                    const Wrap(
-                      spacing: 10,
-                      runSpacing: 10,
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        _LanePill(
-                          'Reactions',
-                          Color(0xFFF3E8FF),
-                          Color(0xFF6D28D9),
-                        ),
-                        _LanePill(
-                          'Comedy',
-                          Color(0xFFFDE2E2),
-                          Color(0xFFDC2626),
-                        ),
-                        _LanePill(
-                          'Advice',
-                          Color(0xFFFEF3C7),
-                          Color(0xFF92400E),
-                        ),
-                        _LanePill(
-                          'Analysis',
-                          Color(0xFFE6F7F1),
-                          Color(0xFF065F46),
-                        ),
-                        _LanePill(
-                          'Debate',
-                          Color(0xFFE7F0FF),
-                          Color(0xFF1D4ED8),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 18),
-                    const Divider(height: 1, color: Color(0xFFEAEAF0)),
-                    const SizedBox(height: 14),
-                    const Wrap(
-                      spacing: 12,
-                      runSpacing: 12,
-                      children: [
-                        _ActionPill(
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 5,
+                            vertical: 5,
+                          ),
+                            decoration: BoxDecoration(
+                              color: const Color(0xFFF8F9FC),
+                              borderRadius: BorderRadius.circular(22),
+                              border: Border.all(
+                                color: const Color(0xFFEAEAF0),
+                              ),
+                            ),
+                            child: const Wrap(
+                              alignment: WrapAlignment.center,
+                              spacing: 0,
+                              runSpacing: 0,
+                              children: [
+                                _PerspectiveLinkPill(
+                                  label: 'Comedy',
+                                  icon: Icons.sentiment_very_satisfied_rounded,
+                                  color: Color(0xFFDC2626),
+                                ),
+                                _PerspectiveLinkPill(
+                                  label: 'Analysis',
+                                  icon: Icons.analytics_rounded,
+                                  color: Color(0xFF059669),
+                                ),
+                                _PerspectiveLinkPill(
+                                  label: 'Debate',
+                                  icon: Icons.forum_rounded,
+                                  color: Color(0xFF2563EB),
+                                ),
+                                _PerspectiveLinkPill(
+                                  label: 'Reaction',
+                                  icon: Icons.bolt_rounded,
+                                  color: Color(0xFF7C3AED),
+                                ),
+                                _PerspectiveLinkPill(
+                                  label: 'Advice',
+                                  icon: Icons.lightbulb_rounded,
+                                  color: Color(0xFFD97706),
+                                ),
+                              ],
+                            ),
+                          ),
+                        const SizedBox(width: 14),
+                        const _ActionPill(
                           icon: Icons.thumb_up_alt_rounded,
                           label: '18.7k',
                         ),
-                        _ActionPill(
-                          icon: Icons.chat_bubble_outline_rounded,
-                          label: '2.4K Comments',
-                        ),
-                        _ActionPill(
-                          icon: Icons.reply_rounded,
-                          label: 'Share',
-                        ),
+                        const SizedBox(width: 14),
+                        const _CustomShareAction(),
                       ],
                     ),
-                    const SizedBox(height: 20),
-                    const Text(
-                      'Top Comments',
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w800,
-                        color: Color(0xFF111827),
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    const _CommentCard(),
                   ],
                 ),
               ),
@@ -1478,89 +1962,37 @@ class _LanePill extends StatelessWidget {
   }
 }
 
-class _CommentCard extends StatelessWidget {
-  const _CommentCard();
+class _PerspectiveLinkPill extends StatelessWidget {
+  final String label;
+  final IconData icon;
+  final Color color;
+
+  const _PerspectiveLinkPill({
+    required this.label,
+    required this.icon,
+    required this.color,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: const Color(0xFFFCFCFE),
-        borderRadius: BorderRadius.circular(18),
-        border: Border.all(color: const Color(0xFFEAEAF0)),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+    return SizedBox(
+      width: 54,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
         children: [
-          const Row(
-            children: [
-              CircleAvatar(
-                radius: 18,
-                backgroundImage: NetworkImage(
-                  'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80',
-                ),
-              ),
-              SizedBox(width: 10),
-              Text(
-                'David L.',
-                style: TextStyle(
-                  fontWeight: FontWeight.w800,
-                  fontSize: 14,
-                ),
-              ),
-              SizedBox(width: 8),
-              Text(
-                '+ min ago',
-                style: TextStyle(
-                  color: Color(0xFF6B7280),
-                  fontSize: 12,
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 12),
-          const Text(
-            'Respect goes both ways, if this is how she treats people in public, imagine what happens.',
-            style: TextStyle(
-              fontSize: 15,
-              height: 1.45,
-              color: Color(0xFF111827),
-            ),
-          ),
-          const SizedBox(height: 14),
-          Container(
-            height: 48,
-            decoration: BoxDecoration(
-              color: const Color(0xFFF5F6FA),
-              borderRadius: BorderRadius.circular(999),
-              border: Border.all(color: const Color(0xFFEAEAF0)),
-            ),
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            alignment: Alignment.centerLeft,
-            child: const Text(
-              'Add your reaction...',
+          Icon(icon, size: 11, color: color),
+          const SizedBox(width: 3),
+          Flexible(
+            child: Text(
+              label,
+              overflow: TextOverflow.ellipsis,
               style: TextStyle(
-                color: Color(0xFF8A8FA0),
-                fontSize: 14,
+                color: color,
+                fontSize: 10,
+                fontWeight: FontWeight.w800,
               ),
             ),
-          ),
-          const SizedBox(height: 12),
-          const Wrap(
-            spacing: 8,
-            runSpacing: 8,
-            children: [
-              _MiniReaction(
-                'Insightful',
-                Color(0xFFE9D5FF),
-                Color(0xFF7E22CE),
-              ),
-              _MiniReaction('Agree', Color(0xFFFECACA), Color(0xFFDC2626)),
-              _MiniReaction('Not Sure', Color(0xFFD1FAE5), Color(0xFF047857)),
-              _MiniReaction('Unfair', Color(0xFFFDE68A), Color(0xFFB45309)),
-              _MiniReaction('Crazy', Color(0xFFFBCFE8), Color(0xFFBE185D)),
-            ],
           ),
         ],
       ),
@@ -1568,28 +2000,28 @@ class _CommentCard extends StatelessWidget {
   }
 }
 
-class _MiniReaction extends StatelessWidget {
-  final String label;
-  final Color bg;
-  final Color fg;
-
-  const _MiniReaction(this.label, this.bg, this.fg);
+class _CustomShareAction extends StatelessWidget {
+  const _CustomShareAction();
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-      decoration: BoxDecoration(
-        color: bg,
-        borderRadius: BorderRadius.circular(999),
-      ),
-      child: Text(
-        label,
-        style: TextStyle(
-          fontWeight: FontWeight.w700,
-          color: fg,
+    return Row(
+      children: const [
+        Icon(
+          Icons.auto_awesome_outlined,
+          size: 28,
+          color: Color(0xFF4B5563),
         ),
-      ),
+        SizedBox(width: 8),
+        Text(
+          'Share',
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.w800,
+            color: Color(0xFF4B5563),
+          ),
+        ),
+      ],
     );
   }
 }
@@ -2158,9 +2590,12 @@ class CreateScenePage extends StatefulWidget {
 }
 
 class _CreateScenePageState extends State<CreateScenePage> {
-  SceneType _type = SceneType.drama;
   final TextEditingController _captionCtrl = TextEditingController();
+  final TextEditingController _locationCtrl = TextEditingController();
+  final TextEditingController _tagsCtrl = TextEditingController();
   final List<Uint8List> _pickedImages = [];
+  Uint8List? _pickedVideo;
+  String? _pickedVideoName;
   Scene? _preview;
   String? _errorText;
   bool _isPublishing = false;
@@ -2168,6 +2603,8 @@ class _CreateScenePageState extends State<CreateScenePage> {
   @override
   void dispose() {
     _captionCtrl.dispose();
+    _locationCtrl.dispose();
+    _tagsCtrl.dispose();
     super.dispose();
   }
 
@@ -2205,6 +2642,31 @@ class _CreateScenePageState extends State<CreateScenePage> {
     setState(() => _pickedImages.removeAt(index));
   }
 
+  Future<void> _pickVideo() async {
+    final res = await FilePicker.platform.pickFiles(
+      type: FileType.video,
+      allowMultiple: false,
+      withData: true,
+    );
+
+    if (res == null || res.files.isEmpty) return;
+
+    final file = res.files.first;
+    if (file.bytes == null) return;
+
+    setState(() {
+      _pickedVideo = file.bytes;
+      _pickedVideoName = file.name;
+    });
+  }
+
+  void _removeVideo() {
+    setState(() {
+      _pickedVideo = null;
+      _pickedVideoName = null;
+    });
+  }
+
   bool _validateCaption() {
     final cap = _captionCtrl.text.trim();
     if (cap.isEmpty) {
@@ -2227,12 +2689,37 @@ class _CreateScenePageState extends State<CreateScenePage> {
 
     setState(() {
       _preview = Scene(
-        type: _type,
+        type: detectSceneType(_captionCtrl.text),
         caption: cap,
         images: List<Uint8List>.from(_pickedImages),
         heat: 0,
       );
     });
+  }
+
+  void _saveDraft() {
+    final cap = _captionCtrl.text.trim();
+
+    if (cap.isEmpty &&
+        _pickedImages.isEmpty &&
+        _pickedVideoName == null &&
+        _locationCtrl.text.trim().isEmpty &&
+        _tagsCtrl.text.trim().isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Nothing to save yet. Add scene details first.'),
+          behavior: SnackBarBehavior.floating,
+        ),
+      );
+      return;
+    }
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Draft saved locally for now.'),
+        behavior: SnackBarBehavior.floating,
+      ),
+    );
   }
 
   Future<void> _publish() async {
@@ -2249,7 +2736,7 @@ class _CreateScenePageState extends State<CreateScenePage> {
     homeScenes.insert(
       0,
       Scene(
-        type: _type,
+        type: detectSceneType(_captionCtrl.text),
         caption: cap,
         images: List<Uint8List>.from(_pickedImages),
         heat: 0,
@@ -2275,18 +2762,28 @@ class _CreateScenePageState extends State<CreateScenePage> {
       centerContent: ListView(
         padding: const EdgeInsets.all(20),
         children: [
-          Container(
-            padding: const EdgeInsets.all(22),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border.all(color: const Color(0xFFEAEAF0)),
-              borderRadius: BorderRadius.circular(20),
-            ),
+          Center(
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 720),
+              child: Container(
+                padding: const EdgeInsets.all(24),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: Border.all(color: const Color(0xFFEAEAF0)),
+                  borderRadius: BorderRadius.circular(26),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Color(0x12000000),
+                      blurRadius: 28,
+                      offset: Offset(0, 12),
+                    ),
+                  ],
+                ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
-                  'Create a Scene',
+                  'Scene Composer',
                   style: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.w800,
@@ -2295,7 +2792,7 @@ class _CreateScenePageState extends State<CreateScenePage> {
                 ),
                 const SizedBox(height: 6),
                 const Text(
-                  'Share a moment, upload media, and let people react through structured lanes.',
+                  'Create a scene, choose its type, attach media, and prepare it for Perspectives.',
                   style: TextStyle(
                     fontSize: 14,
                     height: 1.45,
@@ -2303,57 +2800,6 @@ class _CreateScenePageState extends State<CreateScenePage> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                const Text(
-                  'Scene Type',
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w800,
-                    color: Color(0xFF111827),
-                  ),
-                ),
-                const SizedBox(height: 10),
-                DropdownButtonFormField<SceneType>(
-                  value: _type,
-                  items: SceneType.values
-                      .map(
-                        (t) => DropdownMenuItem(
-                          value: t,
-                          child: Row(
-                            children: [
-                              Icon(
-                                sceneTypeIcon(t),
-                                size: 18,
-                                color: sceneTypeColor(t),
-                              ),
-                              const SizedBox(width: 10),
-                              Text(sceneTypeLabel(t)),
-                            ],
-                          ),
-                        ),
-                      )
-                      .toList(),
-                  onChanged: (v) {
-                    if (v != null) {
-                      setState(() => _type = v);
-                    }
-                  },
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: const Color(0xFFF8F9FC),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(14),
-                      borderSide: const BorderSide(
-                        color: Color(0xFFEAEAF0),
-                      ),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(14),
-                      borderSide: const BorderSide(
-                        color: Color(0xFFEAEAF0),
-                      ),
-                    ),
-                  ),
-                ),
                 const SizedBox(height: 18),
                 const Text(
                   'Scene Caption',
@@ -2368,11 +2814,11 @@ class _CreateScenePageState extends State<CreateScenePage> {
                   controller: _captionCtrl,
                   maxLines: 6,
                   onChanged: (_) {
-                    if (_errorText != null) {
-                      setState(() {
+                    setState(() {
+                      if (_errorText != null) {
                         _errorText = null;
-                      });
-                    }
+                      }
+                    });
                   },
                   decoration: InputDecoration(
                     hintText: 'Write the scene...',
@@ -2394,122 +2840,148 @@ class _CreateScenePageState extends State<CreateScenePage> {
                   ),
                 ),
                 const SizedBox(height: 18),
-                const Text(
-                  'Structured Lanes',
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w800,
-                    color: Color(0xFF111827),
+                TextField(
+                  controller: _locationCtrl,
+                  decoration: InputDecoration(
+                    hintText: 'Add location',
+                    prefixIcon: const Icon(Icons.location_on_outlined),
+                    filled: true,
+                    fillColor: const Color(0xFFF8F9FC),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(14),
+                      borderSide: const BorderSide(color: Color(0xFFEAEAF0)),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(14),
+                      borderSide: const BorderSide(color: Color(0xFFEAEAF0)),
+                    ),
                   ),
                 ),
-                const SizedBox(height: 10),
-                const Wrap(
-                  spacing: 10,
-                  runSpacing: 10,
-                  children: [
-                    _LanePill(
-                      'Reactions',
-                      Color(0xFFF3E8FF),
-                      Color(0xFF6D28D9),
-                    ),
-                    _LanePill(
-                      'Comedy',
-                      Color(0xFFFDE2E2),
-                      Color(0xFFDC2626),
-                    ),
-                    _LanePill(
-                      'Advice',
-                      Color(0xFFFEF3C7),
-                      Color(0xFF92400E),
-                    ),
-                    _LanePill(
-                      'Analysis',
-                      Color(0xFFE6F7F1),
-                      Color(0xFF065F46),
-                    ),
-                    _LanePill(
-                      'Debate',
-                      Color(0xFFE7F0FF),
-                      Color(0xFF1D4ED8),
-                    ),
-                  ],
-                ),
                 const SizedBox(height: 18),
-                Row(
-                  children: [
-                    ElevatedButton.icon(
-                      onPressed: _pickImages,
-                      icon: const Icon(Icons.add_photo_alternate_outlined),
-                      label: Text('Add Images (${_pickedImages.length}/3)'),
-                    ),
-                    const SizedBox(width: 10),
-                    const Text(
-                      'Upload 1–3 images',
-                      style: TextStyle(
-                        color: Color(0xFF6B7280),
-                        fontSize: 13,
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 10,
+                  ),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFF8F9FC),
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(color: const Color(0xFFEAEAF0)),
+                  ),
+                  child: Wrap(
+                    spacing: 10,
+                    runSpacing: 10,
+                    children: [
+                      OutlinedButton.icon(
+                        onPressed: _pickImages,
+                        icon: const Icon(Icons.image_outlined),
+                        label: Text(
+                          _pickedImages.isEmpty
+                              ? 'Photo'
+                              : 'Photos (${_pickedImages.length})',
+                        ),
                       ),
-                    ),
-                  ],
+                      OutlinedButton.icon(
+                        onPressed: _pickVideo,
+                        icon: const Icon(Icons.videocam_outlined),
+                        label: Text(
+                          _pickedVideoName == null ? 'Video' : 'Video added',
+                        ),
+                      ),
+                      OutlinedButton.icon(
+                        onPressed: () {
+                          FocusScope.of(context).requestFocus(FocusNode());
+                        },
+                        icon: const Icon(Icons.location_on_outlined),
+                        label: const Text('Location'),
+                      ),
+                    ],
+                  ),
                 ),
                 if (_pickedImages.isNotEmpty) ...[
-                  const SizedBox(height: 14),
-                  Container(
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFF8F9FC),
-                      borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: const Color(0xFFEAEAF0)),
-                    ),
-                    child: SizedBox(
-                      height: 96,
-                      child: ListView.separated(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: _pickedImages.length,
-                        separatorBuilder: (_, __) => const SizedBox(width: 10),
-                        itemBuilder: (context, i) {
-                          return Stack(
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(14),
-                                child: Image.memory(
-                                  _pickedImages[i],
-                                  width: 128,
-                                  height: 96,
-                                  fit: BoxFit.cover,
-                                ),
+                  const SizedBox(height: 12),
+                  SizedBox(
+                    height: 86,
+                    child: ListView.separated(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: _pickedImages.length,
+                      separatorBuilder: (_, __) => const SizedBox(width: 10),
+                      itemBuilder: (context, i) {
+                        return Stack(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(14),
+                              child: Image.memory(
+                                _pickedImages[i],
+                                width: 112,
+                                height: 86,
+                                fit: BoxFit.cover,
                               ),
-                              Positioned(
-                                right: 6,
-                                top: 6,
-                                child: InkWell(
-                                  onTap: () => _removeImage(i),
-                                  borderRadius: BorderRadius.circular(999),
-                                  child: Container(
-                                    padding: const EdgeInsets.all(6),
-                                    decoration: BoxDecoration(
-                                      color: Colors.black.withOpacity(0.65),
-                                      borderRadius: BorderRadius.circular(999),
-                                    ),
-                                    child: const Icon(
-                                      Icons.close,
-                                      color: Colors.white,
-                                      size: 16,
-                                    ),
+                            ),
+                            Positioned(
+                              right: 6,
+                              top: 6,
+                              child: InkWell(
+                                onTap: () => _removeImage(i),
+                                borderRadius: BorderRadius.circular(999),
+                                child: Container(
+                                  padding: const EdgeInsets.all(5),
+                                  decoration: BoxDecoration(
+                                    color: Colors.black.withOpacity(0.65),
+                                    borderRadius: BorderRadius.circular(999),
+                                  ),
+                                  child: const Icon(
+                                    Icons.close,
+                                    color: Colors.white,
+                                    size: 14,
                                   ),
                                 ),
                               ),
-                            ],
-                          );
-                        },
-                      ),
+                            ),
+                          ],
+                        );
+                      },
                     ),
+                  ),
+                ],
+                if (_pickedVideoName != null) ...[
+                  const SizedBox(height: 10),
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.videocam_outlined,
+                        size: 18,
+                        color: Color(0xFF2563EB),
+                      ),
+                      const SizedBox(width: 8),
+                      Expanded(
+                        child: Text(
+                          _pickedVideoName!,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            fontSize: 13,
+                            fontWeight: FontWeight.w700,
+                            color: Color(0xFF374151),
+                          ),
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: _removeVideo,
+                        icon: const Icon(Icons.close_rounded),
+                        tooltip: 'Remove video',
+                      ),
+                    ],
                   ),
                 ],
                 const SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
+                    OutlinedButton(
+                      onPressed: _saveDraft,
+                      child: const Text('Save Draft'),
+                    ),
+                    const SizedBox(width: 10),
                     OutlinedButton(
                       onPressed: _makePreview,
                       child: const Text('Preview'),
@@ -2528,6 +3000,8 @@ class _CreateScenePageState extends State<CreateScenePage> {
                   ],
                 ),
               ],
+            ),
+              ),
             ),
           ),
           if (_preview != null) ...[
@@ -2731,6 +3205,40 @@ class _RightStatsCard extends StatelessWidget {
 }
 
 
+Color perspectiveLaneColor(String lane) {
+  switch (lane) {
+    case 'Comedy':
+      return const Color(0xFFDC2626);
+    case 'Analysis':
+      return const Color(0xFF059669);
+    case 'Debate':
+      return const Color(0xFF2563EB);
+    case 'Reaction':
+      return const Color(0xFF7C3AED);
+    case 'Advice':
+      return const Color(0xFFD97706);
+    default:
+      return const Color(0xFF6B7280);
+  }
+}
+
+IconData perspectiveLaneIcon(String lane) {
+  switch (lane) {
+    case 'Comedy':
+      return Icons.sentiment_very_satisfied_rounded;
+    case 'Analysis':
+      return Icons.analytics_rounded;
+    case 'Debate':
+      return Icons.forum_rounded;
+    case 'Reaction':
+      return Icons.bolt_rounded;
+    case 'Advice':
+      return Icons.lightbulb_rounded;
+    default:
+      return Icons.chat_bubble_outline_rounded;
+  }
+}
+
 class _LaneSelectorChip extends StatelessWidget {
   final String label;
   final bool selected;
@@ -2744,6 +3252,9 @@ class _LaneSelectorChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final rawLane = label.split(' (').first;
+    final laneColor = perspectiveLaneColor(rawLane);
+
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(999),
@@ -2751,36 +3262,43 @@ class _LaneSelectorChip extends StatelessWidget {
         duration: const Duration(milliseconds: 150),
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
         decoration: BoxDecoration(
-          color: selected
-              ? const Color(0xFFE84586)
-              : const Color(0xFFF3F4F8),
+          color: selected ? laneColor : const Color(0xFFF3F4F8),
           borderRadius: BorderRadius.circular(999),
           border: Border.all(
-            color: selected
-                ? const Color(0xFFE84586)
-                : const Color(0xFFEAEAF0),
+            color: selected ? laneColor : const Color(0xFFEAEAF0),
           ),
         ),
-        child: Text(
-          label,
-          style: TextStyle(
-            color: selected ? Colors.white : const Color(0xFF111827),
-            fontWeight: FontWeight.w700,
-            fontSize: 13,
-          ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              perspectiveLaneIcon(rawLane),
+              size: 16,
+              color: selected ? Colors.white : laneColor,
+            ),
+            const SizedBox(width: 7),
+            Text(
+              label,
+              style: TextStyle(
+                color: selected ? Colors.white : const Color(0xFF111827),
+                fontWeight: FontWeight.w800,
+                fontSize: 13,
+              ),
+            ),
+          ],
         ),
       ),
     );
   }
 }
 
-class _ResponseCard extends StatelessWidget {
+class _PerspectiveCard extends StatelessWidget {
   final String text;
   final int upvotes;
   final bool alreadyVoted;
   final VoidCallback? onUpvote;
 
-  const _ResponseCard({
+  const _PerspectiveCard({
     required this.text,
     required this.upvotes,
     required this.alreadyVoted,
@@ -2876,7 +3394,7 @@ class ProfilePage extends StatelessWidget {
               const SizedBox(width: 16),
               _ProfileStatCard(
                 'Total Responses Posted',
-                '$totalReactionsPosted',
+                '$totalPerspectivesPosted',
               ),
             ],
           ),
@@ -3049,11 +3567,11 @@ class _ActionPillState extends State<_ActionPill> {
 ---------------------------- */
 enum LaneSort { best, newest }
 
-class ReactionItem {
+class PerspectiveItem {
   final String text;
   int upvotes;
 
-  ReactionItem(this.text, {this.upvotes = 0});
+  PerspectiveItem(this.text, {this.upvotes = 0});
 }
 
 class SceneDetailPage extends StatefulWidget {
@@ -3068,83 +3586,86 @@ class SceneDetailPage extends StatefulWidget {
 class _SceneDetailPageState extends State<SceneDetailPage> {
   int selectedLaneIndex = 0;
   LaneSort _sort = LaneSort.best;
-  final TextEditingController _reactionCtrl = TextEditingController();
+  final TextEditingController _perspectiveCtrl = TextEditingController();
 
   late List<String> lanes;
-  late Map<String, List<ReactionItem>> reactionsByLane;
-  late Map<String, Set<int>> votedIndexesByLane;
+  late Map<String, List<PerspectiveItem>> perspectivesByLane;
+  late Map<String, Set<int>> votedPerspectiveIndexesByLane;
 
   @override
   void initState() {
     super.initState();
+    _perspectiveCtrl.addListener(() {
+      if (mounted) setState(() {});
+    });
     lanes = widget.scene.lanes;
-    reactionsByLane = {
+    perspectivesByLane = {
       for (final lane in lanes)
         lane: [
-          ReactionItem('First response in $lane.', upvotes: 2),
-          ReactionItem('Another response in $lane.', upvotes: 1),
-          ReactionItem('One more response in $lane.', upvotes: 0),
+          PerspectiveItem('First perspective in $lane.', upvotes: 2),
+          PerspectiveItem('Another perspective in $lane.', upvotes: 1),
+          PerspectiveItem('One more perspective in $lane.', upvotes: 0),
         ],
     };
-    votedIndexesByLane = {
+    votedPerspectiveIndexesByLane = {
       for (final lane in lanes) lane: <int>{},
     };
   }
 
-  int _countForLane(String lane) => (reactionsByLane[lane] ?? const []).length;
+  int _countForLane(String lane) => (perspectivesByLane[lane] ?? const []).length;
 
-  void _postReaction() {
+  void _postPerspective() {
     final lane = lanes[selectedLaneIndex];
-    final text = _reactionCtrl.text.trim();
+    final text = _perspectiveCtrl.text.trim();
     if (text.isEmpty) return;
 
     setState(() {
-      reactionsByLane[lane] = [
-        ReactionItem(text, upvotes: 0),
-        ...(reactionsByLane[lane] ?? []),
+      perspectivesByLane[lane] = [
+        PerspectiveItem(text, upvotes: 0),
+        ...(perspectivesByLane[lane] ?? []),
       ];
-      final old = votedIndexesByLane[lane] ?? <int>{};
-      votedIndexesByLane[lane] = old.map((i) => i + 1).toSet();
+      final old = votedPerspectiveIndexesByLane[lane] ?? <int>{};
+      votedPerspectiveIndexesByLane[lane] = old.map((i) => i + 1).toSet();
       widget.scene.heat += 1;
-      totalReactionsPosted += 1;
-      _reactionCtrl.clear();
+      totalPerspectivesPosted += 1;
+      _perspectiveCtrl.clear();
     });
   }
 
-  void _upvoteReaction(int index) {
+  void _upvotePerspective(int index) {
     final lane = lanes[selectedLaneIndex];
-    final voted = votedIndexesByLane[lane] ?? <int>{};
+    final voted = votedPerspectiveIndexesByLane[lane] ?? <int>{};
 
     if (voted.contains(index)) return;
 
     setState(() {
-      final list = reactionsByLane[lane] ?? <ReactionItem>[];
+      final list = perspectivesByLane[lane] ?? <PerspectiveItem>[];
       if (index >= 0 && index < list.length) {
         list[index].upvotes += 1;
         widget.scene.heat += 1;
         voted.add(index);
-        votedIndexesByLane[lane] = voted;
+        votedPerspectiveIndexesByLane[lane] = voted;
       }
     });
   }
 
   @override
   void dispose() {
-    _reactionCtrl.dispose();
+    _perspectiveCtrl.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     final lane = lanes[selectedLaneIndex];
-    final base = reactionsByLane[lane] ?? const <ReactionItem>[];
-    final reactions = [...base];
+    final base = perspectivesByLane[lane] ?? const <PerspectiveItem>[];
+    final perspectives = [...base];
 
     if (_sort == LaneSort.best) {
-      reactions.sort((a, b) => b.upvotes.compareTo(a.upvotes));
+      perspectives.sort((a, b) => b.upvotes.compareTo(a.upvotes));
     }
 
-    final votedSet = votedIndexesByLane[lane] ?? <int>{};
+    final votedSet = votedPerspectiveIndexesByLane[lane] ?? <int>{};
 
     return Scaffold(
       backgroundColor: const Color(0xFFF5F6FA),
@@ -3243,7 +3764,7 @@ class _SceneDetailPageState extends State<SceneDetailPage> {
                         runSpacing: 10,
                         children: [
                           _LanePill(
-                            'Reactions',
+                            'Reaction',
                             Color(0xFFF3E8FF),
                             Color(0xFF6D28D9),
                           ),
@@ -3280,7 +3801,7 @@ class _SceneDetailPageState extends State<SceneDetailPage> {
                           ),
                           _ActionPill(
                             icon: Icons.chat_bubble_outline_rounded,
-                            label: '2.4K Comments',
+                            label: '2.4K Perspectives',
                           ),
                           _ActionPill(
                             icon: Icons.reply_rounded,
@@ -3368,7 +3889,7 @@ class _SceneDetailPageState extends State<SceneDetailPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Add a response in: $lane',
+                      'Add a perspective in: $lane',
                       style: const TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.w800,
@@ -3377,10 +3898,10 @@ class _SceneDetailPageState extends State<SceneDetailPage> {
                     ),
                     const SizedBox(height: 12),
                     TextField(
-                      controller: _reactionCtrl,
+                      controller: _perspectiveCtrl,
                       maxLines: 4,
                       decoration: InputDecoration(
-                        hintText: 'Add your response...',
+                        hintText: 'Add your perspective...',
                         filled: true,
                         fillColor: const Color(0xFFF8F9FC),
                         border: OutlineInputBorder(
@@ -3393,12 +3914,67 @@ class _SceneDetailPageState extends State<SceneDetailPage> {
                         ),
                       ),
                     ),
+                    if (_perspectiveCtrl.text.trim().isNotEmpty &&
+                        isPerspectiveLaneMismatch(
+                          selectedLane: lane,
+                          text: _perspectiveCtrl.text,
+                        )) ...[
+                      const SizedBox(height: 12),
+                      Container(
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFFFFBEB),
+                          borderRadius: BorderRadius.circular(14),
+                          border: Border.all(color: const Color(0xFFFDE68A)),
+                        ),
+                        child: Row(
+                          children: [
+                            const Icon(
+                              Icons.tips_and_updates_rounded,
+                              color: Color(0xFFD97706),
+                              size: 20,
+                            ),
+                            const SizedBox(width: 10),
+                            Expanded(
+                              child: Text(
+                                'Suggested: ${detectPerspectiveLaneWithConfidence(_perspectiveCtrl.text).lane} ? Confidence: ${(detectPerspectiveLaneWithConfidence(_perspectiveCtrl.text).confidence * 100).round()}% ? Current: $lane',
+                                style: const TextStyle(
+                                  fontSize: 13,
+                                  height: 1.35,
+                                  fontWeight: FontWeight.w700,
+                                  color: Color(0xFF92400E),
+                                ),
+                              ),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                final suggested =
+                                    detectPerspectiveLaneWithConfidence(_perspectiveCtrl.text).lane;
+                                final idx = lanes.indexOf(suggested);
+                                if (idx >= 0) {
+                                  setState(() {
+                                    selectedLaneIndex = idx;
+                                  });
+                                }
+                              },
+                              child: const Text('Move'),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                setState(() {});
+                              },
+                              child: const Text('Keep'),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                     const SizedBox(height: 12),
                     Align(
                       alignment: Alignment.centerRight,
                       child: ElevatedButton(
-                        onPressed: _postReaction,
-                        child: const Text('Post Response'),
+                        onPressed: _postPerspective,
+                        child: const Text('Post Perspective'),
                       ),
                     ),
                   ],
@@ -3406,7 +3982,7 @@ class _SceneDetailPageState extends State<SceneDetailPage> {
               ),
               const SizedBox(height: 18),
               const Text(
-                'Responses',
+                'Perspectives',
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w800,
@@ -3414,21 +3990,21 @@ class _SceneDetailPageState extends State<SceneDetailPage> {
                 ),
               ),
               const SizedBox(height: 12),
-              ...List.generate(reactions.length, (i) {
-                final r = reactions[i];
+              ...List.generate(perspectives.length, (i) {
+                final r = perspectives[i];
                 final originalIndex = base.indexOf(r);
                 final alreadyVoted =
                     originalIndex >= 0 && votedSet.contains(originalIndex);
 
                 return Padding(
                   padding: const EdgeInsets.only(bottom: 12),
-                  child: _ResponseCard(
+                  child: _PerspectiveCard(
                     text: r.text,
                     upvotes: r.upvotes,
                     alreadyVoted: alreadyVoted,
                     onUpvote: alreadyVoted
                         ? null
-                        : () => _upvoteReaction(originalIndex),
+                        : () => _upvotePerspective(originalIndex),
                   ),
                 );
               }),
