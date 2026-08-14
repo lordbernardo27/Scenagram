@@ -1,0 +1,236 @@
+================================================================================
+SCENAGRAM ? PHASE 2.1.1 FEED CONTROLLER FOUNDATION SCAN
+================================================================================
+ROOT: C:\Users\HP\Documents\Scenagram\apps\scenagram_web
+
+--------------------------------------------------------------------------------
+FILE: lib\main.dart
+--------------------------------------------------------------------------------
+STATUS: FOUND
+LINES: 4017
+
+MATCHES:
+  593: enum SceneType {
+  634: final List<Scene> homeScenes = [
+ 1297: class _SceneTypeStrip extends StatelessWidget {
+ 1335: class _SceneTypeTab extends StatefulWidget {
+ 1350: class _SceneTypeTabState extends State<_SceneTypeTab> {
+ 1525: class HomePage extends StatefulWidget {
+ 1532: class _HomePageState extends State<HomePage> {
+ 1533:   SceneType? _filter;
+ 1539:       list = list.where((s) => s.type == _filter).toList();
+ 1542:     final scene = list.isNotEmpty ? list.first : null;
+ 1546:       selectedSceneType: _filter,
+ 1547:       onSelectSceneType: (value) {
+
+--------------------------------------------------------------------------------
+FILE: lib\core\theme\app_theme.dart
+--------------------------------------------------------------------------------
+STATUS: FOUND
+LINES: 121
+
+MATCHES: NONE
+
+--------------------------------------------------------------------------------
+FILE: lib\core\theme\design_tokens.dart
+--------------------------------------------------------------------------------
+STATUS: FOUND
+LINES: 77
+
+MATCHES: NONE
+
+--------------------------------------------------------------------------------
+FILE: pubspec.yaml
+--------------------------------------------------------------------------------
+STATUS: FOUND
+LINES: 88
+
+MATCHES: NONE
+
+================================================================================
+CURRENT HOME PAGE IMPLEMENTATION
+================================================================================
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  SceneType? _filter;
+
+  @override
+  Widget build(BuildContext context) {
+    var list = [...homeScenes];
+    if (_filter != null) {
+      list = list.where((s) => s.type == _filter).toList();
+    }
+
+    final scene = list.isNotEmpty ? list.first : null;
+
+    return ScenagramFrame(
+      currentRoute: '/',
+      selectedSceneType: _filter,
+      onSelectSceneType: (value) {
+        setState(() {
+          _filter = value;
+        });
+      },
+      centerContent: ListView(
+        padding: const EdgeInsets.fromLTRB(20, 20, 20, 28),
+        children: [
+          const _PageSectionHeader(
+            title: 'Home Feed',
+            subtitle: 'Scenes people are reacting to right now.',
+          ),
+          const SizedBox(height: 16),
+          if (scene == null)
+            const _EmptyStateCard(
+              title: 'No scenes yet',
+              subtitle: 'When scenes are published, they will appear here.',
+            )
+          else
+            ApprovedFeedCard(
+              scene: scene,
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => SceneDetailPage(scene: scene),
+                ),
+              ),
+            ),
+        ],
+      ),
+      rightSidebar: const ApprovedRightSidebar(),
+    );
+  }
+}
+
+================================================================================
+CURRENT SCENE TYPE STRIP IMPLEMENTATION
+================================================================================
+class _SceneTypeStrip extends StatelessWidget {
+  final SceneType? selected;
+  final ValueChanged<SceneType?>? onSelect;
+
+  const _SceneTypeStrip({
+    this.selected,
+    this.onSelect,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 72,
+      padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 12),
+      decoration: const BoxDecoration(
+        color: Color(0xFFFDFDFE),
+        border: Border(
+          bottom: BorderSide(color: Color(0xFFEAEAF0)),
+        ),
+      ),
+      child: Center(
+        child: Wrap(
+          alignment: WrapAlignment.center,
+          spacing: 12,
+          runSpacing: 12,
+          children: SceneType.values.map((type) {
+            return _SceneTypeTab(
+              type: type,
+              selected: selected == type,
+              onTap: () => onSelect?.call(type),
+            );
+          }).toList(),
+        ),
+      ),
+    );
+  }
+}
+
+class _SceneTypeTab extends StatefulWidget {
+  final SceneType type;
+  final bool selected;
+  final VoidCallback onTap;
+
+  const _SceneTypeTab({
+    required this.type,
+    required this.selected,
+    required this.onTap,
+  });
+
+  @override
+  State<_SceneTypeTab> createState() => _SceneTypeTabState();
+}
+
+class _SceneTypeTabState extends State<_SceneTypeTab> {
+  bool _hovering = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final isSelected = widget.selected;
+
+    return MouseRegion(
+      onEnter: (_) => setState(() => _hovering = true),
+      onExit: (_) => setState(() => _hovering = false),
+      child: InkWell(
+        onTap: widget.onTap,
+        borderRadius: BorderRadius.circular(14),
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 160),
+          width: 130,
+          decoration: BoxDecoration(
+            color: isSelected
+                ? const Color(0xFFF3E8F4)
+                : (_hovering
+                    ? const Color(0xFFF3F4F8)
+                    : const Color(0xFFF7F8FB)),
+            borderRadius: BorderRadius.circular(14),
+            border: Border.all(
+              color: isSelected
+                  ? const Color(0xFFF0D5E5)
+                  : const Color(0xFFEAEAF0),
+            ),
+            boxShadow: _hovering
+                ? const [
+                    BoxShadow(
+                      color: Color(0x0C000000),
+                      blurRadius: 10,
+                      offset: Offset(0, 4),
+                    ),
+                  ]
+                : null,
+          ),
+          padding: const EdgeInsets.symmetric(horizontal: 12),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                sceneTypeIcon(widget.type),
+                size: 18,
+                color: sceneTypeColor(widget.type),
+              ),
+              const SizedBox(width: 8),
+              Flexible(
+                child: Text(
+                  sceneTypeLabel(widget.type),
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w700,
+                    color: sceneTypeColor(widget.type),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+================================================================================
+2.1.1 CONTROLLER STATUS
+================================================================================
+NO DEDICATED FEED CONTROLLER DETECTED.

@@ -629,6 +629,31 @@ class Scene {
 }
 
 /* ---------------------------
+   FEED CONTROLLER FOUNDATION
+   Phase 2.1.1
+---------------------------- */
+class FeedController extends ChangeNotifier {
+  SceneType _activeFeed = SceneType.media;
+
+  SceneType get activeFeed => _activeFeed;
+
+  void selectFeed(SceneType feed) {
+    if (_activeFeed == feed) return;
+
+    _activeFeed = feed;
+    notifyListeners();
+  }
+
+  List<Scene> scenesForActiveFeed(List<Scene> scenes) {
+    return scenes
+        .where((scene) => scene.type == _activeFeed)
+        .toList();
+  }
+
+  bool isActive(SceneType feed) => _activeFeed == feed;
+}
+
+/* ---------------------------
    LOCAL DATA
 ---------------------------- */
 final List<Scene> homeScenes = [
@@ -690,14 +715,14 @@ class _ScenagramFrameState extends State<ScenagramFrame> {
       body: SafeArea(
         child: Center(
           child: Container(
-            margin: const EdgeInsets.all(10),
+            margin: const EdgeInsets.all(2),
             decoration: BoxDecoration(
               color: const Color(0xFFFDFDFE),
-              borderRadius: BorderRadius.circular(22),
+              borderRadius: BorderRadius.circular(18),
               border: Border.all(color: const Color(0xFFE7E8EE)),
             ),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(22),
+              borderRadius: BorderRadius.circular(18),
               child: Column(
                 children: [
                   _TopBar(currentRoute: widget.currentRoute),
@@ -711,7 +736,7 @@ class _ScenagramFrameState extends State<ScenagramFrame> {
                       children: [
                         if (!_leftHidden)
                           SizedBox(
-                            width: 248,
+                            width: 250,
                             child: _LeftSidebar(
                               currentRoute: widget.currentRoute,
                               onHide: () {
@@ -736,7 +761,7 @@ class _ScenagramFrameState extends State<ScenagramFrame> {
                                     alignment: Alignment.topCenter,
                                     child: ConstrainedBox(
                                       constraints: const BoxConstraints(
-                                        maxWidth: 780,
+                                        maxWidth: 840,
                                       ),
                                       child: widget.centerContent,
                                     ),
@@ -759,7 +784,7 @@ class _ScenagramFrameState extends State<ScenagramFrame> {
                                 ),
                               if (!_rightHidden)
                                 SizedBox(
-                                  width: 320,
+                                  width: 310,
                                   child: Stack(
                                     children: [
                                       Positioned.fill(
@@ -817,43 +842,36 @@ class _TopBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 78,
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 28),
       decoration: const BoxDecoration(
-        color: Color(0xFFFDFDFE),
+        color: Colors.white,
         border: Border(
-          bottom: BorderSide(color: Color(0xFFEAEAF0)),
+          bottom: BorderSide(color: Color(0xFFEDEEF3)),
         ),
       ),
       child: Row(
         children: [
-          const SizedBox(
-            width: 52,
-            child: Row(
-              children: [
-                _WindowDot(Color(0xFFFF5F57)),
-                SizedBox(width: 6),
-                _WindowDot(Color(0xFFFEBB2E)),
-                SizedBox(width: 6),
-                _WindowDot(Color(0xFF28C840)),
-              ],
-            ),
-          ),
-          const SizedBox(width: 20),
           Row(
             children: [
               Container(
-                width: 40,
-                height: 40,
+                width: 42,
+                height: 42,
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(
-                    colors: [Color(0xFFF04D8A), Color(0xFFF59E0B)],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [
+                      Color(0xFFB83CFF),
+                      Color(0xFFFF4F8B),
+                      Color(0xFFFFA21A),
+                    ],
                   ),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: const Icon(
-                  Icons.camera_alt_rounded,
+                  Icons.home_rounded,
                   color: Colors.white,
-                  size: 20,
+                  size: 21,
                 ),
               ),
               const SizedBox(width: 12),
@@ -861,44 +879,45 @@ class _TopBar extends StatelessWidget {
                 'Scenagram',
                 style: TextStyle(
                   fontSize: 20,
-                  fontWeight: FontWeight.w800,
+                  fontWeight: FontWeight.w900,
                   color: Color(0xFF111827),
-                  letterSpacing: -0.2,
+                  letterSpacing: -0.4,
                 ),
               ),
             ],
           ),
-          const SizedBox(width: 24),
+          const SizedBox(width: 72),
           Expanded(
             child: Align(
-              alignment: Alignment.center,
+              alignment: Alignment.centerLeft,
               child: ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 460),
+                constraints: const BoxConstraints(maxWidth: 390),
                 child: Container(
-                  height: 44,
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  height: 43,
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
                   decoration: BoxDecoration(
-                    color: const Color(0xFFF4F5F9),
-                    borderRadius: BorderRadius.circular(24),
-                    border: Border.all(color: const Color(0xFFEEF0F5)),
+                    color: const Color(0xFFF8F8FC),
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(
+                      color: const Color(0xFFE7E8EF),
+                    ),
                   ),
                   child: const Row(
                     children: [
                       Icon(
                         Icons.search_rounded,
-                        size: 18,
-                        color: Color(0xFF6B7280),
+                        size: 20,
+                        color: Color(0xFF5F6675),
                       ),
                       SizedBox(width: 10),
                       Expanded(
                         child: Text(
                           'Search Scenagram web',
                           style: TextStyle(
-                            color: Color(0xFF8A8FA0),
-                            fontSize: 14,
+                            color: Color(0xFF73798A),
+                            fontSize: 13,
                             fontWeight: FontWeight.w500,
                           ),
-                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
                     ],
@@ -907,78 +926,83 @@ class _TopBar extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(width: 16),
-          const _TopIcon(icon: Icons.search_rounded),
-          const SizedBox(width: 12),
-          const _TopIcon(icon: Icons.chat_bubble_outline_rounded),
-          const SizedBox(width: 12),
+          const SizedBox(width: 24),
+
           const _TopBadgeIcon(
-            icon: Icons.desktop_windows_outlined,
-            count: '6',
+            icon: Icons.favorite_border_rounded,
+            count: '',
           ),
-          const SizedBox(width: 12),
+          const SizedBox(width: 24),
+
           const _TopBadgeIcon(
-            icon: Icons.notifications_none_rounded,
+            icon: Icons.chat_bubble_outline_rounded,
             count: '3',
           ),
-          const SizedBox(width: 16),
+          const SizedBox(width: 24),
+
+          const _TopBadgeIcon(
+            icon: Icons.notifications_none_rounded,
+            count: '6',
+          ),
+          const SizedBox(width: 26),
+
           InkWell(
             onTap: () {
               if (currentRoute != '/create') {
                 Navigator.pushReplacementNamed(context, '/create');
               }
             },
-            borderRadius: BorderRadius.circular(26),
+            borderRadius: BorderRadius.circular(24),
             child: Container(
-              height: 46,
+              height: 44,
               padding: const EdgeInsets.symmetric(horizontal: 20),
               decoration: BoxDecoration(
                 gradient: const LinearGradient(
-                  colors: [Color(0xFFFF2D8A), Color(0xFFF59E0B)],
+                  colors: [
+                    Color(0xFFB923E7),
+                    Color(0xFFFF2D8A),
+                    Color(0xFFFFA31A),
+                  ],
                 ),
-                borderRadius: BorderRadius.circular(26),
-                boxShadow: const [
-                  BoxShadow(
-                    color: Color(0x22F04D8A),
-                    blurRadius: 16,
-                    offset: Offset(0, 6),
-                  ),
-                ],
+                borderRadius: BorderRadius.circular(24),
               ),
               child: const Row(
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
                     'Post a Scene',
                     style: TextStyle(
                       color: Colors.white,
+                      fontSize: 13,
                       fontWeight: FontWeight.w800,
-                      fontSize: 14,
                     ),
                   ),
-                  SizedBox(width: 10),
+                  SizedBox(width: 12),
                   Icon(
-                    Icons.chevron_right_rounded,
+                    Icons.add_rounded,
                     color: Colors.white,
-                    size: 18,
+                    size: 21,
                   ),
                 ],
               ),
             ),
           ),
-          const SizedBox(width: 12),
-          InkWell(
-            onTap: () {},
-            borderRadius: BorderRadius.circular(10),
-            child: Container(
-              width: 36,
-              height: 36,
-              alignment: Alignment.center,
-              child: const Icon(
-                Icons.menu_rounded,
-                color: Color(0xFF111827),
-                size: 26,
-              ),
+
+          const SizedBox(width: 22),
+
+          const CircleAvatar(
+            radius: 18,
+            backgroundImage: NetworkImage(
+              'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80',
             ),
+          ),
+
+          const SizedBox(width: 8),
+
+          const Icon(
+            Icons.keyboard_arrow_down_rounded,
+            size: 21,
+            color: Color(0xFF343A46),
           ),
         ],
       ),
@@ -1027,29 +1051,38 @@ class _TopBadgeIcon extends StatelessWidget {
     return Stack(
       clipBehavior: Clip.none,
       children: [
-        Icon(icon, size: 24, color: const Color(0xFF111827)),
-        Positioned(
-          right: -6,
-          top: -6,
-          child: Container(
-            constraints: const BoxConstraints(minWidth: 18),
-            height: 18,
-            padding: const EdgeInsets.symmetric(horizontal: 4),
-            decoration: BoxDecoration(
-              color: const Color(0xFFE84586),
-              borderRadius: BorderRadius.circular(999),
-            ),
-            alignment: Alignment.center,
-            child: Text(
-              count,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 9,
-                fontWeight: FontWeight.w700,
+        Icon(
+          icon,
+          size: 25,
+          color: const Color(0xFF272D3A),
+        ),
+        if (count.isNotEmpty)
+          Positioned(
+            top: -7,
+            right: -8,
+            child: Container(
+              constraints: const BoxConstraints(minWidth: 18),
+              height: 18,
+              padding: const EdgeInsets.symmetric(horizontal: 4),
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: const Color(0xFFFF1F79),
+                borderRadius: BorderRadius.circular(999),
+                border: Border.all(
+                  color: Colors.white,
+                  width: 2,
+                ),
+              ),
+              child: Text(
+                count,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 9,
+                  fontWeight: FontWeight.w800,
+                ),
               ),
             ),
           ),
-        ),
       ],
     );
   }
@@ -1067,148 +1100,195 @@ class _LeftSidebar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 255,
-      decoration: const BoxDecoration(
-        color: Color(0xFFF7F8FB),
-      ),
-      child: ListView(
-        padding: const EdgeInsets.fromLTRB(14, 16, 14, 14),
+      width: 250,
+      color: Colors.white,
+      child: Column(
         children: [
-          Container(
-            padding: const EdgeInsets.all(12),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(16),
-              border: Border.all(color: const Color(0xFFEAEAF0)),
-            ),
-            child: Row(
+          Expanded(
+            child: ListView(
+              padding: const EdgeInsets.fromLTRB(18, 18, 18, 12),
               children: [
-                const CircleAvatar(
-                  radius: 22,
-                  backgroundImage: NetworkImage(
-                    'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80',
+                Container(
+                  padding: const EdgeInsets.fromLTRB(12, 12, 8, 12),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(14),
+                    border: Border.all(
+                      color: const Color(0xFFE7E8ED),
+                    ),
                   ),
-                ),
-                const SizedBox(width: 10),
-                const Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  child: Row(
                     children: [
-                      Text(
-                        'Nadia K.',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w800,
-                          fontSize: 14,
-                          color: Color(0xFF111827),
+                      const CircleAvatar(
+                        radius: 23,
+                        backgroundImage: NetworkImage(
+                          'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80',
                         ),
                       ),
-                      SizedBox(height: 2),
-                      Text(
-                        '@nadiak',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Color(0xFF6B7280),
+
+                      const SizedBox(width: 11),
+
+                      const Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Nadia K.',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w800,
+                                color: Color(0xFF171C27),
+                              ),
+                            ),
+                            SizedBox(height: 3),
+                            Text(
+                              '@nadiak',
+                              style: TextStyle(
+                                fontSize: 11,
+                                color: Color(0xFF777D8A),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      IconButton(
+                        onPressed: onHide,
+                        splashRadius: 18,
+                        icon: const Icon(
+                          Icons.more_vert_rounded,
+                          size: 19,
+                          color: Color(0xFF555C69),
                         ),
                       ),
                     ],
                   ),
                 ),
-                _SidebarHideButton(onTap: onHide),
+
+                const SizedBox(height: 24),
+
+                const _SideLabel('ACCOUNT'),
+                const SizedBox(height: 10),
+
+                _SidebarNavItem(
+                  icon: Icons.person_outline_rounded,
+                  label: 'Profile',
+                  selected: currentRoute == '/profile',
+                  onTap: () => Navigator.pushReplacementNamed(
+                    context,
+                    '/profile',
+                  ),
+                ),
+
+                const _SidebarNavItem(
+                  icon: Icons.settings_outlined,
+                  label: 'Settings',
+                  selected: false,
+                ),
+
+                const _SidebarNavItem(
+                  icon: Icons.badge_outlined,
+                  label: 'Account Details',
+                  selected: false,
+                ),
+
+                const _SidebarNavItem(
+                  icon: Icons.shield_outlined,
+                  label: 'Privacy & Security',
+                  selected: false,
+                ),
+
+                const SizedBox(height: 24),
+
+                const _SideLabel('SCENAGRAM'),
+                const SizedBox(height: 10),
+
+                _SidebarNavItem(
+                  icon: Icons.home_outlined,
+                  label: 'Home Feed',
+                  selected: currentRoute == '/',
+                  onTap: () => Navigator.pushReplacementNamed(
+                    context,
+                    '/',
+                  ),
+                ),
+
+                _SidebarNavItem(
+                  icon: Icons.local_fire_department_outlined,
+                  label: 'Trending',
+                  selected: currentRoute == '/trending',
+                  onTap: () => Navigator.pushReplacementNamed(
+                    context,
+                    '/trending',
+                  ),
+                ),
+
+                _SidebarNavItem(
+                  icon: Icons.add_box_outlined,
+                  label: 'Post a Scene',
+                  selected: currentRoute == '/create',
+                  onTap: () => Navigator.pushReplacementNamed(
+                    context,
+                    '/create',
+                  ),
+                ),
+
+                const SizedBox(height: 24),
+
+                const _SideLabel('RESOURCES'),
+                const SizedBox(height: 10),
+
+                const _SidebarNavItem(
+                  icon: Icons.info_outline_rounded,
+                  label: 'About Scenagram',
+                  selected: false,
+                ),
+
+                const _SidebarNavItem(
+                  icon: Icons.help_outline_rounded,
+                  label: 'Help Center',
+                  selected: false,
+                ),
+
+                const _SidebarNavItem(
+                  icon: Icons.campaign_outlined,
+                  label: 'Advertise',
+                  selected: false,
+                ),
               ],
             ),
           ),
-          const SizedBox(height: 20),
-          const _SideLabel('ACCOUNT'),
-          const SizedBox(height: 8),
-          _SidebarNavItem(
-            icon: Icons.person_outline,
-            label: 'Profile',
-            selected: currentRoute == '/profile',
-            onTap: () => Navigator.pushReplacementNamed(context, '/profile'),
-          ),
-          const _SidebarNavItem(
-            icon: Icons.settings_outlined,
-            label: 'Settings',
-            selected: false,
-          ),
-          const _SidebarNavItem(
-            icon: Icons.badge_outlined,
-            label: 'Account Details',
-            selected: false,
-          ),
-          const _SidebarNavItem(
-            icon: Icons.security_outlined,
-            label: 'Privacy & Security',
-            selected: false,
-          ),
-          const SizedBox(height: 18),
-          const Divider(height: 1, color: Color(0xFFEAEAF0)),
-          const SizedBox(height: 18),
-          const _SideLabel('SCENAGRAM'),
-          const SizedBox(height: 8),
-          _SidebarNavItem(
-            icon: Icons.home_outlined,
-            label: 'Home Feed',
-            selected: currentRoute == '/',
-            onTap: () => Navigator.pushReplacementNamed(context, '/'),
-          ),
-          _SidebarNavItem(
-            icon: Icons.local_fire_department_outlined,
-            label: 'Trending',
-            selected: currentRoute == '/trending',
-            onTap: () => Navigator.pushReplacementNamed(context, '/trending'),
-          ),
-          _SidebarNavItem(
-            icon: Icons.add_box_outlined,
-            label: 'Post a Scene',
-            selected: currentRoute == '/create',
-            onTap: () => Navigator.pushReplacementNamed(context, '/create'),
-          ),
-          const SizedBox(height: 18),
-          const Divider(height: 1, color: Color(0xFFEAEAF0)),
-          const SizedBox(height: 18),
-          const _SideLabel('RESOURCES'),
-          const SizedBox(height: 8),
-          const _SidebarNavItem(
-            icon: Icons.info_outline,
-            label: 'About Scenagram',
-            selected: false,
-          ),
-          const _SidebarNavItem(
-            icon: Icons.help_outline,
-            label: 'Help Center',
-            selected: false,
-          ),
-          const _SidebarNavItem(
-            icon: Icons.campaign_outlined,
-            label: 'Advertise',
-            selected: false,
-          ),
-          const _SidebarNavItem(
-            icon: Icons.code_rounded,
-            label: 'Developer Platform',
-            selected: false,
-          ),
-          const _SidebarNavItem(
-            icon: Icons.article_outlined,
-            label: 'Blog',
-            selected: false,
-          ),
-          const _SidebarNavItem(
-            icon: Icons.work_outline,
-            label: 'Careers',
-            selected: false,
-          ),
-          const _SidebarNavItem(
-            icon: Icons.policy_outlined,
-            label: 'Policies',
-            selected: false,
+
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.fromLTRB(18, 12, 18, 18),
+            child: const Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '? 2026 Scenagram',
+                  style: TextStyle(
+                    fontSize: 11,
+                    color: Color(0xFF858B98),
+                  ),
+                ),
+                SizedBox(height: 12),
+                Text(
+                  'Terms  ?  Privacy  ?  Cookies',
+                  style: TextStyle(
+                    fontSize: 11,
+                    color: Color(0xFF777D8A),
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),
     );
   }
 }
+
 
 class _SidebarNavItem extends StatefulWidget {
   final IconData icon;
@@ -1224,7 +1304,8 @@ class _SidebarNavItem extends StatefulWidget {
   });
 
   @override
-  State<_SidebarNavItem> createState() => _SidebarNavItemState();
+  State<_SidebarNavItem> createState() =>
+      _SidebarNavItemState();
 }
 
 class _SidebarNavItemState extends State<_SidebarNavItem> {
@@ -1241,47 +1322,42 @@ class _SidebarNavItemState extends State<_SidebarNavItem> {
         onExit: (_) => setState(() => _hovering = false),
         child: InkWell(
           onTap: widget.onTap,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(10),
           child: AnimatedContainer(
-            duration: const Duration(milliseconds: 150),
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+            duration: const Duration(milliseconds: 140),
+            height: 46,
+            padding: const EdgeInsets.symmetric(horizontal: 12),
             decoration: BoxDecoration(
               color: selected
-                  ? const Color(0xFFF3E8F4)
+                  ? const Color(0xFFF4EAFE)
                   : (_hovering
-                      ? const Color(0xFFF1F3F7)
+                      ? const Color(0xFFF8F8FB)
                       : Colors.transparent),
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(
-                color: selected
-                    ? const Color(0xFFF0D5E5)
-                    : (_hovering
-                        ? const Color(0xFFEAEAF0)
-                        : Colors.transparent),
-              ),
+              borderRadius: BorderRadius.circular(10),
             ),
             child: Row(
               children: [
-                Container(
-                  width: 28,
-                  alignment: Alignment.center,
-                  child: Icon(
-                    widget.icon,
-                    size: 20,
-                    color: selected
-                        ? const Color(0xFFE84586)
-                        : const Color(0xFF4B5563),
-                  ),
+                Icon(
+                  widget.icon,
+                  size: 19,
+                  color: selected
+                      ? const Color(0xFF7B2DD0)
+                      : const Color(0xFF555D6C),
                 ),
-                const SizedBox(width: 10),
+
+                const SizedBox(width: 13),
+
                 Expanded(
                   child: Text(
                     widget.label,
                     style: TextStyle(
-                      fontSize: 14,
-                      fontWeight:
-                          selected ? FontWeight.w700 : FontWeight.w500,
-                      color: const Color(0xFF111827),
+                      fontSize: 13,
+                      fontWeight: selected
+                          ? FontWeight.w700
+                          : FontWeight.w500,
+                      color: selected
+                          ? const Color(0xFF7230BB)
+                          : const Color(0xFF343A46),
                     ),
                   ),
                 ),
@@ -1293,6 +1369,7 @@ class _SidebarNavItemState extends State<_SidebarNavItem> {
     );
   }
 }
+
 
 class _SceneTypeStrip extends StatelessWidget {
   final SceneType? selected;
@@ -1306,19 +1383,16 @@ class _SceneTypeStrip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 72,
-      padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 12),
+      height: 82,
+      padding: const EdgeInsets.fromLTRB(28, 20, 28, 16),
       decoration: const BoxDecoration(
-        color: Color(0xFFFDFDFE),
-        border: Border(
-          bottom: BorderSide(color: Color(0xFFEAEAF0)),
-        ),
+        color: Colors.white,
       ),
       child: Center(
         child: Wrap(
           alignment: WrapAlignment.center,
           spacing: 12,
-          runSpacing: 12,
+          runSpacing: 10,
           children: SceneType.values.map((type) {
             return _SceneTypeTab(
               type: type,
@@ -1352,58 +1426,47 @@ class _SceneTypeTabState extends State<_SceneTypeTab> {
 
   @override
   Widget build(BuildContext context) {
-    final isSelected = widget.selected;
+    final color = sceneTypeColor(widget.type);
+    final selected = widget.selected;
 
     return MouseRegion(
       onEnter: (_) => setState(() => _hovering = true),
       onExit: (_) => setState(() => _hovering = false),
       child: InkWell(
         onTap: widget.onTap,
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(10),
         child: AnimatedContainer(
-          duration: const Duration(milliseconds: 160),
-          width: 130,
+          duration: const Duration(milliseconds: 150),
+          height: 40,
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           decoration: BoxDecoration(
-            color: isSelected
-                ? const Color(0xFFF3E8F4)
+            color: selected
+                ? color.withOpacity(0.08)
                 : (_hovering
-                    ? const Color(0xFFF3F4F8)
-                    : const Color(0xFFF7F8FB)),
-            borderRadius: BorderRadius.circular(14),
+                    ? const Color(0xFFF8F8FB)
+                    : Colors.white),
+            borderRadius: BorderRadius.circular(10),
             border: Border.all(
-              color: isSelected
-                  ? const Color(0xFFF0D5E5)
-                  : const Color(0xFFEAEAF0),
+              color: selected
+                  ? color.withOpacity(0.22)
+                  : const Color(0xFFE8E9F0),
             ),
-            boxShadow: _hovering
-                ? const [
-                    BoxShadow(
-                      color: Color(0x0C000000),
-                      blurRadius: 10,
-                      offset: Offset(0, 4),
-                    ),
-                  ]
-                : null,
           ),
-          padding: const EdgeInsets.symmetric(horizontal: 12),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
             children: [
               Icon(
                 sceneTypeIcon(widget.type),
-                size: 18,
-                color: sceneTypeColor(widget.type),
+                size: 16,
+                color: color,
               ),
               const SizedBox(width: 8),
-              Flexible(
-                child: Text(
-                  sceneTypeLabel(widget.type),
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w700,
-                    color: sceneTypeColor(widget.type),
-                  ),
+              Text(
+                sceneTypeLabel(widget.type),
+                style: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w700,
+                  color: color,
                 ),
               ),
             ],
@@ -1530,45 +1593,68 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  SceneType? _filter;
+  late final FeedController _feedController;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _feedController = FeedController();
+    _feedController.addListener(_onFeedChanged);
+  }
+
+  void _onFeedChanged() {
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  @override
+  void dispose() {
+    _feedController.removeListener(_onFeedChanged);
+    _feedController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    var list = [...homeScenes];
-    if (_filter != null) {
-      list = list.where((s) => s.type == _filter).toList();
-    }
-
-    final scene = list.isNotEmpty ? list.first : null;
+    final scenes =
+        _feedController.scenesForActiveFeed(homeScenes);
 
     return ScenagramFrame(
       currentRoute: '/',
-      selectedSceneType: _filter,
+      selectedSceneType: _feedController.activeFeed,
       onSelectSceneType: (value) {
-        setState(() {
-          _filter = value;
-        });
+        if (value != null) {
+          _feedController.selectFeed(value);
+        }
       },
       centerContent: ListView(
-        padding: const EdgeInsets.fromLTRB(20, 20, 20, 28),
+        padding: const EdgeInsets.fromLTRB(24, 18, 24, 34),
         children: [
-          const _PageSectionHeader(
-            title: 'Home Feed',
-            subtitle: 'Scenes people are reacting to right now.',
-          ),
-          const SizedBox(height: 16),
-          if (scene == null)
-            const _EmptyStateCard(
-              title: 'No scenes yet',
-              subtitle: 'When scenes are published, they will appear here.',
+          const _HomeFeedHeader(),
+          const SizedBox(height: 20),
+
+          if (scenes.isEmpty)
+            _EmptyStateCard(
+              title:
+                  'No ${sceneTypeLabel(_feedController.activeFeed)} scenes yet',
+              subtitle:
+                  'Scenes classified into this feed will appear here.',
             )
           else
-            ApprovedFeedCard(
-              scene: scene,
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => SceneDetailPage(scene: scene),
+            ...scenes.map(
+              (scene) => Padding(
+                padding: const EdgeInsets.only(bottom: 22),
+                child: ApprovedFeedCard(
+                  scene: scene,
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) =>
+                          SceneDetailPage(scene: scene),
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -1580,41 +1666,89 @@ class _HomePageState extends State<HomePage> {
 }
 
 
-class _PageSectionHeader extends StatelessWidget {
-  final String title;
-  final String subtitle;
-
-  const _PageSectionHeader({
-    required this.title,
-    required this.subtitle,
-  });
+class _HomeFeedHeader extends StatelessWidget {
+  const _HomeFeedHeader();
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        Text(
-          title,
-          style: const TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.w900,
-            color: Color(0xFF111827),
+        const Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Home Feed',
+                style: TextStyle(
+                  fontSize: 26,
+                  fontWeight: FontWeight.w900,
+                  letterSpacing: -0.5,
+                  color: Color(0xFF111827),
+                ),
+              ),
+              SizedBox(height: 6),
+              Text(
+                'Scenes people are reacting to right now.',
+                style: TextStyle(
+                  fontSize: 14,
+                  height: 1.4,
+                  color: Color(0xFF73798A),
+                ),
+              ),
+            ],
           ),
         ),
-        const SizedBox(height: 6),
-        Text(
-          subtitle,
-          style: const TextStyle(
-            fontSize: 14,
-            height: 1.45,
-            color: Color(0xFF6B7280),
+        Container(
+          height: 42,
+          padding: const EdgeInsets.symmetric(horizontal: 14),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(
+              color: const Color(0xFFE6E7ED),
+            ),
+          ),
+          child: const Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                'Most Recent',
+                style: TextStyle(
+                  fontSize: 13,
+                  fontWeight: FontWeight.w600,
+                  color: Color(0xFF202633),
+                ),
+              ),
+              SizedBox(width: 20),
+              Icon(
+                Icons.keyboard_arrow_down_rounded,
+                size: 19,
+                color: Color(0xFF343A46),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(width: 12),
+        InkWell(
+          onTap: () {},
+          borderRadius: BorderRadius.circular(10),
+          child: Container(
+            width: 42,
+            height: 42,
+            alignment: Alignment.center,
+            child: const Icon(
+              Icons.tune_rounded,
+              size: 20,
+              color: Color(0xFF535A69),
+            ),
           ),
         ),
       ],
     );
   }
 }
+
 
 class _EmptyStateCard extends StatelessWidget {
   final String title;
@@ -1680,7 +1814,8 @@ class ApprovedFeedCard extends StatefulWidget {
   });
 
   @override
-  State<ApprovedFeedCard> createState() => _ApprovedFeedCardState();
+  State<ApprovedFeedCard> createState() =>
+      _ApprovedFeedCardState();
 }
 
 class _ApprovedFeedCardState extends State<ApprovedFeedCard> {
@@ -1694,191 +1829,249 @@ class _ApprovedFeedCardState extends State<ApprovedFeedCard> {
       onEnter: (_) => setState(() => _hovering = true),
       onExit: (_) => setState(() => _hovering = false),
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 180),
-        transform: Matrix4.identity()..translate(0.0, _hovering ? -2.0 : 0.0),
+        duration: const Duration(milliseconds: 170),
+        transform: Matrix4.identity()
+          ..translate(
+            0.0,
+            _hovering ? -1.0 : 0.0,
+          ),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(22),
+          borderRadius: BorderRadius.circular(18),
           boxShadow: [
             BoxShadow(
               color: _hovering
-                  ? const Color(0x16000000)
-                  : const Color(0x0A000000),
-              blurRadius: _hovering ? 22 : 14,
-              offset: Offset(0, _hovering ? 10 : 6),
+                  ? const Color(0x10000000)
+                  : const Color(0x07000000),
+              blurRadius: _hovering ? 18 : 10,
+              offset: Offset(
+                0,
+                _hovering ? 7 : 4,
+              ),
             ),
           ],
         ),
         child: Material(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(22),
+          borderRadius: BorderRadius.circular(18),
           child: InkWell(
             onTap: widget.onTap,
-            borderRadius: BorderRadius.circular(22),
+            borderRadius: BorderRadius.circular(18),
             child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(22),
-                border: Border.all(color: const Color(0xFFEAEAF0)),
+              padding: const EdgeInsets.fromLTRB(
+                46,
+                24,
+                46,
+                24,
               ),
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(24, 22, 24, 22),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const _FeedHeaderRow(),
-                    const SizedBox(height: 18),
-                    RichText(
-                      text: TextSpan(
-                        style: const TextStyle(
-                          fontSize: 22,
-                          height: 1.45,
-                          color: Color(0xFF111827),
-                        ),
-                        children: [
-                          const TextSpan(
-                            text: 'Just now: ',
-                            style: TextStyle(fontWeight: FontWeight.w800),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(18),
+                border: Border.all(
+                  color: const Color(0xFFE7E8ED),
+                ),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const _FeedHeaderRow(),
+
+                  const SizedBox(height: 20),
+
+                  RichText(
+                    text: TextSpan(
+                      style: const TextStyle(
+                        fontSize: 17,
+                        height: 1.45,
+                        color: Color(0xFF171C27),
+                      ),
+                      children: [
+                        const TextSpan(
+                          text: 'Just now: ',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w900,
                           ),
-                          TextSpan(
-                            text: scene.caption.replaceFirst('Just now: ', ''),
+                        ),
+                        TextSpan(
+                          text: scene.caption.replaceFirst(
+                            'Just now: ',
+                            '',
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  const SizedBox(height: 20),
+
+                  Container(
+                    height: 400,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFE9EBF2),
+                      borderRadius: BorderRadius.circular(18),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(18),
+                      child: Stack(
+                        fit: StackFit.expand,
+                        children: [
+                          scene.images.isNotEmpty
+                              ? Image.memory(
+                                  scene.images.first,
+                                  fit: BoxFit.cover,
+                                )
+                              : Image.network(
+                                  'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&q=80',
+                                  fit: BoxFit.cover,
+                                ),
+
+                          Container(
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                begin: Alignment.bottomCenter,
+                                end: Alignment.center,
+                                colors: [
+                                  Colors.black.withOpacity(0.16),
+                                  Colors.transparent,
+                                ],
+                              ),
+                            ),
+                          ),
+
+                          Center(
+                            child: AnimatedContainer(
+                              duration:
+                                  const Duration(milliseconds: 170),
+                              width: _hovering ? 70 : 66,
+                              height: _hovering ? 70 : 66,
+                              decoration: BoxDecoration(
+                                color:
+                                    Colors.black.withOpacity(0.52),
+                                shape: BoxShape.circle,
+                              ),
+                              child: const Icon(
+                                Icons.play_arrow_rounded,
+                                color: Colors.white,
+                                size: 42,
+                              ),
+                            ),
+                          ),
+
+                          Positioned(
+                            right: 12,
+                            bottom: 12,
+                            child: Container(
+                              padding:
+                                  const EdgeInsets.symmetric(
+                                horizontal: 10,
+                                vertical: 6,
+                              ),
+                              decoration: BoxDecoration(
+                                color:
+                                    Colors.black.withOpacity(0.76),
+                                borderRadius:
+                                    BorderRadius.circular(8),
+                              ),
+                              child: const Text(
+                                '0:58',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w800,
+                                ),
+                              ),
+                            ),
                           ),
                         ],
                       ),
                     ),
-                    const SizedBox(height: 18),
-                    Container(
-                      height: 360,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(24),
-                        color: const Color(0xFFE9EBF2),
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(24),
-                        child: Stack(
-                          fit: StackFit.expand,
+                  ),
+
+                  const SizedBox(height: 20),
+
+                  Row(
+                    children: [
+                      const Expanded(
+                        child: Wrap(
+                          spacing: 8,
+                          runSpacing: 8,
                           children: [
-                            scene.images.isNotEmpty
-                                ? Image.memory(
-                                    scene.images.first,
-                                    fit: BoxFit.cover,
-                                  )
-                                : Image.network(
-                                    'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&q=80',
-                                    fit: BoxFit.cover,
-                                  ),
-                            Container(
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  begin: Alignment.bottomCenter,
-                                  end: Alignment.center,
-                                  colors: [
-                                    Colors.black.withOpacity(0.22),
-                                    Colors.transparent,
-                                  ],
-                                ),
-                              ),
+                            _PerspectiveLinkPill(
+                              label: 'Comedy',
+                              icon: Icons
+                                  .sentiment_very_satisfied_rounded,
+                              color: Color(0xFFE43F7A),
                             ),
-                            Center(
-                              child: AnimatedContainer(
-                                duration: const Duration(milliseconds: 180),
-                                width: _hovering ? 84 : 76,
-                                height: _hovering ? 84 : 76,
-                                decoration: BoxDecoration(
-                                  color: Colors.black.withOpacity(0.36),
-                                  shape: BoxShape.circle,
-                                ),
-                                child: const Icon(
-                                  Icons.play_arrow_rounded,
-                                  color: Colors.white,
-                                  size: 48,
-                                ),
-                              ),
+                            _PerspectiveLinkPill(
+                              label: 'Analysis',
+                              icon: Icons.star_rounded,
+                              color: Color(0xFF0F9D7A),
                             ),
-                            Positioned(
-                              right: 16,
-                              bottom: 16,
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 11,
-                                  vertical: 7,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: Colors.black.withOpacity(0.72),
-                                  borderRadius: BorderRadius.circular(14),
-                                ),
-                                child: const Text(
-                                  '0:58',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 13,
-                                  ),
-                                ),
-                              ),
+                            _PerspectiveLinkPill(
+                              label: 'Debate',
+                              icon: Icons
+                                  .local_police_rounded,
+                              color: Color(0xFF6D36D9),
+                            ),
+                            _PerspectiveLinkPill(
+                              label: 'Reaction',
+                              icon: Icons.circle,
+                              color: Color(0xFFE83A78),
+                            ),
+                            _PerspectiveLinkPill(
+                              label: 'Advice',
+                              icon: Icons
+                                  .thumb_up_alt_rounded,
+                              color: Color(0xFFF59E0B),
                             ),
                           ],
                         ),
                       ),
-                    ),
-                    const SizedBox(height: 18),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 5,
-                            vertical: 5,
-                          ),
-                            decoration: BoxDecoration(
-                              color: const Color(0xFFF8F9FC),
-                              borderRadius: BorderRadius.circular(22),
-                              border: Border.all(
-                                color: const Color(0xFFEAEAF0),
-                              ),
-                            ),
-                            child: const Wrap(
-                              alignment: WrapAlignment.center,
-                              spacing: 0,
-                              runSpacing: 0,
-                              children: [
-                                _PerspectiveLinkPill(
-                                  label: 'Comedy',
-                                  icon: Icons.sentiment_very_satisfied_rounded,
-                                  color: Color(0xFFDC2626),
-                                ),
-                                _PerspectiveLinkPill(
-                                  label: 'Analysis',
-                                  icon: Icons.analytics_rounded,
-                                  color: Color(0xFF059669),
-                                ),
-                                _PerspectiveLinkPill(
-                                  label: 'Debate',
-                                  icon: Icons.forum_rounded,
-                                  color: Color(0xFF2563EB),
-                                ),
-                                _PerspectiveLinkPill(
-                                  label: 'Reaction',
-                                  icon: Icons.bolt_rounded,
-                                  color: Color(0xFF7C3AED),
-                                ),
-                                _PerspectiveLinkPill(
-                                  label: 'Advice',
-                                  icon: Icons.lightbulb_rounded,
-                                  color: Color(0xFFD97706),
-                                ),
-                              ],
-                            ),
-                          ),
-                        const SizedBox(width: 14),
-                        const _ActionPill(
-                          icon: Icons.thumb_up_alt_rounded,
-                          label: '18.7k',
+
+                      const SizedBox(width: 14),
+
+                      const Icon(
+                        Icons.visibility_outlined,
+                        size: 21,
+                        color: Color(0xFF626979),
+                      ),
+                      const SizedBox(width: 8),
+                      const Text(
+                        '18.7K views',
+                        style: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xFF626979),
                         ),
-                        const SizedBox(width: 14),
-                        const _CustomShareAction(),
-                      ],
-                    ),
-                  ],
-                ),
+                      ),
+
+                      const SizedBox(width: 12),
+
+                      Container(
+                        width: 1,
+                        height: 18,
+                        color: const Color(0xFFD9DCE3),
+                      ),
+
+                      const SizedBox(width: 12),
+
+                      const Text(
+                        '??',
+                        style: TextStyle(fontSize: 17),
+                      ),
+
+                      const SizedBox(width: 6),
+
+                      const Text(
+                        '1.2K',
+                        style: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xFF626979),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
           ),
@@ -1888,51 +2081,99 @@ class _ApprovedFeedCardState extends State<ApprovedFeedCard> {
   }
 }
 
+
 class _FeedHeaderRow extends StatelessWidget {
   const _FeedHeaderRow();
 
   @override
   Widget build(BuildContext context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         const CircleAvatar(
-          radius: 24,
+          radius: 27,
           backgroundImage: NetworkImage(
             'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80',
           ),
         ),
-        const SizedBox(width: 12),
+
+        const SizedBox(width: 14),
+
         const Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Nadia K.',
-                style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w800,
-                  color: Color(0xFF111827),
-                ),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    'Nadia K.',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w900,
+                      color: Color(0xFF111827),
+                    ),
+                  ),
+                  SizedBox(width: 6),
+                  Icon(
+                    Icons.verified_rounded,
+                    size: 17,
+                    color: Color(0xFF7238D8),
+                  ),
+                ],
               ),
-              SizedBox(height: 2),
+              SizedBox(height: 5),
               Text(
-                '12 min ago  •  Witnessed',
+                '12 min ago  ?  Witnessed',
                 style: TextStyle(
-                  fontSize: 13,
-                  color: Color(0xFF6B7280),
+                  fontSize: 12,
+                  fontWeight: FontWeight.w500,
+                  color: Color(0xFF73798A),
                 ),
               ),
             ],
           ),
         ),
+
         OutlinedButton(
           onPressed: () {},
-          child: const Text('Follow'),
+          style: OutlinedButton.styleFrom(
+            foregroundColor: const Color(0xFF8B24C7),
+            side: const BorderSide(
+              color: Color(0xFFE2D7EA),
+            ),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20,
+              vertical: 13,
+            ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+          child: const Text(
+            'Follow',
+            style: TextStyle(
+              fontSize: 13,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+        ),
+
+        const SizedBox(width: 12),
+
+        IconButton(
+          onPressed: () {},
+          icon: const Icon(
+            Icons.more_vert_rounded,
+            color: Color(0xFF555C6B),
+            size: 21,
+          ),
         ),
       ],
     );
   }
 }
+
 
 class _LanePill extends StatelessWidget {
   final String label;
@@ -1975,23 +2216,33 @@ class _PerspectiveLinkPill extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 54,
+    return Container(
+      height: 30,
+      padding: const EdgeInsets.symmetric(
+        horizontal: 10,
+      ),
+      decoration: BoxDecoration(
+        color: color.withOpacity(0.07),
+        borderRadius: BorderRadius.circular(999),
+        border: Border.all(
+          color: color.withOpacity(0.18),
+        ),
+      ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, size: 11, color: color),
-          const SizedBox(width: 3),
-          Flexible(
-            child: Text(
-              label,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(
-                color: color,
-                fontSize: 10,
-                fontWeight: FontWeight.w800,
-              ),
+          Icon(
+            icon,
+            size: 13,
+            color: color,
+          ),
+          const SizedBox(width: 5),
+          Text(
+            label,
+            style: TextStyle(
+              color: color,
+              fontSize: 11,
+              fontWeight: FontWeight.w700,
             ),
           ),
         ],
@@ -1999,6 +2250,7 @@ class _PerspectiveLinkPill extends StatelessWidget {
     );
   }
 }
+
 
 class _CustomShareAction extends StatelessWidget {
   const _CustomShareAction();
@@ -2035,50 +2287,50 @@ class ApprovedRightSidebar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      padding: const EdgeInsets.all(18),
+      padding: const EdgeInsets.fromLTRB(14, 16, 14, 24),
       children: const [
         _RightSidebarHeader(),
+
         SizedBox(height: 14),
+
         _SceneMapRadarCard(),
+
         SizedBox(height: 14),
+
         _RightStatsCard(),
+
         SizedBox(height: 14),
+
         _RightSectionCard(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _RightSectionTitle(title: 'Trending'),
-              SizedBox(height: 12),
-              _MiniTrendItem(
-                title: 'Hot Take: Youngling repary culture. Is he right?',
-                meta: 'Collin  •  5 hours',
+              _RightSectionTitle(
+                title: 'Trending',
+                actionText: 'See More',
               ),
+
+              SizedBox(height: 8),
+
               _MiniTrendItem(
-                title: 'Advice: He caught his girlfriend cheating. Now what?',
-                meta: 'Bryan Y.  •  1 hour',
+                title: 'Hot Take: Young repair culture. Is he right?',
+                meta: 'Collin  ?  5 hours',
+                icon: Icons.bolt_rounded,
+                accent: Color(0xFFF97316),
               ),
+
               _MiniTrendItem(
-                title: 'I bailed on my friend’s wedding. Should I apologize?',
-                meta: 'Bea  •  38 min ago',
-                noBorder: true,
+                title: 'He caught his girlfriend cheating. Now what?',
+                meta: 'Bryan Y.  ?  1 hour',
+                icon: Icons.lightbulb_outline_rounded,
+                accent: Color(0xFFF59E0B),
               ),
-            ],
-          ),
-        ),
-        SizedBox(height: 16),
-        _RightSectionCard(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _RightSectionTitle(title: 'Hot Scenes'),
-              SizedBox(height: 12),
+
               _MiniTrendItem(
-                title: 'Elephants rescue baby elephant from mud',
-                meta: 'Event  •  3 min ago',
-              ),
-              _MiniTrendItem(
-                title: 'Mine blowing new alien discovery! 1m in',
-                meta: 'Media  •  9 min ago',
+                title: 'I bailed on my friend?s wedding. Should I apologize?',
+                meta: 'Bea  ?  38 min ago',
+                icon: Icons.favorite_border_rounded,
+                accent: Color(0xFFE84586),
                 noBorder: true,
               ),
             ],
@@ -2089,28 +2341,40 @@ class ApprovedRightSidebar extends StatelessWidget {
   }
 }
 
+
 class _RightSectionCard extends StatelessWidget {
   final Widget child;
 
-  const _RightSectionCard({super.key, required this.child});
+  const _RightSectionCard({
+    super.key,
+    required this.child,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(15),
       decoration: BoxDecoration(
         color: Colors.white,
-        border: Border.all(color: const Color(0xFFEAEAF0)),
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(
+          color: const Color(0xFFE7E8ED),
+        ),
       ),
       child: child,
     );
   }
 }
 
+
 class _RightSectionTitle extends StatelessWidget {
   final String title;
-  const _RightSectionTitle({required this.title});
+  final String actionText;
+
+  const _RightSectionTitle({
+    required this.title,
+    this.actionText = 'See More',
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -2120,44 +2384,53 @@ class _RightSectionTitle extends StatelessWidget {
           child: Text(
             title,
             style: const TextStyle(
-              fontSize: 17,
-              fontWeight: FontWeight.w800,
-              color: Color(0xFF111827),
+              fontSize: 15,
+              fontWeight: FontWeight.w900,
+              color: Color(0xFF171C27),
             ),
           ),
         ),
-        const Text(
-          'See More',
-          style: TextStyle(
-            color: Color(0xFF2563EB),
-            fontWeight: FontWeight.w600,
-            fontSize: 13,
+
+        Text(
+          actionText,
+          style: const TextStyle(
+            color: Color(0xFF7B2DD0),
+            fontWeight: FontWeight.w700,
+            fontSize: 11,
           ),
         ),
-        const SizedBox(width: 4),
+
+        const SizedBox(width: 2),
+
         const Icon(
           Icons.chevron_right_rounded,
-          color: Color(0xFF2563EB),
-          size: 18,
+          color: Color(0xFF7B2DD0),
+          size: 16,
         ),
       ],
     );
   }
 }
 
+
 class _MiniTrendItem extends StatefulWidget {
   final String title;
   final String meta;
   final bool noBorder;
+  final IconData icon;
+  final Color accent;
 
   const _MiniTrendItem({
     required this.title,
     required this.meta,
+    required this.icon,
+    required this.accent,
     this.noBorder = false,
   });
 
   @override
-  State<_MiniTrendItem> createState() => _MiniTrendItemState();
+  State<_MiniTrendItem> createState() =>
+      _MiniTrendItemState();
 }
 
 class _MiniTrendItemState extends State<_MiniTrendItem> {
@@ -2169,36 +2442,42 @@ class _MiniTrendItemState extends State<_MiniTrendItem> {
       onEnter: (_) => setState(() => _hovering = true),
       onExit: (_) => setState(() => _hovering = false),
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 150),
-        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+        duration: const Duration(milliseconds: 140),
+        padding: const EdgeInsets.symmetric(
+          vertical: 11,
+          horizontal: 4,
+        ),
         decoration: BoxDecoration(
-          color: _hovering ? const Color(0xFFF8F9FC) : Colors.transparent,
-          borderRadius: BorderRadius.circular(14),
+          color: _hovering
+              ? const Color(0xFFF9F9FC)
+              : Colors.transparent,
           border: widget.noBorder
               ? null
               : const Border(
-                  bottom: BorderSide(color: Color(0xFFEAEAF0)),
+                  bottom: BorderSide(
+                    color: Color(0xFFEDEEF3),
+                  ),
                 ),
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              width: 42,
-              height: 42,
+              width: 34,
+              height: 34,
               decoration: BoxDecoration(
-                color: _hovering
-                    ? const Color(0xFFFCE7F3)
-                    : const Color(0xFFF3F4F8),
-                borderRadius: BorderRadius.circular(12),
+                color: widget.accent.withOpacity(0.08),
+                borderRadius: BorderRadius.circular(10),
               ),
-              child: const Icon(
-                Icons.whatshot_rounded,
-                size: 20,
-                color: Color(0xFFE84586),
+              child: Icon(
+                widget.icon,
+                size: 17,
+                color: widget.accent,
               ),
             ),
-            const SizedBox(width: 12),
+
+            const SizedBox(width: 10),
+
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -2206,31 +2485,27 @@ class _MiniTrendItemState extends State<_MiniTrendItem> {
                   Text(
                     widget.meta,
                     style: const TextStyle(
-                      fontSize: 12,
-                      color: Color(0xFF6B7280),
+                      fontSize: 10,
+                      color: Color(0xFF858B98),
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  const SizedBox(height: 5),
+
+                  const SizedBox(height: 4),
+
                   Text(
                     widget.title,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
-                      fontSize: 14,
-                      height: 1.38,
-                      color: Color(0xFF111827),
+                      fontSize: 12,
+                      height: 1.35,
+                      color: Color(0xFF252B37),
                       fontWeight: FontWeight.w600,
                     ),
                   ),
                 ],
               ),
-            ),
-            const SizedBox(width: 8),
-            Icon(
-              Icons.more_horiz_rounded,
-              color: _hovering
-                  ? const Color(0xFF6B7280)
-                  : const Color(0xFF9CA3AF),
-              size: 20,
             ),
           ],
         ),
@@ -2238,9 +2513,6 @@ class _MiniTrendItemState extends State<_MiniTrendItem> {
     );
   }
 }
-
-
-
 
 
 class _RadarDot extends StatelessWidget {
@@ -2329,29 +2601,36 @@ class _MiniStat extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+      padding: const EdgeInsets.symmetric(
+        vertical: 10,
+        horizontal: 6,
+      ),
       decoration: BoxDecoration(
-        color: const Color(0xFFF8F9FC),
-        borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: const Color(0xFFEAEAF0)),
+        color: const Color(0xFFF9F9FC),
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(
+          color: const Color(0xFFE9EAF0),
+        ),
       ),
       child: Column(
         children: [
           Text(
             value,
             style: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w800,
-              color: Color(0xFF111827),
+              fontSize: 16,
+              fontWeight: FontWeight.w900,
+              color: Color(0xFF171C27),
             ),
           ),
-          const SizedBox(height: 4),
+
+          const SizedBox(height: 3),
+
           Text(
             label,
             style: const TextStyle(
-              fontSize: 12,
+              fontSize: 10,
               fontWeight: FontWeight.w600,
-              color: Color(0xFF6B7280),
+              color: Color(0xFF7B8190),
             ),
           ),
         ],
@@ -2359,6 +2638,7 @@ class _MiniStat extends StatelessWidget {
     );
   }
 }
+
 
 /* ---------------------------
    TRENDING PAGE
@@ -3030,11 +3310,18 @@ class _RightSidebarHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.fromLTRB(14, 14, 14, 14),
+      padding: const EdgeInsets.fromLTRB(
+        16,
+        14,
+        16,
+        14,
+      ),
       decoration: BoxDecoration(
         color: Colors.white,
-        border: Border.all(color: const Color(0xFFEAEAF0)),
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(
+          color: const Color(0xFFE7E8ED),
+        ),
       ),
       child: const Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -3042,18 +3329,18 @@ class _RightSidebarHeader extends StatelessWidget {
           Text(
             'Right Panel',
             style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w800,
-              color: Color(0xFF111827),
+              fontSize: 15,
+              fontWeight: FontWeight.w900,
+              color: Color(0xFF171C27),
             ),
           ),
-          SizedBox(height: 6),
+          SizedBox(height: 5),
           Text(
-            'Trending scenes, hot updates, and sidebar tools live here.',
+            'Trending scenes, hot updates, and discovery tools.',
             style: TextStyle(
-              fontSize: 13,
+              fontSize: 11,
               height: 1.4,
-              color: Color(0xFF6B7280),
+              color: Color(0xFF777D8A),
             ),
           ),
         ],
@@ -3072,79 +3359,116 @@ class _SceneMapRadarCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          const Row(
+            children: [
+              Expanded(
+                child: Text(
+                  'Scene Map',
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w900,
+                    color: Color(0xFF171C27),
+                  ),
+                ),
+              ),
+              Icon(
+                Icons.public_rounded,
+                size: 17,
+                color: Color(0xFF7B2DD0),
+              ),
+            ],
+          ),
+
+          const SizedBox(height: 5),
+
           const Text(
-            'Scene Map',
+            'See where activity is heating up.',
             style: TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.w800,
-              color: Color(0xFF111827),
+              fontSize: 11,
+              color: Color(0xFF777D8A),
             ),
           ),
-          const SizedBox(height: 6),
-          const Text(
-            'Radar of where scene activity is heating up.',
-            style: TextStyle(
-              fontSize: 13,
-              height: 1.4,
-              color: Color(0xFF6B7280),
-            ),
-          ),
+
           const SizedBox(height: 14),
+
           Container(
-            height: 180,
+            height: 150,
             decoration: BoxDecoration(
-              color: const Color(0xFFF8F9FC),
-              borderRadius: BorderRadius.circular(18),
-              border: Border.all(color: const Color(0xFFEAEAF0)),
+              color: const Color(0xFFF9F9FC),
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(
+                color: const Color(0xFFE9EAF0),
+              ),
             ),
             child: Stack(
               alignment: Alignment.center,
               children: [
                 Container(
-                  width: 132,
-                  height: 132,
+                  width: 116,
+                  height: 116,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    border: Border.all(color: const Color(0xFFE2E8F0)),
+                    border: Border.all(
+                      color: const Color(0xFFE3E5EB),
+                    ),
                   ),
                 ),
+
                 Container(
-                  width: 92,
-                  height: 92,
+                  width: 78,
+                  height: 78,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    border: Border.all(color: const Color(0xFFE2E8F0)),
+                    border: Border.all(
+                      color: const Color(0xFFE3E5EB),
+                    ),
                   ),
                 ),
+
                 Container(
-                  width: 52,
-                  height: 52,
+                  width: 40,
+                  height: 40,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    border: Border.all(color: const Color(0xFFE2E8F0)),
+                    border: Border.all(
+                      color: const Color(0xFFE3E5EB),
+                    ),
                   ),
                 ),
-                Container(width: 132, height: 1, color: const Color(0xFFE2E8F0)),
-                Container(width: 1, height: 132, color: const Color(0xFFE2E8F0)),
+
+                Container(
+                  width: 116,
+                  height: 1,
+                  color: const Color(0xFFE3E5EB),
+                ),
+
+                Container(
+                  width: 1,
+                  height: 116,
+                  color: const Color(0xFFE3E5EB),
+                ),
+
                 const Positioned(
-                  top: 34,
-                  right: 62,
+                  top: 30,
+                  right: 50,
                   child: _RadarDot(
                     color: Color(0xFFE84586),
                     label: 'Drama',
                   ),
                 ),
+
                 const Positioned(
-                  bottom: 34,
-                  left: 56,
+                  bottom: 28,
+                  left: 52,
                   child: _RadarDot(
                     color: Color(0xFF2563EB),
                     label: 'Media',
                   ),
                 ),
+
                 const Positioned(
-                  top: 72,
-                  left: 34,
+                  top: 68,
+                  left: 30,
                   child: _RadarDot(
                     color: Color(0xFFF59E0B),
                     label: 'Event',
@@ -3153,15 +3477,52 @@ class _SceneMapRadarCard extends StatelessWidget {
               ],
             ),
           ),
+
           const SizedBox(height: 12),
-          const Wrap(
-            spacing: 8,
-            runSpacing: 8,
+
+          const Row(
             children: [
-              _MiniLegendDot(Color(0xFFE84586), 'Drama'),
-              _MiniLegendDot(Color(0xFF2563EB), 'Media'),
-              _MiniLegendDot(Color(0xFFF59E0B), 'Event'),
+              Expanded(
+                child: _MiniLegendDot(
+                  Color(0xFFE84586),
+                  'Drama',
+                ),
+              ),
+              SizedBox(width: 6),
+              Expanded(
+                child: _MiniLegendDot(
+                  Color(0xFF2563EB),
+                  'Media',
+                ),
+              ),
+              SizedBox(width: 6),
+              Expanded(
+                child: _MiniLegendDot(
+                  Color(0xFFF59E0B),
+                  'Event',
+                ),
+              ),
             ],
+          ),
+
+          const SizedBox(height: 12),
+
+          SizedBox(
+            width: double.infinity,
+            child: OutlinedButton.icon(
+              onPressed: null,
+              icon: Icon(
+                Icons.open_in_new_rounded,
+                size: 15,
+              ),
+              label: Text(
+                'Open Scene Map',
+                style: TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
           ),
         ],
       ),
@@ -3176,27 +3537,47 @@ class _RightStatsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _RightSectionCard(
-      child: Row(
-        children: const [
-          Expanded(
-            child: _MiniStat(
-              label: 'Hot',
-              value: '24',
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            'Your Stats',
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w900,
+              color: Color(0xFF171C27),
             ),
           ),
-          SizedBox(width: 10),
-          Expanded(
-            child: _MiniStat(
-              label: 'New',
-              value: '18',
-            ),
-          ),
-          SizedBox(width: 10),
-          Expanded(
-            child: _MiniStat(
-              label: 'Saved',
-              value: '07',
-            ),
+
+          const SizedBox(height: 12),
+
+          const Row(
+            children: [
+              Expanded(
+                child: _MiniStat(
+                  label: 'Hot',
+                  value: '24',
+                ),
+              ),
+
+              SizedBox(width: 8),
+
+              Expanded(
+                child: _MiniStat(
+                  label: 'New',
+                  value: '18',
+                ),
+              ),
+
+              SizedBox(width: 8),
+
+              Expanded(
+                child: _MiniStat(
+                  label: 'Saved',
+                  value: '07',
+                ),
+              ),
+            ],
           ),
         ],
       ),
