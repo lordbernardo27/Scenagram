@@ -1,0 +1,3391 @@
+{
+  "root": "C:\\Users\\HP\\Documents\\Scenagram\\apps\\scenagram_web",
+  "files_scanned": 22,
+  "dart_files": 4,
+  "files": [
+    {
+      "path": "lib\\core\\theme\\app_theme.dart",
+      "bytes": 3562
+    },
+    {
+      "path": "lib\\core\\theme\\design_tokens.dart",
+      "bytes": 2059
+    },
+    {
+      "path": "lib\\main.dart",
+      "bytes": 133728
+    },
+    {
+      "path": "test\\widget_test.dart",
+      "bytes": 1101
+    }
+  ],
+  "classes": [
+    {
+      "name": "ApprovedFeedCard",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "ApprovedRightSidebar",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "CreateScenePage",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "FeedController",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "HomePage",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "PerspectiveItem",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "PerspectiveLanePrediction",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "PerspectiveRoutingDecision",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "ProfilePage",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "SGColors",
+      "file": "lib\\core\\theme\\design_tokens.dart"
+    },
+    {
+      "name": "SGGlow",
+      "file": "lib\\core\\theme\\design_tokens.dart"
+    },
+    {
+      "name": "SGRadius",
+      "file": "lib\\core\\theme\\design_tokens.dart"
+    },
+    {
+      "name": "SGSpacing",
+      "file": "lib\\core\\theme\\design_tokens.dart"
+    },
+    {
+      "name": "SGTextStyles",
+      "file": "lib\\core\\theme\\design_tokens.dart"
+    },
+    {
+      "name": "SGTheme",
+      "file": "lib\\core\\theme\\app_theme.dart"
+    },
+    {
+      "name": "ScenagramApp",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "ScenagramFrame",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "Scene",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "SceneDetailPage",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "SceneTypeMeta",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "SceneTypePrediction",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "SimpleSceneCard",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "TrendingPage",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "_ActionPill",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "_ActionPillState",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "_ApprovedFeedCardState",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "_CreateScenePageState",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "_CustomShareAction",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "_EmptyStateCard",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "_FeedHeaderRow",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "_HomeFeedHeader",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "_HomePageState",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "_LanePill",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "_LaneSelectorChip",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "_LeftSidebar",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "_MiniLegendDot",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "_MiniStat",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "_MiniTrendItem",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "_MiniTrendItemState",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "_PerspectiveCard",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "_PerspectiveLinkPill",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "_ProfileStatCard",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "_RadarDot",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "_RightSectionCard",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "_RightSectionTitle",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "_RightSidebarHeader",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "_RightStatsCard",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "_ScenagramFrameState",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "_SceneDetailPageState",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "_SceneMapRadarCard",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "_SceneTypeStrip",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "_SceneTypeTab",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "_SceneTypeTabState",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "_SideLabel",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "_SidebarHideButton",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "_SidebarHideButtonState",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "_SidebarNavItem",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "_SidebarNavItemState",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "_SidebarRestoreButton",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "_TopBadgeIcon",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "_TopBar",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "_TopIcon",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "_TrendingSceneCard",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "_TrendingSceneCardState",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "_WindowDot",
+      "file": "lib\\main.dart"
+    }
+  ],
+  "enums": [
+    {
+      "name": "LaneSort",
+      "file": "lib\\main.dart"
+    },
+    {
+      "name": "SceneType",
+      "file": "lib\\main.dart"
+    }
+  ],
+  "routes": [
+    {
+      "route": "/",
+      "page": "HomePage",
+      "file": "lib\\main.dart"
+    },
+    {
+      "route": "/create",
+      "page": "CreateScenePage",
+      "file": "lib\\main.dart"
+    },
+    {
+      "route": "/profile",
+      "page": "ProfilePage",
+      "file": "lib\\main.dart"
+    },
+    {
+      "route": "/trending",
+      "page": "TrendingPage",
+      "file": "lib\\main.dart"
+    }
+  ],
+  "markers": {
+    "ScenagramFrame": {
+      "meaning": "Global application shell",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 685,
+          "text": "class ScenagramFrame extends StatefulWidget {"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 692,
+          "text": "const ScenagramFrame({"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 702,
+          "text": "State<ScenagramFrame> createState() => _ScenagramFrameState();"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 705,
+          "text": "class _ScenagramFrameState extends State<ScenagramFrame> {"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 1624,
+          "text": "return ScenagramFrame("
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 2653,
+          "text": "return ScenagramFrame("
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3040,
+          "text": "return ScenagramFrame("
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3767,
+          "text": "return ScenagramFrame("
+        }
+      ]
+    },
+    "_TopBar": {
+      "meaning": "Top/header bar",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 728,
+          "text": "_TopBar(currentRoute: widget.currentRoute),"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 836,
+          "text": "class _TopBar extends StatelessWidget {"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 839,
+          "text": "const _TopBar({required this.currentRoute});"
+        }
+      ]
+    },
+    "_LeftSidebar": {
+      "meaning": "Left navigation",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 740,
+          "text": "child: _LeftSidebar("
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 1091,
+          "text": "class _LeftSidebar extends StatelessWidget {"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 1095,
+          "text": "const _LeftSidebar({"
+        }
+      ]
+    },
+    "ApprovedRightSidebar": {
+      "meaning": "Right discovery sidebar",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 1663,
+          "text": "rightSidebar: const ApprovedRightSidebar(),"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 2284,
+          "text": "class ApprovedRightSidebar extends StatelessWidget {"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 2285,
+          "text": "const ApprovedRightSidebar({super.key});"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 2711,
+          "text": "rightSidebar: const ApprovedRightSidebar(),"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3302,
+          "text": "rightSidebar: const ApprovedRightSidebar(),"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3794,
+          "text": "rightSidebar: const ApprovedRightSidebar(),"
+        }
+      ]
+    },
+    "_SceneTypeStrip": {
+      "meaning": "Scene Type navigation strip",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 730,
+          "text": "_SceneTypeStrip("
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 1374,
+          "text": "class _SceneTypeStrip extends StatelessWidget {"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 1378,
+          "text": "const _SceneTypeStrip({"
+        }
+      ]
+    },
+    "HomePage": {
+      "meaning": "Primary feed page",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 20,
+          "text": "'/': (context) => const HomePage(),"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 1588,
+          "text": "class HomePage extends StatefulWidget {"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 1589,
+          "text": "const HomePage({super.key});"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 1592,
+          "text": "State<HomePage> createState() => _HomePageState();"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 1595,
+          "text": "class _HomePageState extends State<HomePage> {"
+        }
+      ]
+    },
+    "CreateScenePage": {
+      "meaning": "Post a Scene experience",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 22,
+          "text": "'/create': (context) => const CreateScenePage(),"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 2865,
+          "text": "class CreateScenePage extends StatefulWidget {"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 2866,
+          "text": "const CreateScenePage({super.key});"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 2869,
+          "text": "State<CreateScenePage> createState() => _CreateScenePageState();"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 2872,
+          "text": "class _CreateScenePageState extends State<CreateScenePage> {"
+        }
+      ]
+    },
+    "SceneDetailPage": {
+      "meaning": "Scene detail experience",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 1655,
+          "text": "SceneDetailPage(scene: scene),"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 2703,
+          "text": "builder: (_) => SceneDetailPage(scene: scene),"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3958,
+          "text": "class SceneDetailPage extends StatefulWidget {"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3961,
+          "text": "const SceneDetailPage({super.key, required this.scene});"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3964,
+          "text": "State<SceneDetailPage> createState() => _SceneDetailPageState();"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3967,
+          "text": "class _SceneDetailPageState extends State<SceneDetailPage> {"
+        }
+      ]
+    },
+    "ProfilePage": {
+      "meaning": "Profile page",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 23,
+          "text": "'/profile': (context) => const ProfilePage(),"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3758,
+          "text": "class ProfilePage extends StatelessWidget {"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3759,
+          "text": "const ProfilePage({super.key});"
+        }
+      ]
+    },
+    "TrendingPage": {
+      "meaning": "Legacy Trending surface",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 21,
+          "text": "'/trending': (context) => const TrendingPage(),"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 2646,
+          "text": "class TrendingPage extends StatelessWidget {"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 2647,
+          "text": "const TrendingPage({super.key});"
+        }
+      ]
+    },
+    "SceneType.drama": {
+      "meaning": "Drama Scene Type",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 44,
+          "text": "case SceneType.drama:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 63,
+          "text": "case SceneType.drama:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 82,
+          "text": "case SceneType.drama:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 154,
+          "text": "if (type == SceneType.drama &&"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 232,
+          "text": "return SceneType.drama;"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 347,
+          "text": "case SceneType.drama:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 366,
+          "text": "case SceneType.drama:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 385,
+          "text": "case SceneType.drama:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 404,
+          "text": "case SceneType.drama:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 667,
+          "text": "type: SceneType.drama,"
+        }
+      ]
+    },
+    "SceneType.confession": {
+      "meaning": "Confess Scene Type",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 40,
+          "text": "case SceneType.confession:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 59,
+          "text": "case SceneType.confession:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 78,
+          "text": "case SceneType.confession:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 140,
+          "text": "if (type == SceneType.confession &&"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 209,
+          "text": "return SceneType.confession;"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 343,
+          "text": "case SceneType.confession:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 362,
+          "text": "case SceneType.confession:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 381,
+          "text": "case SceneType.confession:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 400,
+          "text": "case SceneType.confession:"
+        }
+      ]
+    },
+    "SceneType.dilemma": {
+      "meaning": "Dilemma Scene Type",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 42,
+          "text": "case SceneType.dilemma:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 61,
+          "text": "case SceneType.dilemma:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 80,
+          "text": "case SceneType.dilemma:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 147,
+          "text": "if (type == SceneType.dilemma &&"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 220,
+          "text": "return SceneType.dilemma;"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 345,
+          "text": "case SceneType.dilemma:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 364,
+          "text": "case SceneType.dilemma:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 383,
+          "text": "case SceneType.dilemma:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 402,
+          "text": "case SceneType.dilemma:"
+        }
+      ]
+    },
+    "SceneType.hotTake": {
+      "meaning": "Hot Takes Scene Type",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 50,
+          "text": "case SceneType.hotTake:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 69,
+          "text": "case SceneType.hotTake:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 88,
+          "text": "case SceneType.hotTake:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 170,
+          "text": "if (type == SceneType.hotTake &&"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 254,
+          "text": "return SceneType.hotTake;"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 353,
+          "text": "case SceneType.hotTake:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 372,
+          "text": "case SceneType.hotTake:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 391,
+          "text": "case SceneType.hotTake:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 410,
+          "text": "case SceneType.hotTake:"
+        }
+      ]
+    },
+    "SceneType.event": {
+      "meaning": "Event Scene Type",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 52,
+          "text": "case SceneType.event:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 71,
+          "text": "case SceneType.event:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 90,
+          "text": "case SceneType.event:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 177,
+          "text": "if (type == SceneType.event &&"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 266,
+          "text": "return SceneType.event;"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 355,
+          "text": "case SceneType.event:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 374,
+          "text": "case SceneType.event:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 393,
+          "text": "case SceneType.event:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 412,
+          "text": "case SceneType.event:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 673,
+          "text": "type: SceneType.event,"
+        }
+      ]
+    },
+    "SceneType.celebration": {
+      "meaning": "Celebration Scene Type",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 48,
+          "text": "case SceneType.celebration:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 67,
+          "text": "case SceneType.celebration:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 86,
+          "text": "case SceneType.celebration:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 162,
+          "text": "if (type == SceneType.celebration &&"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 244,
+          "text": "return SceneType.celebration;"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 351,
+          "text": "case SceneType.celebration:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 370,
+          "text": "case SceneType.celebration:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 389,
+          "text": "case SceneType.celebration:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 408,
+          "text": "case SceneType.celebration:"
+        }
+      ]
+    },
+    "SceneType.media": {
+      "meaning": "Media Scene Type",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 46,
+          "text": "case SceneType.media:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 65,
+          "text": "case SceneType.media:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 84,
+          "text": "case SceneType.media:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 185,
+          "text": "if (type == SceneType.media) {"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 198,
+          "text": "if (t.isEmpty) return SceneType.media;"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 269,
+          "text": "return SceneType.media;"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 349,
+          "text": "case SceneType.media:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 368,
+          "text": "case SceneType.media:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 387,
+          "text": "case SceneType.media:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 406,
+          "text": "case SceneType.media:"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 636,
+          "text": "SceneType _activeFeed = SceneType.media;"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 661,
+          "text": "type: SceneType.media,"
+        }
+      ]
+    },
+    "ApprovedFeedCard": {
+      "meaning": "Primary Scene card",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 1649,
+          "text": "child: ApprovedFeedCard("
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 1806,
+          "text": "class ApprovedFeedCard extends StatefulWidget {"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 1810,
+          "text": "const ApprovedFeedCard({"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 1817,
+          "text": "State<ApprovedFeedCard> createState() =>"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 1818,
+          "text": "_ApprovedFeedCardState();"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 1821,
+          "text": "class _ApprovedFeedCardState extends State<ApprovedFeedCard> {"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3298,
+          "text": "ApprovedFeedCard(scene: _preview!),"
+        }
+      ]
+    },
+    "SimpleSceneCard": {
+      "meaning": "Secondary/simple Scene card",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 3791,
+          "text": "if (topScene != null) SimpleSceneCard(scene: topScene),"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3841,
+          "text": "class SimpleSceneCard extends StatelessWidget {"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3845,
+          "text": "const SimpleSceneCard({"
+        }
+      ]
+    },
+    "Scene Type": {
+      "meaning": "Scene Type UI text",
+      "status": "NOT FOUND",
+      "hits": []
+    },
+    "Follow": {
+      "meaning": "Creator follow UI",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 2154,
+          "text": "'Follow',"
+        }
+      ]
+    },
+    "Save": {
+      "meaning": "Save UI",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 2980,
+          "text": "void _saveDraft() {"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 2990,
+          "text": "content: Text('Nothing to save yet. Add scene details first.'),"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 2999,
+          "text": "content: Text('Draft saved locally for now.'),"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3261,
+          "text": "onPressed: _saveDraft,"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3262,
+          "text": "child: const Text('Save Draft'),"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3576,
+          "text": "label: 'Saved',"
+        }
+      ]
+    },
+    "Share": {
+      "meaning": "Share UI",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 375,
+          "text": "return 'Shared real-world experiences, gatherings, and live moments.';"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 669,
+          "text": "'Just now: A heated argument broke out at a public event after a well-known influencer allegedly disrespected a small business owner on stage. The crowd quickly took sides. Watch and share your thoughts.',"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 2255,
+          "text": "class _CustomShareAction extends StatelessWidget {"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 2256,
+          "text": "const _CustomShareAction();"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 2269,
+          "text": "'Share',"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 4189,
+          "text": "label: 'Share',"
+        }
+      ]
+    },
+    "Comment": {
+      "meaning": "Comment UI",
+      "status": "NOT FOUND",
+      "hits": []
+    },
+    "more_vert": {
+      "meaning": "More-options UI",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 1159,
+          "text": "Icons.more_vert_rounded,"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 2167,
+          "text": "Icons.more_vert_rounded,"
+        }
+      ]
+    },
+    "Scene Composer": {
+      "meaning": "Scene composer",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 3066,
+          "text": "'Scene Composer',"
+        }
+      ]
+    },
+    "_pickImages": {
+      "meaning": "Image picker",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 2891,
+          "text": "Future<void> _pickImages() async {"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3156,
+          "text": "onPressed: _pickImages,"
+        }
+      ]
+    },
+    "_pickVideo": {
+      "meaning": "Video picker",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 2925,
+          "text": "Future<void> _pickVideo() async {"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3165,
+          "text": "onPressed: _pickVideo,"
+        }
+      ]
+    },
+    "_makePreview": {
+      "meaning": "Scene preview",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 2965,
+          "text": "void _makePreview() {"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3266,
+          "text": "onPressed: _makePreview,"
+        }
+      ]
+    },
+    "_saveDraft": {
+      "meaning": "Draft state",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 2980,
+          "text": "void _saveDraft() {"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3261,
+          "text": "onPressed: _saveDraft,"
+        }
+      ]
+    },
+    "_publish": {
+      "meaning": "Frontend publish flow",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 3005,
+          "text": "Future<void> _publish() async {"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3271,
+          "text": "onPressed: _isPublishing ? null : _publish,"
+        }
+      ]
+    },
+    "_locationCtrl": {
+      "meaning": "Location input",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 2874,
+          "text": "final TextEditingController _locationCtrl = TextEditingController();"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 2886,
+          "text": "_locationCtrl.dispose();"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 2986,
+          "text": "_locationCtrl.text.trim().isEmpty &&"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3124,
+          "text": "controller: _locationCtrl,"
+        }
+      ]
+    },
+    "_tagsCtrl": {
+      "meaning": "Tags input",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 2875,
+          "text": "final TextEditingController _tagsCtrl = TextEditingController();"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 2887,
+          "text": "_tagsCtrl.dispose();"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 2987,
+          "text": "_tagsCtrl.text.trim().isEmpty) {"
+        }
+      ]
+    },
+    "Reaction": {
+      "meaning": "Reaction Perspective",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 367,
+          "text": "return 'Conflict, tension, chaos, controversy, and public reactions.';"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 401,
+          "text": "return ['Advice', 'Reaction', 'Analysis', 'Comedy', 'Debate'];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 403,
+          "text": "return ['Debate', 'Advice', 'Analysis', 'Reaction', 'Comedy'];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 405,
+          "text": "return ['Reaction', 'Debate', 'Comedy', 'Analysis', 'Advice'];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 407,
+          "text": "return ['Reaction', 'Analysis', 'Comedy', 'Debate', 'Advice'];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 409,
+          "text": "return ['Reaction', 'Comedy', 'Advice', 'Analysis', 'Debate'];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 411,
+          "text": "return ['Debate', 'Reaction', 'Analysis', 'Comedy', 'Advice'];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 413,
+          "text": "return ['Reaction', 'Analysis', 'Comedy', 'Debate', 'Advice'];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 468,
+          "text": "if (lane == 'Reaction') {"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 481,
+          "text": "if (t.isEmpty) return 'Reaction';"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 487,
+          "text": "final reactionWords = ['wow', 'crazy', 'shocking', 'unbelievable', 'insane', 'wild'];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 495,
+          "text": "if (hasAny(reactionWords)) return 'Reaction';"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 497,
+          "text": "return 'Reaction';"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 607,
+          "text": "'Reaction',"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 2016,
+          "text": "label: 'Reaction',"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 2255,
+          "text": "class _CustomShareAction extends StatelessWidget {"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 2256,
+          "text": "const _CustomShareAction();"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3597,
+          "text": "case 'Reaction':"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3614,
+          "text": "case 'Reaction':"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 4148,
+          "text": "'Reaction',"
+        }
+      ]
+    },
+    "Comedy": {
+      "meaning": "Comedy Perspective",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 401,
+          "text": "return ['Advice', 'Reaction', 'Analysis', 'Comedy', 'Debate'];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 403,
+          "text": "return ['Debate', 'Advice', 'Analysis', 'Reaction', 'Comedy'];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 405,
+          "text": "return ['Reaction', 'Debate', 'Comedy', 'Analysis', 'Advice'];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 407,
+          "text": "return ['Reaction', 'Analysis', 'Comedy', 'Debate', 'Advice'];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 409,
+          "text": "return ['Reaction', 'Comedy', 'Advice', 'Analysis', 'Debate'];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 411,
+          "text": "return ['Debate', 'Reaction', 'Analysis', 'Comedy', 'Advice'];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 413,
+          "text": "return ['Reaction', 'Analysis', 'Comedy', 'Debate', 'Advice'];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 462,
+          "text": "if (lane == 'Comedy' &&"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 483,
+          "text": "final comedyWords = ['lol', 'haha', 'funny', 'joke', '??', '??', 'lmao'];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 491,
+          "text": "if (hasAny(comedyWords)) return 'Comedy';"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 604,
+          "text": "'Comedy',"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 1999,
+          "text": "label: 'Comedy',"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3591,
+          "text": "case 'Comedy':"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3608,
+          "text": "case 'Comedy':"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 4153,
+          "text": "'Comedy',"
+        }
+      ]
+    },
+    "Advice": {
+      "meaning": "Advice Perspective",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 401,
+          "text": "return ['Advice', 'Reaction', 'Analysis', 'Comedy', 'Debate'];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 403,
+          "text": "return ['Debate', 'Advice', 'Analysis', 'Reaction', 'Comedy'];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 405,
+          "text": "return ['Reaction', 'Debate', 'Comedy', 'Analysis', 'Advice'];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 407,
+          "text": "return ['Reaction', 'Analysis', 'Comedy', 'Debate', 'Advice'];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 409,
+          "text": "return ['Reaction', 'Comedy', 'Advice', 'Analysis', 'Debate'];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 411,
+          "text": "return ['Debate', 'Reaction', 'Analysis', 'Comedy', 'Advice'];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 413,
+          "text": "return ['Reaction', 'Analysis', 'Comedy', 'Debate', 'Advice'];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 441,
+          "text": "if (lane == 'Advice' &&"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 444,
+          "text": "t.contains('advice'))) {"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 484,
+          "text": "final adviceWords = ['should', 'try', 'recommend', 'advice', 'suggest', 'you can', 'you should'];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 492,
+          "text": "if (hasAny(adviceWords)) return 'Advice';"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 608,
+          "text": "'Advice',"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 2021,
+          "text": "label: 'Advice',"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3599,
+          "text": "case 'Advice':"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3616,
+          "text": "case 'Advice':"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 4158,
+          "text": "'Advice',"
+        }
+      ]
+    },
+    "Analysis": {
+      "meaning": "Analysis Perspective",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 401,
+          "text": "return ['Advice', 'Reaction', 'Analysis', 'Comedy', 'Debate'];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 403,
+          "text": "return ['Debate', 'Advice', 'Analysis', 'Reaction', 'Comedy'];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 405,
+          "text": "return ['Reaction', 'Debate', 'Comedy', 'Analysis', 'Advice'];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 407,
+          "text": "return ['Reaction', 'Analysis', 'Comedy', 'Debate', 'Advice'];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 409,
+          "text": "return ['Reaction', 'Comedy', 'Advice', 'Analysis', 'Debate'];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 411,
+          "text": "return ['Debate', 'Reaction', 'Analysis', 'Comedy', 'Advice'];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 413,
+          "text": "return ['Reaction', 'Analysis', 'Comedy', 'Debate', 'Advice'];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 455,
+          "text": "if (lane == 'Analysis' &&"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 486,
+          "text": "final analysisWords = ['because', 'reason', 'evidence', 'data', 'study', 'means', 'therefore'];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 494,
+          "text": "if (hasAny(analysisWords)) return 'Analysis';"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 605,
+          "text": "'Analysis',"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 2005,
+          "text": "label: 'Analysis',"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3593,
+          "text": "case 'Analysis':"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3610,
+          "text": "case 'Analysis':"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 4163,
+          "text": "'Analysis',"
+        }
+      ]
+    },
+    "Debate": {
+      "meaning": "Debate Perspective",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 401,
+          "text": "return ['Advice', 'Reaction', 'Analysis', 'Comedy', 'Debate'];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 403,
+          "text": "return ['Debate', 'Advice', 'Analysis', 'Reaction', 'Comedy'];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 405,
+          "text": "return ['Reaction', 'Debate', 'Comedy', 'Analysis', 'Advice'];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 407,
+          "text": "return ['Reaction', 'Analysis', 'Comedy', 'Debate', 'Advice'];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 409,
+          "text": "return ['Reaction', 'Comedy', 'Advice', 'Analysis', 'Debate'];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 411,
+          "text": "return ['Debate', 'Reaction', 'Analysis', 'Comedy', 'Advice'];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 413,
+          "text": "return ['Reaction', 'Analysis', 'Comedy', 'Debate', 'Advice'];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 448,
+          "text": "if (lane == 'Debate' &&"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 485,
+          "text": "final debateWords = ['disagree', 'wrong', 'but', 'however', 'not true', 'i oppose'];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 493,
+          "text": "if (hasAny(debateWords)) return 'Debate';"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 606,
+          "text": "'Debate',"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 2010,
+          "text": "label: 'Debate',"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3595,
+          "text": "case 'Debate':"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3612,
+          "text": "case 'Debate':"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 4168,
+          "text": "'Debate',"
+        }
+      ]
+    },
+    "selectedLaneIndex": {
+      "meaning": "Perspective selection state",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 3968,
+          "text": "int selectedLaneIndex = 0;"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3999,
+          "text": "final lane = lanes[selectedLaneIndex];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 4017,
+          "text": "final lane = lanes[selectedLaneIndex];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 4041,
+          "text": "final lane = lanes[selectedLaneIndex];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 4227,
+          "text": "selected: i == selectedLaneIndex,"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 4228,
+          "text": "onTap: () => setState(() => selectedLaneIndex = i),"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 4337,
+          "text": "selectedLaneIndex = idx;"
+        }
+      ]
+    },
+    "PerspectiveItem": {
+      "meaning": "Perspective item/data",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 3951,
+          "text": "class PerspectiveItem {"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3955,
+          "text": "PerspectiveItem(this.text, {this.upvotes = 0});"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3973,
+          "text": "late Map<String, List<PerspectiveItem>> perspectivesByLane;"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3986,
+          "text": "PerspectiveItem('First perspective in $lane.', upvotes: 2),"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3987,
+          "text": "PerspectiveItem('Another perspective in $lane.', upvotes: 1),"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3988,
+          "text": "PerspectiveItem('One more perspective in $lane.', upvotes: 0),"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 4005,
+          "text": "PerspectiveItem(text, upvotes: 0),"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 4023,
+          "text": "final list = perspectivesByLane[lane] ?? <PerspectiveItem>[];"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 4042,
+          "text": "final base = perspectivesByLane[lane] ?? const <PerspectiveItem>[];"
+        }
+      ]
+    },
+    "totalPerspectivesPosted": {
+      "meaning": "Perspective contribution tracking",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 680,
+          "text": "int totalPerspectivesPosted = 0;"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3778,
+          "text": "'$totalPerspectivesPosted',"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 4011,
+          "text": "totalPerspectivesPosted += 1;"
+        }
+      ]
+    },
+    "reply": {
+      "meaning": "Reply implementation",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 4188,
+          "text": "icon: Icons.reply_rounded,"
+        }
+      ]
+    },
+    "replies": {
+      "meaning": "Reply collection/state",
+      "status": "NOT FOUND",
+      "hits": []
+    },
+    "upvote": {
+      "meaning": "Comment/Perspective vote interaction",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 3678,
+          "text": "final int upvotes;"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3680,
+          "text": "final VoidCallback? onUpvote;"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3684,
+          "text": "required this.upvotes,"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3686,
+          "text": "required this.onUpvote,"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3732,
+          "text": "'Upvotes: $upvotes',"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3744,
+          "text": "onPressed: onUpvote,"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3745,
+          "text": "child: Text(alreadyVoted ? 'Upvoted' : 'Upvote'),"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3953,
+          "text": "int upvotes;"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3955,
+          "text": "PerspectiveItem(this.text, {this.upvotes = 0});"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3986,
+          "text": "PerspectiveItem('First perspective in $lane.', upvotes: 2),"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3987,
+          "text": "PerspectiveItem('Another perspective in $lane.', upvotes: 1),"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3988,
+          "text": "PerspectiveItem('One more perspective in $lane.', upvotes: 0),"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 4005,
+          "text": "PerspectiveItem(text, upvotes: 0),"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 4016,
+          "text": "void _upvotePerspective(int index) {"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 4025,
+          "text": "list[index].upvotes += 1;"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 4046,
+          "text": "perspectives.sort((a, b) => b.upvotes.compareTo(a.upvotes));"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 4384,
+          "text": "upvotes: r.upvotes,"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 4386,
+          "text": "onUpvote: alreadyVoted"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 4388,
+          "text": ": () => _upvotePerspective(originalIndex),"
+        }
+      ]
+    },
+    "Upvote": {
+      "meaning": "Vote button UI",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 3678,
+          "text": "final int upvotes;"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3680,
+          "text": "final VoidCallback? onUpvote;"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3684,
+          "text": "required this.upvotes,"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3686,
+          "text": "required this.onUpvote,"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3732,
+          "text": "'Upvotes: $upvotes',"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3744,
+          "text": "onPressed: onUpvote,"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3745,
+          "text": "child: Text(alreadyVoted ? 'Upvoted' : 'Upvote'),"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3953,
+          "text": "int upvotes;"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3955,
+          "text": "PerspectiveItem(this.text, {this.upvotes = 0});"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3986,
+          "text": "PerspectiveItem('First perspective in $lane.', upvotes: 2),"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3987,
+          "text": "PerspectiveItem('Another perspective in $lane.', upvotes: 1),"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3988,
+          "text": "PerspectiveItem('One more perspective in $lane.', upvotes: 0),"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 4005,
+          "text": "PerspectiveItem(text, upvotes: 0),"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 4016,
+          "text": "void _upvotePerspective(int index) {"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 4025,
+          "text": "list[index].upvotes += 1;"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 4046,
+          "text": "perspectives.sort((a, b) => b.upvotes.compareTo(a.upvotes));"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 4384,
+          "text": "upvotes: r.upvotes,"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 4386,
+          "text": "onUpvote: alreadyVoted"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 4388,
+          "text": ": () => _upvotePerspective(originalIndex),"
+        }
+      ]
+    },
+    "sort": {
+      "meaning": "Sorting logic/UI",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 2651,
+          "text": "final ranked = [...homeScenes]..sort((a, b) => b.heat.compareTo(a.heat));"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3764,
+          "text": "final top = [...homeScenes]..sort((a, b) => b.heat.compareTo(a.heat));"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3949,
+          "text": "enum LaneSort { best, newest }"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3969,
+          "text": "LaneSort _sort = LaneSort.best;"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 4045,
+          "text": "if (_sort == LaneSort.best) {"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 4046,
+          "text": "perspectives.sort((a, b) => b.upvotes.compareTo(a.upvotes));"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 4237,
+          "text": "'Sort by',"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 4247,
+          "text": "selected: _sort == LaneSort.best,"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 4248,
+          "text": "onSelected: (_) => setState(() => _sort = LaneSort.best),"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 4253,
+          "text": "selected: _sort == LaneSort.newest,"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 4254,
+          "text": "onSelected: (_) => setState(() => _sort = LaneSort.newest),"
+        }
+      ]
+    },
+    "pinned": {
+      "meaning": "Pinned comment implementation",
+      "status": "NOT FOUND",
+      "hits": []
+    },
+    "Pinned": {
+      "meaning": "Pinned comment visual",
+      "status": "NOT FOUND",
+      "hits": []
+    },
+    "Scene Map": {
+      "meaning": "Scene Map UI",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 3366,
+          "text": "'Scene Map',"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3519,
+          "text": "'Open Scene Map',"
+        }
+      ]
+    },
+    "Scene Radar": {
+      "meaning": "Scene Radar UI",
+      "status": "NOT FOUND",
+      "hits": []
+    },
+    "Scene Context": {
+      "meaning": "Scene Context UI",
+      "status": "NOT FOUND",
+      "hits": []
+    },
+    "Pulse": {
+      "meaning": "Pulse UI",
+      "status": "NOT FOUND",
+      "hits": []
+    },
+    "Perspective Pulse": {
+      "meaning": "Perspective Pulse UI",
+      "status": "NOT FOUND",
+      "hits": []
+    },
+    "Search": {
+      "meaning": "Search UI",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 908,
+          "text": "Icons.search_rounded,"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 915,
+          "text": "'Search Scenagram web',"
+        }
+      ]
+    },
+    "notification": {
+      "meaning": "Notification UI",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 944,
+          "text": "icon: Icons.notifications_none_rounded,"
+        }
+      ]
+    },
+    "Notifications": {
+      "meaning": "Notifications UI",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 944,
+          "text": "icon: Icons.notifications_none_rounded,"
+        }
+      ]
+    },
+    "Settings": {
+      "meaning": "Settings UI",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 1184,
+          "text": "icon: Icons.settings_outlined,"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 1185,
+          "text": "label: 'Settings',"
+        }
+      ]
+    },
+    "Privacy": {
+      "meaning": "Privacy UI",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 1197,
+          "text": "label: 'Privacy & Security',"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 1277,
+          "text": "'Terms  ?  Privacy  ?  Cookies',"
+        }
+      ]
+    },
+    "Account Details": {
+      "meaning": "Account details UI",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 1191,
+          "text": "label: 'Account Details',"
+        }
+      ]
+    },
+    "Help Center": {
+      "meaning": "Help Center UI",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 1249,
+          "text": "label: 'Help Center',"
+        }
+      ]
+    },
+    "Not Interested": {
+      "meaning": "Not Interested control",
+      "status": "NOT FOUND",
+      "hits": []
+    },
+    "Report": {
+      "meaning": "Report control",
+      "status": "NOT FOUND",
+      "hits": []
+    },
+    "Block": {
+      "meaning": "Block control",
+      "status": "NOT FOUND",
+      "hits": []
+    },
+    "Mute": {
+      "meaning": "Mute control",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\core\\theme\\design_tokens.dart",
+          "line": 19,
+          "text": "static const Color textMuted = Color(0xFF6B7280);"
+        },
+        {
+          "file": "lib\\core\\theme\\design_tokens.dart",
+          "line": 75,
+          "text": "color: SGColors.textMuted,"
+        }
+      ]
+    },
+    "Hide": {
+      "meaning": "Hide control",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 742,
+          "text": "onHide: () {"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 800,
+          "text": "child: _SidebarHideButton("
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 1093,
+          "text": "final VoidCallback onHide;"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 1097,
+          "text": "required this.onHide,"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 1156,
+          "text": "onPressed: onHide,"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 1502,
+          "text": "class _SidebarHideButton extends StatefulWidget {"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 1505,
+          "text": "const _SidebarHideButton({required this.onTap});"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 1508,
+          "text": "State<_SidebarHideButton> createState() => _SidebarHideButtonState();"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 1511,
+          "text": "class _SidebarHideButtonState extends State<_SidebarHideButton> {"
+        }
+      ]
+    },
+    "CircularProgressIndicator": {
+      "meaning": "Loading state",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 3276,
+          "text": "child: CircularProgressIndicator(strokeWidth: 2),"
+        }
+      ]
+    },
+    "Skeleton": {
+      "meaning": "Skeleton loading state",
+      "status": "NOT FOUND",
+      "hits": []
+    },
+    "SnackBar": {
+      "meaning": "Feedback/toast state",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 2988,
+          "text": "ScaffoldMessenger.of(context).showSnackBar("
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 2989,
+          "text": "const SnackBar("
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 2991,
+          "text": "behavior: SnackBarBehavior.floating,"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 2997,
+          "text": "ScaffoldMessenger.of(context).showSnackBar("
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 2998,
+          "text": "const SnackBar("
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3000,
+          "text": "behavior: SnackBarBehavior.floating,"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3028,
+          "text": "ScaffoldMessenger.of(context).showSnackBar("
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3029,
+          "text": "const SnackBar("
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3031,
+          "text": "behavior: SnackBarBehavior.floating,"
+        }
+      ]
+    },
+    "errorText": {
+      "meaning": "Validation/error state",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 2880,
+          "text": "String? _errorText;"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 2954,
+          "text": "_errorText = 'Please write a scene caption before continuing.';"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 2960,
+          "text": "_errorText = null;"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3098,
+          "text": "if (_errorText != null) {"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3099,
+          "text": "_errorText = null;"
+        },
+        {
+          "file": "lib\\main.dart",
+          "line": 3105,
+          "text": "errorText: _errorText,"
+        }
+      ]
+    },
+    "Retry": {
+      "meaning": "Retry state",
+      "status": "NOT FOUND",
+      "hits": []
+    },
+    "MediaQuery": {
+      "meaning": "Responsive sizing logic",
+      "status": "NOT FOUND",
+      "hits": []
+    },
+    "LayoutBuilder": {
+      "meaning": "Responsive layout logic",
+      "status": "NOT FOUND",
+      "hits": []
+    },
+    "NavigationBar": {
+      "meaning": "Mobile/bottom navigation",
+      "status": "NOT FOUND",
+      "hits": []
+    },
+    "BottomNavigationBar": {
+      "meaning": "Mobile/bottom navigation",
+      "status": "NOT FOUND",
+      "hits": []
+    },
+    "DraggableScrollableSheet": {
+      "meaning": "Bottom-sheet/mobile interaction",
+      "status": "NOT FOUND",
+      "hits": []
+    },
+    "GestureDetector": {
+      "meaning": "Gesture interaction",
+      "status": "NOT FOUND",
+      "hits": []
+    },
+    "SGTheme": {
+      "meaning": "Global theme",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\main.dart",
+          "line": 16,
+          "text": "theme: SGTheme.light(),"
+        },
+        {
+          "file": "lib\\core\\theme\\app_theme.dart",
+          "line": 4,
+          "text": "class SGTheme {"
+        }
+      ]
+    },
+    "SGColors": {
+      "meaning": "Design color tokens",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\core\\theme\\app_theme.dart",
+          "line": 11,
+          "text": "primary: SGColors.accentBlue,"
+        },
+        {
+          "file": "lib\\core\\theme\\app_theme.dart",
+          "line": 12,
+          "text": "secondary: SGColors.accentPurple,"
+        },
+        {
+          "file": "lib\\core\\theme\\app_theme.dart",
+          "line": 14,
+          "text": "error: SGColors.accentRed,"
+        },
+        {
+          "file": "lib\\core\\theme\\app_theme.dart",
+          "line": 73,
+          "text": "backgroundColor: SGColors.accentBlue,"
+        },
+        {
+          "file": "lib\\core\\theme\\app_theme.dart",
+          "line": 112,
+          "text": "color: SGColors.accentBlue,"
+        },
+        {
+          "file": "lib\\core\\theme\\design_tokens.dart",
+          "line": 3,
+          "text": "class SGColors {"
+        },
+        {
+          "file": "lib\\core\\theme\\design_tokens.dart",
+          "line": 59,
+          "text": "color: SGColors.textPrimary,"
+        },
+        {
+          "file": "lib\\core\\theme\\design_tokens.dart",
+          "line": 65,
+          "text": "color: SGColors.textPrimary,"
+        },
+        {
+          "file": "lib\\core\\theme\\design_tokens.dart",
+          "line": 70,
+          "text": "color: SGColors.textSecondary,"
+        },
+        {
+          "file": "lib\\core\\theme\\design_tokens.dart",
+          "line": 75,
+          "text": "color: SGColors.textMuted,"
+        }
+      ]
+    },
+    "SGSpacing": {
+      "meaning": "Spacing tokens",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\core\\theme\\app_theme.dart",
+          "line": 80,
+          "text": "horizontal: SGSpacing.lg,"
+        },
+        {
+          "file": "lib\\core\\theme\\app_theme.dart",
+          "line": 81,
+          "text": "vertical: SGSpacing.md,"
+        },
+        {
+          "file": "lib\\core\\theme\\design_tokens.dart",
+          "line": 27,
+          "text": "class SGSpacing {"
+        }
+      ]
+    },
+    "SGRadius": {
+      "meaning": "Radius tokens",
+      "status": "FOUND",
+      "hits": [
+        {
+          "file": "lib\\core\\theme\\app_theme.dart",
+          "line": 28,
+          "text": "borderRadius: BorderRadius.circular(SGRadius.lg),"
+        },
+        {
+          "file": "lib\\core\\theme\\app_theme.dart",
+          "line": 39,
+          "text": "borderRadius: BorderRadius.circular(SGRadius.md),"
+        },
+        {
+          "file": "lib\\core\\theme\\app_theme.dart",
+          "line": 77,
+          "text": "borderRadius: BorderRadius.circular(SGRadius.md),"
+        },
+        {
+          "file": "lib\\core\\theme\\app_theme.dart",
+          "line": 102,
+          "text": "borderRadius: BorderRadius.circular(SGRadius.md),"
+        },
+        {
+          "file": "lib\\core\\theme\\app_theme.dart",
+          "line": 106,
+          "text": "borderRadius: BorderRadius.circular(SGRadius.md),"
+        },
+        {
+          "file": "lib\\core\\theme\\app_theme.dart",
+          "line": 110,
+          "text": "borderRadius: BorderRadius.circular(SGRadius.md),"
+        },
+        {
+          "file": "lib\\core\\theme\\design_tokens.dart",
+          "line": 36,
+          "text": "class SGRadius {"
+        }
+      ]
+    }
+  },
+  "legacy_terms": {
+    "Home Feed": [
+      {
+        "file": "lib\\main.dart",
+        "line": 1208,
+        "text": "label: 'Home Feed',"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 1682,
+        "text": "'Home Feed',"
+      }
+    ],
+    "Trending": [
+      {
+        "file": "lib\\main.dart",
+        "line": 21,
+        "text": "'/trending': (context) => const TrendingPage(),"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 1218,
+        "text": "label: 'Trending',"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 1219,
+        "text": "selected: currentRoute == '/trending',"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 1222,
+        "text": "'/trending',"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 2309,
+        "text": "title: 'Trending',"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 2644,
+        "text": "TRENDING PAGE"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 2646,
+        "text": "class TrendingPage extends StatelessWidget {"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 2647,
+        "text": "const TrendingPage({super.key});"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 2654,
+        "text": "currentRoute: '/trending',"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 2670,
+        "text": "'Trending Now',"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 2697,
+        "text": "child: _TrendingSceneCard("
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 2717,
+        "text": "class _TrendingSceneCard extends StatefulWidget {"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 2722,
+        "text": "const _TrendingSceneCard({"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 2729,
+        "text": "State<_TrendingSceneCard> createState() => _TrendingSceneCardState();"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 2732,
+        "text": "class _TrendingSceneCardState extends State<_TrendingSceneCard> {"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 3339,
+        "text": "'Trending scenes, hot updates, and discovery tools.',"
+      }
+    ],
+    "lane": [
+      {
+        "file": "lib\\main.dart",
+        "line": 101,
+        "text": "final List<String> priorityLanes;"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 109,
+        "text": "required this.priorityLanes,"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 120,
+        "text": "priorityLanes: sceneTypePriorityLanes(t),"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 398,
+        "text": "List<String> sceneTypePriorityLanes(SceneType t) {"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 417,
+        "text": "List<String> lanesForType(SceneType t) {"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 418,
+        "text": "return sceneTypePriorityLanes(t);"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 422,
+        "text": "class PerspectiveLanePrediction {"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 423,
+        "text": "final String lane;"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 426,
+        "text": "const PerspectiveLanePrediction({"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 427,
+        "text": "required this.lane,"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 432,
+        "text": "PerspectiveLanePrediction detectPerspectiveLaneWithConfidence("
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 435,
+        "text": "final lane = detectPerspectiveLane(text);"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 441,
+        "text": "if (lane == 'Advice' &&"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 448,
+        "text": "if (lane == 'Debate' &&"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 455,
+        "text": "if (lane == 'Analysis' &&"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 462,
+        "text": "if (lane == 'Comedy' &&"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 468,
+        "text": "if (lane == 'Reaction') {"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 472,
+        "text": "return PerspectiveLanePrediction("
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 473,
+        "text": "lane: lane,"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 478,
+        "text": "String detectPerspectiveLane(String text) {"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 500,
+        "text": "bool isPerspectiveLaneMismatch({"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 501,
+        "text": "required String selectedLane,"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 504,
+        "text": "final suggested = detectPerspectiveLane(text);"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 505,
+        "text": "return suggested != selectedLane;"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 534,
+        "text": "final String originalLane;"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 535,
+        "text": "final String suggestedLane;"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 540,
+        "text": "required this.originalLane,"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 541,
+        "text": "required this.suggestedLane,"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 548,
+        "text": "required String selectedLane,"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 552,
+        "text": "detectPerspectiveLaneWithConfidence(text);"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 555,
+        "text": "originalLane: selectedLane,"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 556,
+        "text": "suggestedLane: prediction.lane,"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 560,
+        "text": "prediction.lane != selectedLane,"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 603,
+        "text": "const List<String> kUniversalLanes = ["
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 627,
+        "text": "List<String> get lanes => lanesForType(type);"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 2178,
+        "text": "class _LanePill extends StatelessWidget {"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 2183,
+        "text": "const _LanePill(this.label, this.bg, this.fg);"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 3589,
+        "text": "Color perspectiveLaneColor(String lane) {"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 3590,
+        "text": "switch (lane) {"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 3606,
+        "text": "IconData perspectiveLaneIcon(String lane) {"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 3607,
+        "text": "switch (lane) {"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 3623,
+        "text": "class _LaneSelectorChip extends StatelessWidget {"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 3628,
+        "text": "const _LaneSelectorChip({"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 3636,
+        "text": "final rawLane = label.split(' (').first;"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 3637,
+        "text": "final laneColor = perspectiveLaneColor(rawLane);"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 3646,
+        "text": "color: selected ? laneColor : const Color(0xFFF3F4F8),"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 3649,
+        "text": "color: selected ? laneColor : const Color(0xFFEAEAF0),"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 3656,
+        "text": "perspectiveLaneIcon(rawLane),"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 3658,
+        "text": "color: selected ? Colors.white : laneColor,"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 3883,
+        "text": "children: scene.lanes"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 3949,
+        "text": "enum LaneSort { best, newest }"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 3968,
+        "text": "int selectedLaneIndex = 0;"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 3969,
+        "text": "LaneSort _sort = LaneSort.best;"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 3972,
+        "text": "late List<String> lanes;"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 3973,
+        "text": "late Map<String, List<PerspectiveItem>> perspectivesByLane;"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 3974,
+        "text": "late Map<String, Set<int>> votedPerspectiveIndexesByLane;"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 3982,
+        "text": "lanes = widget.scene.lanes;"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 3983,
+        "text": "perspectivesByLane = {"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 3984,
+        "text": "for (final lane in lanes)"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 3985,
+        "text": "lane: ["
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 3986,
+        "text": "PerspectiveItem('First perspective in $lane.', upvotes: 2),"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 3987,
+        "text": "PerspectiveItem('Another perspective in $lane.', upvotes: 1),"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 3988,
+        "text": "PerspectiveItem('One more perspective in $lane.', upvotes: 0),"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 3991,
+        "text": "votedPerspectiveIndexesByLane = {"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 3992,
+        "text": "for (final lane in lanes) lane: <int>{},"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 3996,
+        "text": "int _countForLane(String lane) => (perspectivesByLane[lane] ?? const []).length;"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 3999,
+        "text": "final lane = lanes[selectedLaneIndex];"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4004,
+        "text": "perspectivesByLane[lane] = ["
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4006,
+        "text": "...(perspectivesByLane[lane] ?? []),"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4008,
+        "text": "final old = votedPerspectiveIndexesByLane[lane] ?? <int>{};"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4009,
+        "text": "votedPerspectiveIndexesByLane[lane] = old.map((i) => i + 1).toSet();"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4017,
+        "text": "final lane = lanes[selectedLaneIndex];"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4018,
+        "text": "final voted = votedPerspectiveIndexesByLane[lane] ?? <int>{};"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4023,
+        "text": "final list = perspectivesByLane[lane] ?? <PerspectiveItem>[];"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4028,
+        "text": "votedPerspectiveIndexesByLane[lane] = voted;"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4041,
+        "text": "final lane = lanes[selectedLaneIndex];"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4042,
+        "text": "final base = perspectivesByLane[lane] ?? const <PerspectiveItem>[];"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4045,
+        "text": "if (_sort == LaneSort.best) {"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4049,
+        "text": "final votedSet = votedPerspectiveIndexesByLane[lane] ?? <int>{};"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4147,
+        "text": "_LanePill("
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4152,
+        "text": "_LanePill("
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4157,
+        "text": "_LanePill("
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4162,
+        "text": "_LanePill("
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4167,
+        "text": "_LanePill("
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4209,
+        "text": "'Structured Lanes',"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4221,
+        "text": "itemCount: lanes.length,"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4224,
+        "text": "final laneName = lanes[i];"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4225,
+        "text": "return _LaneSelectorChip("
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4226,
+        "text": "label: '$laneName (${_countForLane(laneName)})',"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4227,
+        "text": "selected: i == selectedLaneIndex,"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4228,
+        "text": "onTap: () => setState(() => selectedLaneIndex = i),"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4247,
+        "text": "selected: _sort == LaneSort.best,"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4248,
+        "text": "onSelected: (_) => setState(() => _sort = LaneSort.best),"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4253,
+        "text": "selected: _sort == LaneSort.newest,"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4254,
+        "text": "onSelected: (_) => setState(() => _sort = LaneSort.newest),"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4273,
+        "text": "'Add a perspective in: $lane',"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4299,
+        "text": "isPerspectiveLaneMismatch("
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4300,
+        "text": "selectedLane: lane,"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4321,
+        "text": "'Suggested: ${detectPerspectiveLaneWithConfidence(_perspectiveCtrl.text).lane} ? Confidence: ${(detectPerspectiveLaneWithConfidence(_perspectiveCtrl.text).confidence * 100).round()}% ? Current: $lane',"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4333,
+        "text": "detectPerspectiveLaneWithConfidence(_perspectiveCtrl.text).lane;"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4334,
+        "text": "final idx = lanes.indexOf(suggested);"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4337,
+        "text": "selectedLaneIndex = idx;"
+      }
+    ],
+    "lanes": [
+      {
+        "file": "lib\\main.dart",
+        "line": 101,
+        "text": "final List<String> priorityLanes;"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 109,
+        "text": "required this.priorityLanes,"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 120,
+        "text": "priorityLanes: sceneTypePriorityLanes(t),"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 398,
+        "text": "List<String> sceneTypePriorityLanes(SceneType t) {"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 417,
+        "text": "List<String> lanesForType(SceneType t) {"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 418,
+        "text": "return sceneTypePriorityLanes(t);"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 603,
+        "text": "const List<String> kUniversalLanes = ["
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 627,
+        "text": "List<String> get lanes => lanesForType(type);"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 3623,
+        "text": "class _LaneSelectorChip extends StatelessWidget {"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 3628,
+        "text": "const _LaneSelectorChip({"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 3883,
+        "text": "children: scene.lanes"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 3949,
+        "text": "enum LaneSort { best, newest }"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 3969,
+        "text": "LaneSort _sort = LaneSort.best;"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 3972,
+        "text": "late List<String> lanes;"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 3982,
+        "text": "lanes = widget.scene.lanes;"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 3984,
+        "text": "for (final lane in lanes)"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 3992,
+        "text": "for (final lane in lanes) lane: <int>{},"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 3999,
+        "text": "final lane = lanes[selectedLaneIndex];"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4017,
+        "text": "final lane = lanes[selectedLaneIndex];"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4041,
+        "text": "final lane = lanes[selectedLaneIndex];"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4045,
+        "text": "if (_sort == LaneSort.best) {"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4209,
+        "text": "'Structured Lanes',"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4221,
+        "text": "itemCount: lanes.length,"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4224,
+        "text": "final laneName = lanes[i];"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4225,
+        "text": "return _LaneSelectorChip("
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4247,
+        "text": "selected: _sort == LaneSort.best,"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4248,
+        "text": "onSelected: (_) => setState(() => _sort = LaneSort.best),"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4253,
+        "text": "selected: _sort == LaneSort.newest,"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4254,
+        "text": "onSelected: (_) => setState(() => _sort = LaneSort.newest),"
+      },
+      {
+        "file": "lib\\main.dart",
+        "line": 4334,
+        "text": "final idx = lanes.indexOf(suggested);"
+      }
+    ]
+  },
+  "todos": [
+    {
+      "file": "web\\index.html",
+      "line": 14,
+      "text": "This is a placeholder for base href that will be replaced by the value of"
+    },
+    {
+      "file": "windows\\flutter\\CMakeLists.txt",
+      "line": 9,
+      "text": "# TODO: Move the rest of this into files in ephemeral. See"
+    },
+    {
+      "file": "linux\\flutter\\CMakeLists.txt",
+      "line": 9,
+      "text": "# TODO: Move the rest of this into files in ephemeral. See"
+    }
+  ]
+}

@@ -1,0 +1,484 @@
+SCENAGRAM ? F1.1.1 DEPENDENCY SCAN
+================================================================================
+SOURCE: C:\Users\HP\Documents\Scenagram\apps\scenagram_web\lib\main.dart
+TOTAL LINES: 4398
+
+1. SYMBOL REFERENCE MAP
+--------------------------------------------------------------------------------
+
+[ScenagramApp] ? 3 occurrences
+    6: void main() => runApp(const ScenagramApp());
+    8: class ScenagramApp extends StatelessWidget {
+    9: const ScenagramApp({super.key});
+
+[SceneType] ? 91 occurrences
+   38: String sceneTypeLabel(SceneType t) {
+   40: case SceneType.confession:
+   42: case SceneType.dilemma:
+   44: case SceneType.drama:
+   46: case SceneType.media:
+   48: case SceneType.celebration:
+   50: case SceneType.hotTake:
+   52: case SceneType.event:
+   57: IconData sceneTypeIcon(SceneType t) {
+   59: case SceneType.confession:
+   61: case SceneType.dilemma:
+   63: case SceneType.drama:
+   65: case SceneType.media:
+   67: case SceneType.celebration:
+   69: case SceneType.hotTake:
+   71: case SceneType.event:
+   76: Color sceneTypeColor(SceneType t) {
+   78: case SceneType.confession:
+   80: case SceneType.dilemma:
+   82: case SceneType.drama:
+   84: case SceneType.media:
+   86: case SceneType.celebration:
+   88: case SceneType.hotTake:
+   90: case SceneType.event:
+  113: SceneTypeMeta sceneTypeMeta(SceneType t) {
+  125: final SceneType type;
+  140: if (type == SceneType.confession &&
+  147: if (type == SceneType.dilemma &&
+  154: if (type == SceneType.drama &&
+  162: if (type == SceneType.celebration &&
+  170: if (type == SceneType.hotTake &&
+  177: if (type == SceneType.event &&
+  185: if (type == SceneType.media) {
+  195: SceneType detectSceneType(String text) {
+  198: if (t.isEmpty) return SceneType.media;
+  209: return SceneType.confession;
+  220: return SceneType.dilemma;
+  232: return SceneType.drama;
+  244: return SceneType.celebration;
+  254: return SceneType.hotTake;
+  266: return SceneType.event;
+  269: return SceneType.media;
+  273: required SceneType selectedType,
+  341: String sceneTypeFeedRoute(SceneType t) {
+  343: case SceneType.confession:
+  345: case SceneType.dilemma:
+  347: case SceneType.drama:
+  349: case SceneType.media:
+  351: case SceneType.celebration:
+  353: case SceneType.hotTake:
+  355: case SceneType.event:
+  360: String sceneTypePurpose(SceneType t) {
+  362: case SceneType.confession:
+  364: case SceneType.dilemma:
+  366: case SceneType.drama:
+  368: case SceneType.media:
+  370: case SceneType.celebration:
+  372: case SceneType.hotTake:
+  374: case SceneType.event:
+  379: String sceneTypeUiStyle(SceneType t) {
+  381: case SceneType.confession:
+  383: case SceneType.dilemma:
+  385: case SceneType.drama:
+  387: case SceneType.media:
+  389: case SceneType.celebration:
+  391: case SceneType.hotTake:
+  393: case SceneType.event:
+  398: List<String> sceneTypePriorityLanes(SceneType t) {
+  400: case SceneType.confession:
+  402: case SceneType.dilemma:
+  404: case SceneType.drama:
+  406: case SceneType.media:
+  408: case SceneType.celebration:
+  410: case SceneType.hotTake:
+  412: case SceneType.event:
+  417: List<String> lanesForType(SceneType t) {
+  593: enum SceneType {
+  615: final SceneType type;
+  636: SceneType _activeFeed = SceneType.media;
+  638: SceneType get activeFeed => _activeFeed;
+... 11 additional occurrences omitted
+
+[SceneTypeMeta] ? 4 occurrences
+   95: class SceneTypeMeta {
+  103: const SceneTypeMeta({
+  113: SceneTypeMeta sceneTypeMeta(SceneType t) {
+  114: return SceneTypeMeta(
+
+[SceneTypePrediction] ? 4 occurrences
+  124: class SceneTypePrediction {
+  128: const SceneTypePrediction({
+  134: SceneTypePrediction detectSceneTypeWithConfidence(String text) {
+  189: return SceneTypePrediction(
+
+[PerspectiveLanePrediction] ? 4 occurrences
+  422: class PerspectiveLanePrediction {
+  426: const PerspectiveLanePrediction({
+  432: PerspectiveLanePrediction detectPerspectiveLaneWithConfidence(
+  472: return PerspectiveLanePrediction(
+
+[PerspectiveRoutingDecision] ? 4 occurrences
+  533: class PerspectiveRoutingDecision {
+  539: const PerspectiveRoutingDecision({
+  547: PerspectiveRoutingDecision buildPerspectiveRoutingDecision({
+  554: return PerspectiveRoutingDecision(
+
+[Scene] ? 23 occurrences
+  614: class Scene {
+  620: Scene({
+  647: List<Scene> scenesForActiveFeed(List<Scene> scenes) {
+  659: final List<Scene> homeScenes = [
+  660: Scene(
+  666: Scene(
+  672: Scene(
+  973: 'Post a Scene',
+ 1228: label: 'Post a Scene',
+ 1807: final Scene scene;
+ 2719: final Scene scene;
+ 2879: Scene? _preview;
+ 2971: _preview = Scene(
+ 3018: Scene(
+ 3030: content: Text('Scene published successfully.'),
+ 3066: 'Scene Composer',
+ 3085: 'Scene Caption',
+ 3278: : const Text('Publish Scene'),
+ 3366: 'Scene Map',
+ 3519: 'Open Scene Map',
+ 3784: 'Top Scene',
+ 3842: final Scene scene;
+ 3959: final Scene scene;
+
+[FeedController] ? 3 occurrences
+  635: class FeedController extends ChangeNotifier {
+ 1596: late final FeedController _feedController;
+ 1602: _feedController = FeedController();
+
+[ScenagramFrame] ? 8 occurrences
+  685: class ScenagramFrame extends StatefulWidget {
+  692: const ScenagramFrame({
+  702: State<ScenagramFrame> createState() => _ScenagramFrameState();
+  705: class _ScenagramFrameState extends State<ScenagramFrame> {
+ 1624: return ScenagramFrame(
+ 2653: return ScenagramFrame(
+ 3040: return ScenagramFrame(
+ 3767: return ScenagramFrame(
+
+[HomePage] ? 5 occurrences
+   20: '/': (context) => const HomePage(),
+ 1588: class HomePage extends StatefulWidget {
+ 1589: const HomePage({super.key});
+ 1592: State<HomePage> createState() => _HomePageState();
+ 1595: class _HomePageState extends State<HomePage> {
+
+[ApprovedFeedCard] ? 6 occurrences
+ 1649: child: ApprovedFeedCard(
+ 1806: class ApprovedFeedCard extends StatefulWidget {
+ 1810: const ApprovedFeedCard({
+ 1817: State<ApprovedFeedCard> createState() =>
+ 1821: class _ApprovedFeedCardState extends State<ApprovedFeedCard> {
+ 3298: ApprovedFeedCard(scene: _preview!),
+
+[ApprovedRightSidebar] ? 6 occurrences
+ 1663: rightSidebar: const ApprovedRightSidebar(),
+ 2284: class ApprovedRightSidebar extends StatelessWidget {
+ 2285: const ApprovedRightSidebar({super.key});
+ 2711: rightSidebar: const ApprovedRightSidebar(),
+ 3302: rightSidebar: const ApprovedRightSidebar(),
+ 3794: rightSidebar: const ApprovedRightSidebar(),
+
+[TrendingPage] ? 3 occurrences
+   21: '/trending': (context) => const TrendingPage(),
+ 2646: class TrendingPage extends StatelessWidget {
+ 2647: const TrendingPage({super.key});
+
+[CreateScenePage] ? 5 occurrences
+   22: '/create': (context) => const CreateScenePage(),
+ 2865: class CreateScenePage extends StatefulWidget {
+ 2866: const CreateScenePage({super.key});
+ 2869: State<CreateScenePage> createState() => _CreateScenePageState();
+ 2872: class _CreateScenePageState extends State<CreateScenePage> {
+
+[ProfilePage] ? 3 occurrences
+   23: '/profile': (context) => const ProfilePage(),
+ 3758: class ProfilePage extends StatelessWidget {
+ 3759: const ProfilePage({super.key});
+
+[SimpleSceneCard] ? 3 occurrences
+ 3791: if (topScene != null) SimpleSceneCard(scene: topScene),
+ 3841: class SimpleSceneCard extends StatelessWidget {
+ 3845: const SimpleSceneCard({
+
+[PerspectiveItem] ? 9 occurrences
+ 3951: class PerspectiveItem {
+ 3955: PerspectiveItem(this.text, {this.upvotes = 0});
+ 3973: late Map<String, List<PerspectiveItem>> perspectivesByLane;
+ 3986: PerspectiveItem('First perspective in $lane.', upvotes: 2),
+ 3987: PerspectiveItem('Another perspective in $lane.', upvotes: 1),
+ 3988: PerspectiveItem('One more perspective in $lane.', upvotes: 0),
+ 4005: PerspectiveItem(text, upvotes: 0),
+ 4023: final list = perspectivesByLane[lane] ?? <PerspectiveItem>[];
+ 4042: final base = perspectivesByLane[lane] ?? const <PerspectiveItem>[];
+
+[SceneDetailPage] ? 6 occurrences
+ 1655: SceneDetailPage(scene: scene),
+ 2703: builder: (_) => SceneDetailPage(scene: scene),
+ 3958: class SceneDetailPage extends StatefulWidget {
+ 3961: const SceneDetailPage({super.key, required this.scene});
+ 3964: State<SceneDetailPage> createState() => _SceneDetailPageState();
+ 3967: class _SceneDetailPageState extends State<SceneDetailPage> {
+
+
+2. SHARED FUNCTION REFERENCE MAP
+--------------------------------------------------------------------------------
+
+[sceneTypeLabel] ? 5 occurrences
+   38: String sceneTypeLabel(SceneType t) {
+  115: label: sceneTypeLabel(t),
+  628: String get typeLabel => sceneTypeLabel(type);
+ 1465: sceneTypeLabel(widget.type),
+ 1641: 'No ${sceneTypeLabel(_feedController.activeFeed)} scenes yet',
+
+[isSceneTypeMismatch] ? 1 occurrences
+  272: bool isSceneTypeMismatch({
+
+[shouldFlagSceneForModeration] ? 1 occurrences
+  279: bool shouldFlagSceneForModeration(String text) {
+
+[sceneModerationReason] ? 1 occurrences
+  310: String sceneModerationReason(String text) {
+
+[sceneTypeFeedRoute] ? 1 occurrences
+  341: String sceneTypeFeedRoute(SceneType t) {
+
+[sceneTypePurpose] ? 2 occurrences
+  118: purpose: sceneTypePurpose(t),
+  360: String sceneTypePurpose(SceneType t) {
+
+[sceneTypeUiStyle] ? 2 occurrences
+  119: uiStyle: sceneTypeUiStyle(t),
+  379: String sceneTypeUiStyle(SceneType t) {
+
+[sceneTypePriorityLanes] ? 3 occurrences
+  120: priorityLanes: sceneTypePriorityLanes(t),
+  398: List<String> sceneTypePriorityLanes(SceneType t) {
+  418: return sceneTypePriorityLanes(t);
+
+[lanesForType] ? 2 occurrences
+  417: List<String> lanesForType(SceneType t) {
+  627: List<String> get lanes => lanesForType(type);
+
+[detectPerspectiveLane] ? 3 occurrences
+  435: final lane = detectPerspectiveLane(text);
+  478: String detectPerspectiveLane(String text) {
+  504: final suggested = detectPerspectiveLane(text);
+
+[isPerspectiveLaneMismatch] ? 2 occurrences
+  500: bool isPerspectiveLaneMismatch({
+ 4299: isPerspectiveLaneMismatch(
+
+[shouldFlagPerspectiveForModeration] ? 1 occurrences
+  508: bool shouldFlagPerspectiveForModeration(String text) {
+
+[perspectiveModerationReason] ? 1 occurrences
+  564: String perspectiveModerationReason(String text) {
+
+
+3. CONSTRUCTOR / INSTANTIATION MAP
+--------------------------------------------------------------------------------
+
+[ScenagramApp]
+    6: void main() => runApp(const ScenagramApp());
+    9: const ScenagramApp({super.key});
+
+[SceneTypeMeta]
+  103: const SceneTypeMeta({
+  114: return SceneTypeMeta(
+
+[SceneTypePrediction]
+  128: const SceneTypePrediction({
+  189: return SceneTypePrediction(
+
+[PerspectiveLanePrediction]
+  426: const PerspectiveLanePrediction({
+  472: return PerspectiveLanePrediction(
+
+[PerspectiveRoutingDecision]
+  539: const PerspectiveRoutingDecision({
+  554: return PerspectiveRoutingDecision(
+
+[Scene]
+  620: Scene({
+  660: Scene(
+  666: Scene(
+  672: Scene(
+ 2971: _preview = Scene(
+ 3018: Scene(
+
+[FeedController]
+ 1602: _feedController = FeedController();
+
+[ScenagramFrame]
+  692: const ScenagramFrame({
+ 1624: return ScenagramFrame(
+ 2653: return ScenagramFrame(
+ 3040: return ScenagramFrame(
+ 3767: return ScenagramFrame(
+
+[HomePage]
+   20: '/': (context) => const HomePage(),
+ 1589: const HomePage({super.key});
+
+[ApprovedFeedCard]
+ 1649: child: ApprovedFeedCard(
+ 1810: const ApprovedFeedCard({
+ 3298: ApprovedFeedCard(scene: _preview!),
+
+[ApprovedRightSidebar]
+ 1663: rightSidebar: const ApprovedRightSidebar(),
+ 2285: const ApprovedRightSidebar({super.key});
+ 2711: rightSidebar: const ApprovedRightSidebar(),
+ 3302: rightSidebar: const ApprovedRightSidebar(),
+ 3794: rightSidebar: const ApprovedRightSidebar(),
+
+[TrendingPage]
+   21: '/trending': (context) => const TrendingPage(),
+ 2647: const TrendingPage({super.key});
+
+[CreateScenePage]
+   22: '/create': (context) => const CreateScenePage(),
+ 2866: const CreateScenePage({super.key});
+
+[ProfilePage]
+   23: '/profile': (context) => const ProfilePage(),
+ 3759: const ProfilePage({super.key});
+
+[SimpleSceneCard]
+ 3791: if (topScene != null) SimpleSceneCard(scene: topScene),
+ 3845: const SimpleSceneCard({
+
+[PerspectiveItem]
+ 3955: PerspectiveItem(this.text, {this.upvotes = 0});
+ 3986: PerspectiveItem('First perspective in $lane.', upvotes: 2),
+ 3987: PerspectiveItem('Another perspective in $lane.', upvotes: 1),
+ 3988: PerspectiveItem('One more perspective in $lane.', upvotes: 0),
+ 4005: PerspectiveItem(text, upvotes: 0),
+
+[SceneDetailPage]
+ 1655: SceneDetailPage(scene: scene),
+ 2703: builder: (_) => SceneDetailPage(scene: scene),
+ 3961: const SceneDetailPage({super.key, required this.scene});
+
+
+4. SCENE TYPE USAGE
+--------------------------------------------------------------------------------
+   40: case SceneType.confession:
+   42: case SceneType.dilemma:
+   44: case SceneType.drama:
+   46: case SceneType.media:
+   48: case SceneType.celebration:
+   50: case SceneType.hotTake:
+   52: case SceneType.event:
+   59: case SceneType.confession:
+   61: case SceneType.dilemma:
+   63: case SceneType.drama:
+   65: case SceneType.media:
+   67: case SceneType.celebration:
+   69: case SceneType.hotTake:
+   71: case SceneType.event:
+   78: case SceneType.confession:
+   80: case SceneType.dilemma:
+   82: case SceneType.drama:
+   84: case SceneType.media:
+   86: case SceneType.celebration:
+   88: case SceneType.hotTake:
+   90: case SceneType.event:
+  140: if (type == SceneType.confession &&
+  147: if (type == SceneType.dilemma &&
+  154: if (type == SceneType.drama &&
+  162: if (type == SceneType.celebration &&
+  170: if (type == SceneType.hotTake &&
+  177: if (type == SceneType.event &&
+  185: if (type == SceneType.media) {
+  198: if (t.isEmpty) return SceneType.media;
+  209: return SceneType.confession;
+  220: return SceneType.dilemma;
+  232: return SceneType.drama;
+  244: return SceneType.celebration;
+  254: return SceneType.hotTake;
+  266: return SceneType.event;
+  269: return SceneType.media;
+  343: case SceneType.confession:
+  345: case SceneType.dilemma:
+  347: case SceneType.drama:
+  349: case SceneType.media:
+  351: case SceneType.celebration:
+  353: case SceneType.hotTake:
+  355: case SceneType.event:
+  362: case SceneType.confession:
+  364: case SceneType.dilemma:
+  366: case SceneType.drama:
+  368: case SceneType.media:
+  370: case SceneType.celebration:
+  372: case SceneType.hotTake:
+  374: case SceneType.event:
+  381: case SceneType.confession:
+  383: case SceneType.dilemma:
+  385: case SceneType.drama:
+  387: case SceneType.media:
+  389: case SceneType.celebration:
+  391: case SceneType.hotTake:
+  393: case SceneType.event:
+  400: case SceneType.confession:
+  402: case SceneType.dilemma:
+  404: case SceneType.drama:
+  406: case SceneType.media:
+  408: case SceneType.celebration:
+  410: case SceneType.hotTake:
+  412: case SceneType.event:
+  636: SceneType _activeFeed = SceneType.media;
+  661: type: SceneType.media,
+  667: type: SceneType.drama,
+  673: type: SceneType.event,
+ 1396: children: SceneType.values.map((type) {
+
+
+5. CROSS-FEATURE REFERENCE HINTS
+--------------------------------------------------------------------------------
+
+SHELL:
+  ScenagramFrame: 8
+  _TopBar: 3
+  _LeftSidebar: 3
+  _SceneTypeStrip: 3
+  ApprovedRightSidebar: 6
+
+SCENES:
+  Scene: 24
+  HomePage: 5
+  ApprovedFeedCard: 6
+  SimpleSceneCard: 3
+  SceneDetailPage: 6
+
+CREATE_SCENE:
+  CreateScenePage: 5
+
+DISCOVERY:
+  TrendingPage: 3
+  _SceneMapRadarCard: 3
+
+PROFILE:
+  ProfilePage: 3
+
+PERSPECTIVES:
+  PerspectiveLanePrediction: 4
+  PerspectiveRoutingDecision: 4
+  PerspectiveItem: 9
+  _PerspectiveCard: 3
+  _LaneSelectorChip: 3
+
+
+6. RECOMMENDED ANALYSIS RULE
+--------------------------------------------------------------------------------
+Do not extract a symbol merely because it looks isolated.
+First identify:
+  1. What it imports or references.
+  2. What references it.
+  3. Whether private widgets must move with their parent.
+  4. Whether extraction would create circular imports.
+
+NO SOURCE FILES WERE MODIFIED.

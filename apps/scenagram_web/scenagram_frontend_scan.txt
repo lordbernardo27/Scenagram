@@ -1,0 +1,837 @@
+==============================================================================
+SCENAGRAM FRONTEND CURRENT-STATE SCAN
+==============================================================================
+
+Project root : C:\Users\HP\Documents\Scenagram\apps\scenagram_web
+Files scanned: 22
+Dart files   : 4
+
+==============================================================================
+1. FRONTEND FILE INVENTORY
+==============================================================================
+
+.dart        4
+.html        1
+.json        4
+.md          2
+.txt         9
+.yaml        2
+
+DART FILES
+------------------------------------------------------------------------------
+lib\core\theme\app_theme.dart                                           3562 bytes
+lib\core\theme\design_tokens.dart                                       2059 bytes
+lib\main.dart                                                         133728 bytes
+test\widget_test.dart                                                   1101 bytes
+
+==============================================================================
+2. DART CLASSES
+==============================================================================
+
+ApprovedFeedCard                              lib\main.dart
+ApprovedRightSidebar                          lib\main.dart
+CreateScenePage                               lib\main.dart
+FeedController                                lib\main.dart
+HomePage                                      lib\main.dart
+PerspectiveItem                               lib\main.dart
+PerspectiveLanePrediction                     lib\main.dart
+PerspectiveRoutingDecision                    lib\main.dart
+ProfilePage                                   lib\main.dart
+SGColors                                      lib\core\theme\design_tokens.dart
+SGGlow                                        lib\core\theme\design_tokens.dart
+SGRadius                                      lib\core\theme\design_tokens.dart
+SGSpacing                                     lib\core\theme\design_tokens.dart
+SGTextStyles                                  lib\core\theme\design_tokens.dart
+SGTheme                                       lib\core\theme\app_theme.dart
+ScenagramApp                                  lib\main.dart
+ScenagramFrame                                lib\main.dart
+Scene                                         lib\main.dart
+SceneDetailPage                               lib\main.dart
+SceneTypeMeta                                 lib\main.dart
+SceneTypePrediction                           lib\main.dart
+SimpleSceneCard                               lib\main.dart
+TrendingPage                                  lib\main.dart
+_ActionPill                                   lib\main.dart
+_ActionPillState                              lib\main.dart
+_ApprovedFeedCardState                        lib\main.dart
+_CreateScenePageState                         lib\main.dart
+_CustomShareAction                            lib\main.dart
+_EmptyStateCard                               lib\main.dart
+_FeedHeaderRow                                lib\main.dart
+_HomeFeedHeader                               lib\main.dart
+_HomePageState                                lib\main.dart
+_LanePill                                     lib\main.dart
+_LaneSelectorChip                             lib\main.dart
+_LeftSidebar                                  lib\main.dart
+_MiniLegendDot                                lib\main.dart
+_MiniStat                                     lib\main.dart
+_MiniTrendItem                                lib\main.dart
+_MiniTrendItemState                           lib\main.dart
+_PerspectiveCard                              lib\main.dart
+_PerspectiveLinkPill                          lib\main.dart
+_ProfileStatCard                              lib\main.dart
+_RadarDot                                     lib\main.dart
+_RightSectionCard                             lib\main.dart
+_RightSectionTitle                            lib\main.dart
+_RightSidebarHeader                           lib\main.dart
+_RightStatsCard                               lib\main.dart
+_ScenagramFrameState                          lib\main.dart
+_SceneDetailPageState                         lib\main.dart
+_SceneMapRadarCard                            lib\main.dart
+_SceneTypeStrip                               lib\main.dart
+_SceneTypeTab                                 lib\main.dart
+_SceneTypeTabState                            lib\main.dart
+_SideLabel                                    lib\main.dart
+_SidebarHideButton                            lib\main.dart
+_SidebarHideButtonState                       lib\main.dart
+_SidebarNavItem                               lib\main.dart
+_SidebarNavItemState                          lib\main.dart
+_SidebarRestoreButton                         lib\main.dart
+_TopBadgeIcon                                 lib\main.dart
+_TopBar                                       lib\main.dart
+_TopIcon                                      lib\main.dart
+_TrendingSceneCard                            lib\main.dart
+_TrendingSceneCardState                       lib\main.dart
+_WindowDot                                    lib\main.dart
+
+==============================================================================
+3. DART ENUMS
+==============================================================================
+
+LaneSort                                      lib\main.dart
+SceneType                                     lib\main.dart
+
+==============================================================================
+4. ROUTES
+==============================================================================
+
+/                              -> HomePage                            [lib\main.dart]
+/create                        -> CreateScenePage                     [lib\main.dart]
+/profile                       -> ProfilePage                         [lib\main.dart]
+/trending                      -> TrendingPage                        [lib\main.dart]
+
+==============================================================================
+5. FRONTEND CAPABILITY MARKERS
+==============================================================================
+
+[FOUND] Global application shell
+  marker: ScenagramFrame
+  - lib\main.dart:685 :: class ScenagramFrame extends StatefulWidget {
+  - lib\main.dart:692 :: const ScenagramFrame({
+  - lib\main.dart:702 :: State<ScenagramFrame> createState() => _ScenagramFrameState();
+  - lib\main.dart:705 :: class _ScenagramFrameState extends State<ScenagramFrame> {
+  - lib\main.dart:1624 :: return ScenagramFrame(
+  - lib\main.dart:2653 :: return ScenagramFrame(
+  - lib\main.dart:3040 :: return ScenagramFrame(
+  - lib\main.dart:3767 :: return ScenagramFrame(
+
+[FOUND] Top/header bar
+  marker: _TopBar
+  - lib\main.dart:728 :: _TopBar(currentRoute: widget.currentRoute),
+  - lib\main.dart:836 :: class _TopBar extends StatelessWidget {
+  - lib\main.dart:839 :: const _TopBar({required this.currentRoute});
+
+[FOUND] Left navigation
+  marker: _LeftSidebar
+  - lib\main.dart:740 :: child: _LeftSidebar(
+  - lib\main.dart:1091 :: class _LeftSidebar extends StatelessWidget {
+  - lib\main.dart:1095 :: const _LeftSidebar({
+
+[FOUND] Right discovery sidebar
+  marker: ApprovedRightSidebar
+  - lib\main.dart:1663 :: rightSidebar: const ApprovedRightSidebar(),
+  - lib\main.dart:2284 :: class ApprovedRightSidebar extends StatelessWidget {
+  - lib\main.dart:2285 :: const ApprovedRightSidebar({super.key});
+  - lib\main.dart:2711 :: rightSidebar: const ApprovedRightSidebar(),
+  - lib\main.dart:3302 :: rightSidebar: const ApprovedRightSidebar(),
+  - lib\main.dart:3794 :: rightSidebar: const ApprovedRightSidebar(),
+
+[FOUND] Scene Type navigation strip
+  marker: _SceneTypeStrip
+  - lib\main.dart:730 :: _SceneTypeStrip(
+  - lib\main.dart:1374 :: class _SceneTypeStrip extends StatelessWidget {
+  - lib\main.dart:1378 :: const _SceneTypeStrip({
+
+[FOUND] Primary feed page
+  marker: HomePage
+  - lib\main.dart:20 :: '/': (context) => const HomePage(),
+  - lib\main.dart:1588 :: class HomePage extends StatefulWidget {
+  - lib\main.dart:1589 :: const HomePage({super.key});
+  - lib\main.dart:1592 :: State<HomePage> createState() => _HomePageState();
+  - lib\main.dart:1595 :: class _HomePageState extends State<HomePage> {
+
+[FOUND] Post a Scene experience
+  marker: CreateScenePage
+  - lib\main.dart:22 :: '/create': (context) => const CreateScenePage(),
+  - lib\main.dart:2865 :: class CreateScenePage extends StatefulWidget {
+  - lib\main.dart:2866 :: const CreateScenePage({super.key});
+  - lib\main.dart:2869 :: State<CreateScenePage> createState() => _CreateScenePageState();
+  - lib\main.dart:2872 :: class _CreateScenePageState extends State<CreateScenePage> {
+
+[FOUND] Scene detail experience
+  marker: SceneDetailPage
+  - lib\main.dart:1655 :: SceneDetailPage(scene: scene),
+  - lib\main.dart:2703 :: builder: (_) => SceneDetailPage(scene: scene),
+  - lib\main.dart:3958 :: class SceneDetailPage extends StatefulWidget {
+  - lib\main.dart:3961 :: const SceneDetailPage({super.key, required this.scene});
+  - lib\main.dart:3964 :: State<SceneDetailPage> createState() => _SceneDetailPageState();
+  - lib\main.dart:3967 :: class _SceneDetailPageState extends State<SceneDetailPage> {
+
+[FOUND] Profile page
+  marker: ProfilePage
+  - lib\main.dart:23 :: '/profile': (context) => const ProfilePage(),
+  - lib\main.dart:3758 :: class ProfilePage extends StatelessWidget {
+  - lib\main.dart:3759 :: const ProfilePage({super.key});
+
+[FOUND] Legacy Trending surface
+  marker: TrendingPage
+  - lib\main.dart:21 :: '/trending': (context) => const TrendingPage(),
+  - lib\main.dart:2646 :: class TrendingPage extends StatelessWidget {
+  - lib\main.dart:2647 :: const TrendingPage({super.key});
+
+[FOUND] Drama Scene Type
+  marker: SceneType.drama
+  - lib\main.dart:44 :: case SceneType.drama:
+  - lib\main.dart:63 :: case SceneType.drama:
+  - lib\main.dart:82 :: case SceneType.drama:
+  - lib\main.dart:154 :: if (type == SceneType.drama &&
+  - lib\main.dart:232 :: return SceneType.drama;
+  - lib\main.dart:347 :: case SceneType.drama:
+  - lib\main.dart:366 :: case SceneType.drama:
+  - lib\main.dart:385 :: case SceneType.drama:
+  - ... 2 more occurrence(s)
+
+[FOUND] Confess Scene Type
+  marker: SceneType.confession
+  - lib\main.dart:40 :: case SceneType.confession:
+  - lib\main.dart:59 :: case SceneType.confession:
+  - lib\main.dart:78 :: case SceneType.confession:
+  - lib\main.dart:140 :: if (type == SceneType.confession &&
+  - lib\main.dart:209 :: return SceneType.confession;
+  - lib\main.dart:343 :: case SceneType.confession:
+  - lib\main.dart:362 :: case SceneType.confession:
+  - lib\main.dart:381 :: case SceneType.confession:
+  - ... 1 more occurrence(s)
+
+[FOUND] Dilemma Scene Type
+  marker: SceneType.dilemma
+  - lib\main.dart:42 :: case SceneType.dilemma:
+  - lib\main.dart:61 :: case SceneType.dilemma:
+  - lib\main.dart:80 :: case SceneType.dilemma:
+  - lib\main.dart:147 :: if (type == SceneType.dilemma &&
+  - lib\main.dart:220 :: return SceneType.dilemma;
+  - lib\main.dart:345 :: case SceneType.dilemma:
+  - lib\main.dart:364 :: case SceneType.dilemma:
+  - lib\main.dart:383 :: case SceneType.dilemma:
+  - ... 1 more occurrence(s)
+
+[FOUND] Hot Takes Scene Type
+  marker: SceneType.hotTake
+  - lib\main.dart:50 :: case SceneType.hotTake:
+  - lib\main.dart:69 :: case SceneType.hotTake:
+  - lib\main.dart:88 :: case SceneType.hotTake:
+  - lib\main.dart:170 :: if (type == SceneType.hotTake &&
+  - lib\main.dart:254 :: return SceneType.hotTake;
+  - lib\main.dart:353 :: case SceneType.hotTake:
+  - lib\main.dart:372 :: case SceneType.hotTake:
+  - lib\main.dart:391 :: case SceneType.hotTake:
+  - ... 1 more occurrence(s)
+
+[FOUND] Event Scene Type
+  marker: SceneType.event
+  - lib\main.dart:52 :: case SceneType.event:
+  - lib\main.dart:71 :: case SceneType.event:
+  - lib\main.dart:90 :: case SceneType.event:
+  - lib\main.dart:177 :: if (type == SceneType.event &&
+  - lib\main.dart:266 :: return SceneType.event;
+  - lib\main.dart:355 :: case SceneType.event:
+  - lib\main.dart:374 :: case SceneType.event:
+  - lib\main.dart:393 :: case SceneType.event:
+  - ... 2 more occurrence(s)
+
+[FOUND] Celebration Scene Type
+  marker: SceneType.celebration
+  - lib\main.dart:48 :: case SceneType.celebration:
+  - lib\main.dart:67 :: case SceneType.celebration:
+  - lib\main.dart:86 :: case SceneType.celebration:
+  - lib\main.dart:162 :: if (type == SceneType.celebration &&
+  - lib\main.dart:244 :: return SceneType.celebration;
+  - lib\main.dart:351 :: case SceneType.celebration:
+  - lib\main.dart:370 :: case SceneType.celebration:
+  - lib\main.dart:389 :: case SceneType.celebration:
+  - ... 1 more occurrence(s)
+
+[FOUND] Media Scene Type
+  marker: SceneType.media
+  - lib\main.dart:46 :: case SceneType.media:
+  - lib\main.dart:65 :: case SceneType.media:
+  - lib\main.dart:84 :: case SceneType.media:
+  - lib\main.dart:185 :: if (type == SceneType.media) {
+  - lib\main.dart:198 :: if (t.isEmpty) return SceneType.media;
+  - lib\main.dart:269 :: return SceneType.media;
+  - lib\main.dart:349 :: case SceneType.media:
+  - lib\main.dart:368 :: case SceneType.media:
+  - ... 4 more occurrence(s)
+
+[FOUND] Primary Scene card
+  marker: ApprovedFeedCard
+  - lib\main.dart:1649 :: child: ApprovedFeedCard(
+  - lib\main.dart:1806 :: class ApprovedFeedCard extends StatefulWidget {
+  - lib\main.dart:1810 :: const ApprovedFeedCard({
+  - lib\main.dart:1817 :: State<ApprovedFeedCard> createState() =>
+  - lib\main.dart:1818 :: _ApprovedFeedCardState();
+  - lib\main.dart:1821 :: class _ApprovedFeedCardState extends State<ApprovedFeedCard> {
+  - lib\main.dart:3298 :: ApprovedFeedCard(scene: _preview!),
+
+[FOUND] Secondary/simple Scene card
+  marker: SimpleSceneCard
+  - lib\main.dart:3791 :: if (topScene != null) SimpleSceneCard(scene: topScene),
+  - lib\main.dart:3841 :: class SimpleSceneCard extends StatelessWidget {
+  - lib\main.dart:3845 :: const SimpleSceneCard({
+
+[NOT FOUND] Scene Type UI text
+  marker: Scene Type
+
+[FOUND] Creator follow UI
+  marker: Follow
+  - lib\main.dart:2154 :: 'Follow',
+
+[FOUND] Save UI
+  marker: Save
+  - lib\main.dart:2980 :: void _saveDraft() {
+  - lib\main.dart:2990 :: content: Text('Nothing to save yet. Add scene details first.'),
+  - lib\main.dart:2999 :: content: Text('Draft saved locally for now.'),
+  - lib\main.dart:3261 :: onPressed: _saveDraft,
+  - lib\main.dart:3262 :: child: const Text('Save Draft'),
+  - lib\main.dart:3576 :: label: 'Saved',
+
+[FOUND] Share UI
+  marker: Share
+  - lib\main.dart:375 :: return 'Shared real-world experiences, gatherings, and live moments.';
+  - lib\main.dart:669 :: 'Just now: A heated argument broke out at a public event after a well-known influencer allegedly disrespected a small business owner on stage. The crowd quickly took sides. Watch and share your thoughts.',
+  - lib\main.dart:2255 :: class _CustomShareAction extends StatelessWidget {
+  - lib\main.dart:2256 :: const _CustomShareAction();
+  - lib\main.dart:2269 :: 'Share',
+  - lib\main.dart:4189 :: label: 'Share',
+
+[NOT FOUND] Comment UI
+  marker: Comment
+
+[FOUND] More-options UI
+  marker: more_vert
+  - lib\main.dart:1159 :: Icons.more_vert_rounded,
+  - lib\main.dart:2167 :: Icons.more_vert_rounded,
+
+[FOUND] Scene composer
+  marker: Scene Composer
+  - lib\main.dart:3066 :: 'Scene Composer',
+
+[FOUND] Image picker
+  marker: _pickImages
+  - lib\main.dart:2891 :: Future<void> _pickImages() async {
+  - lib\main.dart:3156 :: onPressed: _pickImages,
+
+[FOUND] Video picker
+  marker: _pickVideo
+  - lib\main.dart:2925 :: Future<void> _pickVideo() async {
+  - lib\main.dart:3165 :: onPressed: _pickVideo,
+
+[FOUND] Scene preview
+  marker: _makePreview
+  - lib\main.dart:2965 :: void _makePreview() {
+  - lib\main.dart:3266 :: onPressed: _makePreview,
+
+[FOUND] Draft state
+  marker: _saveDraft
+  - lib\main.dart:2980 :: void _saveDraft() {
+  - lib\main.dart:3261 :: onPressed: _saveDraft,
+
+[FOUND] Frontend publish flow
+  marker: _publish
+  - lib\main.dart:3005 :: Future<void> _publish() async {
+  - lib\main.dart:3271 :: onPressed: _isPublishing ? null : _publish,
+
+[FOUND] Location input
+  marker: _locationCtrl
+  - lib\main.dart:2874 :: final TextEditingController _locationCtrl = TextEditingController();
+  - lib\main.dart:2886 :: _locationCtrl.dispose();
+  - lib\main.dart:2986 :: _locationCtrl.text.trim().isEmpty &&
+  - lib\main.dart:3124 :: controller: _locationCtrl,
+
+[FOUND] Tags input
+  marker: _tagsCtrl
+  - lib\main.dart:2875 :: final TextEditingController _tagsCtrl = TextEditingController();
+  - lib\main.dart:2887 :: _tagsCtrl.dispose();
+  - lib\main.dart:2987 :: _tagsCtrl.text.trim().isEmpty) {
+
+[FOUND] Reaction Perspective
+  marker: Reaction
+  - lib\main.dart:367 :: return 'Conflict, tension, chaos, controversy, and public reactions.';
+  - lib\main.dart:401 :: return ['Advice', 'Reaction', 'Analysis', 'Comedy', 'Debate'];
+  - lib\main.dart:403 :: return ['Debate', 'Advice', 'Analysis', 'Reaction', 'Comedy'];
+  - lib\main.dart:405 :: return ['Reaction', 'Debate', 'Comedy', 'Analysis', 'Advice'];
+  - lib\main.dart:407 :: return ['Reaction', 'Analysis', 'Comedy', 'Debate', 'Advice'];
+  - lib\main.dart:409 :: return ['Reaction', 'Comedy', 'Advice', 'Analysis', 'Debate'];
+  - lib\main.dart:411 :: return ['Debate', 'Reaction', 'Analysis', 'Comedy', 'Advice'];
+  - lib\main.dart:413 :: return ['Reaction', 'Analysis', 'Comedy', 'Debate', 'Advice'];
+  - ... 12 more occurrence(s)
+
+[FOUND] Comedy Perspective
+  marker: Comedy
+  - lib\main.dart:401 :: return ['Advice', 'Reaction', 'Analysis', 'Comedy', 'Debate'];
+  - lib\main.dart:403 :: return ['Debate', 'Advice', 'Analysis', 'Reaction', 'Comedy'];
+  - lib\main.dart:405 :: return ['Reaction', 'Debate', 'Comedy', 'Analysis', 'Advice'];
+  - lib\main.dart:407 :: return ['Reaction', 'Analysis', 'Comedy', 'Debate', 'Advice'];
+  - lib\main.dart:409 :: return ['Reaction', 'Comedy', 'Advice', 'Analysis', 'Debate'];
+  - lib\main.dart:411 :: return ['Debate', 'Reaction', 'Analysis', 'Comedy', 'Advice'];
+  - lib\main.dart:413 :: return ['Reaction', 'Analysis', 'Comedy', 'Debate', 'Advice'];
+  - lib\main.dart:462 :: if (lane == 'Comedy' &&
+  - ... 7 more occurrence(s)
+
+[FOUND] Advice Perspective
+  marker: Advice
+  - lib\main.dart:401 :: return ['Advice', 'Reaction', 'Analysis', 'Comedy', 'Debate'];
+  - lib\main.dart:403 :: return ['Debate', 'Advice', 'Analysis', 'Reaction', 'Comedy'];
+  - lib\main.dart:405 :: return ['Reaction', 'Debate', 'Comedy', 'Analysis', 'Advice'];
+  - lib\main.dart:407 :: return ['Reaction', 'Analysis', 'Comedy', 'Debate', 'Advice'];
+  - lib\main.dart:409 :: return ['Reaction', 'Comedy', 'Advice', 'Analysis', 'Debate'];
+  - lib\main.dart:411 :: return ['Debate', 'Reaction', 'Analysis', 'Comedy', 'Advice'];
+  - lib\main.dart:413 :: return ['Reaction', 'Analysis', 'Comedy', 'Debate', 'Advice'];
+  - lib\main.dart:441 :: if (lane == 'Advice' &&
+  - ... 8 more occurrence(s)
+
+[FOUND] Analysis Perspective
+  marker: Analysis
+  - lib\main.dart:401 :: return ['Advice', 'Reaction', 'Analysis', 'Comedy', 'Debate'];
+  - lib\main.dart:403 :: return ['Debate', 'Advice', 'Analysis', 'Reaction', 'Comedy'];
+  - lib\main.dart:405 :: return ['Reaction', 'Debate', 'Comedy', 'Analysis', 'Advice'];
+  - lib\main.dart:407 :: return ['Reaction', 'Analysis', 'Comedy', 'Debate', 'Advice'];
+  - lib\main.dart:409 :: return ['Reaction', 'Comedy', 'Advice', 'Analysis', 'Debate'];
+  - lib\main.dart:411 :: return ['Debate', 'Reaction', 'Analysis', 'Comedy', 'Advice'];
+  - lib\main.dart:413 :: return ['Reaction', 'Analysis', 'Comedy', 'Debate', 'Advice'];
+  - lib\main.dart:455 :: if (lane == 'Analysis' &&
+  - ... 7 more occurrence(s)
+
+[FOUND] Debate Perspective
+  marker: Debate
+  - lib\main.dart:401 :: return ['Advice', 'Reaction', 'Analysis', 'Comedy', 'Debate'];
+  - lib\main.dart:403 :: return ['Debate', 'Advice', 'Analysis', 'Reaction', 'Comedy'];
+  - lib\main.dart:405 :: return ['Reaction', 'Debate', 'Comedy', 'Analysis', 'Advice'];
+  - lib\main.dart:407 :: return ['Reaction', 'Analysis', 'Comedy', 'Debate', 'Advice'];
+  - lib\main.dart:409 :: return ['Reaction', 'Comedy', 'Advice', 'Analysis', 'Debate'];
+  - lib\main.dart:411 :: return ['Debate', 'Reaction', 'Analysis', 'Comedy', 'Advice'];
+  - lib\main.dart:413 :: return ['Reaction', 'Analysis', 'Comedy', 'Debate', 'Advice'];
+  - lib\main.dart:448 :: if (lane == 'Debate' &&
+  - ... 7 more occurrence(s)
+
+[FOUND] Perspective selection state
+  marker: selectedLaneIndex
+  - lib\main.dart:3968 :: int selectedLaneIndex = 0;
+  - lib\main.dart:3999 :: final lane = lanes[selectedLaneIndex];
+  - lib\main.dart:4017 :: final lane = lanes[selectedLaneIndex];
+  - lib\main.dart:4041 :: final lane = lanes[selectedLaneIndex];
+  - lib\main.dart:4227 :: selected: i == selectedLaneIndex,
+  - lib\main.dart:4228 :: onTap: () => setState(() => selectedLaneIndex = i),
+  - lib\main.dart:4337 :: selectedLaneIndex = idx;
+
+[FOUND] Perspective item/data
+  marker: PerspectiveItem
+  - lib\main.dart:3951 :: class PerspectiveItem {
+  - lib\main.dart:3955 :: PerspectiveItem(this.text, {this.upvotes = 0});
+  - lib\main.dart:3973 :: late Map<String, List<PerspectiveItem>> perspectivesByLane;
+  - lib\main.dart:3986 :: PerspectiveItem('First perspective in $lane.', upvotes: 2),
+  - lib\main.dart:3987 :: PerspectiveItem('Another perspective in $lane.', upvotes: 1),
+  - lib\main.dart:3988 :: PerspectiveItem('One more perspective in $lane.', upvotes: 0),
+  - lib\main.dart:4005 :: PerspectiveItem(text, upvotes: 0),
+  - lib\main.dart:4023 :: final list = perspectivesByLane[lane] ?? <PerspectiveItem>[];
+  - ... 1 more occurrence(s)
+
+[FOUND] Perspective contribution tracking
+  marker: totalPerspectivesPosted
+  - lib\main.dart:680 :: int totalPerspectivesPosted = 0;
+  - lib\main.dart:3778 :: '$totalPerspectivesPosted',
+  - lib\main.dart:4011 :: totalPerspectivesPosted += 1;
+
+[FOUND] Reply implementation
+  marker: reply
+  - lib\main.dart:4188 :: icon: Icons.reply_rounded,
+
+[NOT FOUND] Reply collection/state
+  marker: replies
+
+[FOUND] Comment/Perspective vote interaction
+  marker: upvote
+  - lib\main.dart:3678 :: final int upvotes;
+  - lib\main.dart:3680 :: final VoidCallback? onUpvote;
+  - lib\main.dart:3684 :: required this.upvotes,
+  - lib\main.dart:3686 :: required this.onUpvote,
+  - lib\main.dart:3732 :: 'Upvotes: $upvotes',
+  - lib\main.dart:3744 :: onPressed: onUpvote,
+  - lib\main.dart:3745 :: child: Text(alreadyVoted ? 'Upvoted' : 'Upvote'),
+  - lib\main.dart:3953 :: int upvotes;
+  - ... 11 more occurrence(s)
+
+[FOUND] Vote button UI
+  marker: Upvote
+  - lib\main.dart:3678 :: final int upvotes;
+  - lib\main.dart:3680 :: final VoidCallback? onUpvote;
+  - lib\main.dart:3684 :: required this.upvotes,
+  - lib\main.dart:3686 :: required this.onUpvote,
+  - lib\main.dart:3732 :: 'Upvotes: $upvotes',
+  - lib\main.dart:3744 :: onPressed: onUpvote,
+  - lib\main.dart:3745 :: child: Text(alreadyVoted ? 'Upvoted' : 'Upvote'),
+  - lib\main.dart:3953 :: int upvotes;
+  - ... 11 more occurrence(s)
+
+[FOUND] Sorting logic/UI
+  marker: sort
+  - lib\main.dart:2651 :: final ranked = [...homeScenes]..sort((a, b) => b.heat.compareTo(a.heat));
+  - lib\main.dart:3764 :: final top = [...homeScenes]..sort((a, b) => b.heat.compareTo(a.heat));
+  - lib\main.dart:3949 :: enum LaneSort { best, newest }
+  - lib\main.dart:3969 :: LaneSort _sort = LaneSort.best;
+  - lib\main.dart:4045 :: if (_sort == LaneSort.best) {
+  - lib\main.dart:4046 :: perspectives.sort((a, b) => b.upvotes.compareTo(a.upvotes));
+  - lib\main.dart:4237 :: 'Sort by',
+  - lib\main.dart:4247 :: selected: _sort == LaneSort.best,
+  - ... 3 more occurrence(s)
+
+[NOT FOUND] Pinned comment implementation
+  marker: pinned
+
+[NOT FOUND] Pinned comment visual
+  marker: Pinned
+
+[FOUND] Scene Map UI
+  marker: Scene Map
+  - lib\main.dart:3366 :: 'Scene Map',
+  - lib\main.dart:3519 :: 'Open Scene Map',
+
+[NOT FOUND] Scene Radar UI
+  marker: Scene Radar
+
+[NOT FOUND] Scene Context UI
+  marker: Scene Context
+
+[NOT FOUND] Pulse UI
+  marker: Pulse
+
+[NOT FOUND] Perspective Pulse UI
+  marker: Perspective Pulse
+
+[FOUND] Search UI
+  marker: Search
+  - lib\main.dart:908 :: Icons.search_rounded,
+  - lib\main.dart:915 :: 'Search Scenagram web',
+
+[FOUND] Notification UI
+  marker: notification
+  - lib\main.dart:944 :: icon: Icons.notifications_none_rounded,
+
+[FOUND] Notifications UI
+  marker: Notifications
+  - lib\main.dart:944 :: icon: Icons.notifications_none_rounded,
+
+[FOUND] Settings UI
+  marker: Settings
+  - lib\main.dart:1184 :: icon: Icons.settings_outlined,
+  - lib\main.dart:1185 :: label: 'Settings',
+
+[FOUND] Privacy UI
+  marker: Privacy
+  - lib\main.dart:1197 :: label: 'Privacy & Security',
+  - lib\main.dart:1277 :: 'Terms  ?  Privacy  ?  Cookies',
+
+[FOUND] Account details UI
+  marker: Account Details
+  - lib\main.dart:1191 :: label: 'Account Details',
+
+[FOUND] Help Center UI
+  marker: Help Center
+  - lib\main.dart:1249 :: label: 'Help Center',
+
+[NOT FOUND] Not Interested control
+  marker: Not Interested
+
+[NOT FOUND] Report control
+  marker: Report
+
+[NOT FOUND] Block control
+  marker: Block
+
+[FOUND] Mute control
+  marker: Mute
+  - lib\core\theme\design_tokens.dart:19 :: static const Color textMuted = Color(0xFF6B7280);
+  - lib\core\theme\design_tokens.dart:75 :: color: SGColors.textMuted,
+
+[FOUND] Hide control
+  marker: Hide
+  - lib\main.dart:742 :: onHide: () {
+  - lib\main.dart:800 :: child: _SidebarHideButton(
+  - lib\main.dart:1093 :: final VoidCallback onHide;
+  - lib\main.dart:1097 :: required this.onHide,
+  - lib\main.dart:1156 :: onPressed: onHide,
+  - lib\main.dart:1502 :: class _SidebarHideButton extends StatefulWidget {
+  - lib\main.dart:1505 :: const _SidebarHideButton({required this.onTap});
+  - lib\main.dart:1508 :: State<_SidebarHideButton> createState() => _SidebarHideButtonState();
+  - ... 1 more occurrence(s)
+
+[FOUND] Loading state
+  marker: CircularProgressIndicator
+  - lib\main.dart:3276 :: child: CircularProgressIndicator(strokeWidth: 2),
+
+[NOT FOUND] Skeleton loading state
+  marker: Skeleton
+
+[FOUND] Feedback/toast state
+  marker: SnackBar
+  - lib\main.dart:2988 :: ScaffoldMessenger.of(context).showSnackBar(
+  - lib\main.dart:2989 :: const SnackBar(
+  - lib\main.dart:2991 :: behavior: SnackBarBehavior.floating,
+  - lib\main.dart:2997 :: ScaffoldMessenger.of(context).showSnackBar(
+  - lib\main.dart:2998 :: const SnackBar(
+  - lib\main.dart:3000 :: behavior: SnackBarBehavior.floating,
+  - lib\main.dart:3028 :: ScaffoldMessenger.of(context).showSnackBar(
+  - lib\main.dart:3029 :: const SnackBar(
+  - ... 1 more occurrence(s)
+
+[FOUND] Validation/error state
+  marker: errorText
+  - lib\main.dart:2880 :: String? _errorText;
+  - lib\main.dart:2954 :: _errorText = 'Please write a scene caption before continuing.';
+  - lib\main.dart:2960 :: _errorText = null;
+  - lib\main.dart:3098 :: if (_errorText != null) {
+  - lib\main.dart:3099 :: _errorText = null;
+  - lib\main.dart:3105 :: errorText: _errorText,
+
+[NOT FOUND] Retry state
+  marker: Retry
+
+[NOT FOUND] Responsive sizing logic
+  marker: MediaQuery
+
+[NOT FOUND] Responsive layout logic
+  marker: LayoutBuilder
+
+[NOT FOUND] Mobile/bottom navigation
+  marker: NavigationBar
+
+[NOT FOUND] Mobile/bottom navigation
+  marker: BottomNavigationBar
+
+[NOT FOUND] Bottom-sheet/mobile interaction
+  marker: DraggableScrollableSheet
+
+[NOT FOUND] Gesture interaction
+  marker: GestureDetector
+
+[FOUND] Global theme
+  marker: SGTheme
+  - lib\main.dart:16 :: theme: SGTheme.light(),
+  - lib\core\theme\app_theme.dart:4 :: class SGTheme {
+
+[FOUND] Design color tokens
+  marker: SGColors
+  - lib\core\theme\app_theme.dart:11 :: primary: SGColors.accentBlue,
+  - lib\core\theme\app_theme.dart:12 :: secondary: SGColors.accentPurple,
+  - lib\core\theme\app_theme.dart:14 :: error: SGColors.accentRed,
+  - lib\core\theme\app_theme.dart:73 :: backgroundColor: SGColors.accentBlue,
+  - lib\core\theme\app_theme.dart:112 :: color: SGColors.accentBlue,
+  - lib\core\theme\design_tokens.dart:3 :: class SGColors {
+  - lib\core\theme\design_tokens.dart:59 :: color: SGColors.textPrimary,
+  - lib\core\theme\design_tokens.dart:65 :: color: SGColors.textPrimary,
+  - ... 2 more occurrence(s)
+
+[FOUND] Spacing tokens
+  marker: SGSpacing
+  - lib\core\theme\app_theme.dart:80 :: horizontal: SGSpacing.lg,
+  - lib\core\theme\app_theme.dart:81 :: vertical: SGSpacing.md,
+  - lib\core\theme\design_tokens.dart:27 :: class SGSpacing {
+
+[FOUND] Radius tokens
+  marker: SGRadius
+  - lib\core\theme\app_theme.dart:28 :: borderRadius: BorderRadius.circular(SGRadius.lg),
+  - lib\core\theme\app_theme.dart:39 :: borderRadius: BorderRadius.circular(SGRadius.md),
+  - lib\core\theme\app_theme.dart:77 :: borderRadius: BorderRadius.circular(SGRadius.md),
+  - lib\core\theme\app_theme.dart:102 :: borderRadius: BorderRadius.circular(SGRadius.md),
+  - lib\core\theme\app_theme.dart:106 :: borderRadius: BorderRadius.circular(SGRadius.md),
+  - lib\core\theme\app_theme.dart:110 :: borderRadius: BorderRadius.circular(SGRadius.md),
+  - lib\core\theme\design_tokens.dart:36 :: class SGRadius {
+
+==============================================================================
+6. LEGACY / TERMINOLOGY REVIEW
+==============================================================================
+
+[REVIEW] Home Feed
+  Potential legacy terminology: current canonical architecture uses seven dedicated Scene-Type feeds rather than one generic universal Home feed.
+  - lib\main.dart:1208 :: label: 'Home Feed',
+  - lib\main.dart:1682 :: 'Home Feed',
+
+[REVIEW] Trending
+  Potential legacy terminology/surface: review against canonical Scene Radar and broader discovery architecture.
+  - lib\main.dart:21 :: '/trending': (context) => const TrendingPage(),
+  - lib\main.dart:1218 :: label: 'Trending',
+  - lib\main.dart:1219 :: selected: currentRoute == '/trending',
+  - lib\main.dart:1222 :: '/trending',
+  - lib\main.dart:2309 :: title: 'Trending',
+  - lib\main.dart:2644 :: TRENDING PAGE
+  - lib\main.dart:2646 :: class TrendingPage extends StatelessWidget {
+  - lib\main.dart:2647 :: const TrendingPage({super.key});
+  - lib\main.dart:2654 :: currentRoute: '/trending',
+  - lib\main.dart:2670 :: 'Trending Now',
+  - lib\main.dart:2697 :: child: _TrendingSceneCard(
+  - lib\main.dart:2717 :: class _TrendingSceneCard extends StatefulWidget {
+  - ... 4 more occurrence(s)
+
+[REVIEW] lane
+  Terminology review: 'lane' may be an internal implementation term, but canonical user-facing concept is Perspective.
+  - lib\main.dart:101 :: final List<String> priorityLanes;
+  - lib\main.dart:109 :: required this.priorityLanes,
+  - lib\main.dart:120 :: priorityLanes: sceneTypePriorityLanes(t),
+  - lib\main.dart:398 :: List<String> sceneTypePriorityLanes(SceneType t) {
+  - lib\main.dart:417 :: List<String> lanesForType(SceneType t) {
+  - lib\main.dart:418 :: return sceneTypePriorityLanes(t);
+  - lib\main.dart:422 :: class PerspectiveLanePrediction {
+  - lib\main.dart:423 :: final String lane;
+  - lib\main.dart:426 :: const PerspectiveLanePrediction({
+  - lib\main.dart:427 :: required this.lane,
+  - lib\main.dart:432 :: PerspectiveLanePrediction detectPerspectiveLaneWithConfidence(
+  - lib\main.dart:435 :: final lane = detectPerspectiveLane(text);
+  - ... 90 more occurrence(s)
+
+[REVIEW] lanes
+  Terminology review: 'lanes' may be an internal implementation term, but canonical user-facing concept is Perspectives.
+  - lib\main.dart:101 :: final List<String> priorityLanes;
+  - lib\main.dart:109 :: required this.priorityLanes,
+  - lib\main.dart:120 :: priorityLanes: sceneTypePriorityLanes(t),
+  - lib\main.dart:398 :: List<String> sceneTypePriorityLanes(SceneType t) {
+  - lib\main.dart:417 :: List<String> lanesForType(SceneType t) {
+  - lib\main.dart:418 :: return sceneTypePriorityLanes(t);
+  - lib\main.dart:603 :: const List<String> kUniversalLanes = [
+  - lib\main.dart:627 :: List<String> get lanes => lanesForType(type);
+  - lib\main.dart:3623 :: class _LaneSelectorChip extends StatelessWidget {
+  - lib\main.dart:3628 :: const _LaneSelectorChip({
+  - lib\main.dart:3883 :: children: scene.lanes
+  - lib\main.dart:3949 :: enum LaneSort { best, newest }
+  - ... 18 more occurrence(s)
+
+==============================================================================
+7. TODO / FIXME / PLACEHOLDER MARKERS
+==============================================================================
+
+web\index.html:14 :: This is a placeholder for base href that will be replaced by the value of
+windows\flutter\CMakeLists.txt:9 :: # TODO: Move the rest of this into files in ephemeral. See
+linux\flutter\CMakeLists.txt:9 :: # TODO: Move the rest of this into files in ephemeral. See
+
+==============================================================================
+8. HIGH-LEVEL FRONTEND COVERAGE
+==============================================================================
+
+GLOBAL FOUNDATION
+-----------------
+  [X] ScenagramFrame
+  [X] _TopBar
+  [X] _LeftSidebar
+  [X] ApprovedRightSidebar
+  [X] _SceneTypeStrip
+  Coverage markers found: 5/5
+
+SCENE CARDS
+-----------
+  [X] ApprovedFeedCard
+  [X] SimpleSceneCard
+  Coverage markers found: 2/2
+
+POST A SCENE
+------------
+  [X] CreateScenePage
+  [X] _pickImages
+  [X] _pickVideo
+  [X] _makePreview
+  [X] _saveDraft
+  [X] _publish
+  Coverage markers found: 6/6
+
+PERSPECTIVES
+------------
+  [X] Reaction
+  [X] Comedy
+  [X] Advice
+  [X] Analysis
+  [X] Debate
+  [X] selectedLaneIndex
+  [X] PerspectiveItem
+  Coverage markers found: 7/7
+
+COMMENTS / CONVERSATION
+-----------------------
+  [X] reply
+  [X] upvote
+  [X] sort
+  [ ] pinned
+  Coverage markers found: 3/4
+
+SCENE DETAIL
+------------
+  [X] SceneDetailPage
+  Coverage markers found: 1/1
+
+DISCOVERY
+---------
+  [X] Scene Map
+  [ ] Scene Radar
+  [ ] Scene Context
+  Coverage markers found: 1/3
+
+SHORT FORM
+----------
+  [ ] Pulse
+  [ ] Perspective Pulse
+  Coverage markers found: 0/2
+
+SAFETY CONTROLS
+---------------
+  [ ] Not Interested
+  [ ] Report
+  [ ] Block
+  [X] Mute
+  [X] Hide
+  Coverage markers found: 2/5
+
+RESPONSIVE / MOBILE
+-------------------
+  [ ] MediaQuery
+  [ ] LayoutBuilder
+  [ ] NavigationBar
+  [ ] BottomNavigationBar
+  [ ] GestureDetector
+  Coverage markers found: 0/5
+
+DESIGN SYSTEM
+-------------
+  [X] SGTheme
+  [X] SGColors
+  [X] SGSpacing
+  [X] SGRadius
+  Coverage markers found: 4/4
+
+==============================================================================
+9. LARGE DART FILES / STRUCTURE REVIEW
+==============================================================================
+
+   4398 lines  lib\main.dart
+
+NOTE: Large files are not automatically wrong. This section only identifies files that may later benefit from modularization.
+
+==============================================================================
+10. SCAN SUMMARY
+==============================================================================
+
+Frontend capability markers checked : 80
+Markers found                      : 60
+Markers not found                  : 20
+Routes discovered                  : 4
+Dart classes discovered            : 65
+Dart enums discovered              : 2
+TODO/FIXME/etc. markers            : 3
+
+IMPORTANT: FOUND does not automatically mean COMPLETE. This scanner identifies implementation evidence. The next review will classify each frontend checklist item as COMPLETE, PARTIAL, MISSING, LEGACY/REWORK, or NOT APPLICABLE.

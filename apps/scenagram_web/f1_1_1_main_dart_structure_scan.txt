@@ -1,0 +1,272 @@
+SCENAGRAM ? F1.1.1 MAIN.DART STRUCTURE SCAN
+========================================================================
+PROJECT ROOT: C:\Users\HP\Documents\Scenagram\apps\scenagram_web
+SOURCE: C:\Users\HP\Documents\Scenagram\apps\scenagram_web\lib\main.dart
+TOTAL LINES: 4398
+TOTAL BYTES: 133728
+
+1. IMPORTS
+------------------------------------------------------------------------
+    1: import 'dart:typed_data';
+    2: import 'package:flutter/material.dart';
+    3: import 'package:file_picker/file_picker.dart';
+    4: import 'core/theme/app_theme.dart';
+
+2. TOP-LEVEL ENUMS / TYPEDEFS / FUNCTIONS
+------------------------------------------------------------------------
+    6: void main() => runApp(const ScenagramApp());
+   12: Widget build(BuildContext context) {
+   38: String sceneTypeLabel(SceneType t) {
+  200: bool hasAny(List<String> words) => words.any((w) => t.contains(w));
+  272: bool isSceneTypeMismatch({
+  279: bool shouldFlagSceneForModeration(String text) {
+  310: String sceneModerationReason(String text) {
+  341: String sceneTypeFeedRoute(SceneType t) {
+  360: String sceneTypePurpose(SceneType t) {
+  379: String sceneTypeUiStyle(SceneType t) {
+  398: List<String> sceneTypePriorityLanes(SceneType t) {
+  417: List<String> lanesForType(SceneType t) {
+  478: String detectPerspectiveLane(String text) {
+  489: bool hasAny(List<String> words) => words.any((w) => t.contains(w));
+  500: bool isPerspectiveLaneMismatch({
+  508: bool shouldFlagPerspectiveForModeration(String text) {
+  564: String perspectiveModerationReason(String text) {
+  593: enum SceneType {
+  640: void selectFeed(SceneType feed) {
+  647: List<Scene> scenesForActiveFeed(List<Scene> scenes) {
+  653: bool isActive(SceneType feed) => _activeFeed == feed;
+  712: Widget build(BuildContext context) {
+  842: Widget build(BuildContext context) {
+ 1018: Widget build(BuildContext context) {
+ 1035: Widget build(BuildContext context) {
+ 1050: Widget build(BuildContext context) {
+ 1101: Widget build(BuildContext context) {
+ 1315: Widget build(BuildContext context) {
+ 1384: Widget build(BuildContext context) {
+ 1428: Widget build(BuildContext context) {
+ 1486: Widget build(BuildContext context) {
+ 1515: Widget build(BuildContext context) {
+ 1554: Widget build(BuildContext context) {
+ 1599: void initState() {
+ 1606: void _onFeedChanged() {
+ 1613: void dispose() {
+ 1620: Widget build(BuildContext context) {
+ 1673: Widget build(BuildContext context) {
+ 1763: Widget build(BuildContext context) {
+ 1825: Widget build(BuildContext context) {
+ 2089: Widget build(BuildContext context) {
+ 2186: Widget build(BuildContext context) {
+ 2218: Widget build(BuildContext context) {
+ 2259: Widget build(BuildContext context) {
+ 2288: Widget build(BuildContext context) {
+ 2354: Widget build(BuildContext context) {
+ 2380: Widget build(BuildContext context) {
+ 2440: Widget build(BuildContext context) {
+ 2528: Widget build(BuildContext context) {
+ 2557: Widget build(BuildContext context) {
+ 2602: Widget build(BuildContext context) {
+ 2650: Widget build(BuildContext context) {
+ 2736: Widget build(BuildContext context) {
+ 2884: void dispose() {
+ 2891: Future<void> _pickImages() async {
+ 2921: void _removeImage(int index) {
+ 2925: Future<void> _pickVideo() async {
+ 2943: void _removeVideo() {
+ 2950: bool _validateCaption() {
+ 2965: void _makePreview() {
+ 2980: void _saveDraft() {
+ 3005: Future<void> _publish() async {
+ 3039: Widget build(BuildContext context) {
+ 3311: Widget build(BuildContext context) {
+ 3357: Widget build(BuildContext context) {
+ 3538: Widget build(BuildContext context) {
+ 3635: Widget build(BuildContext context) {
+ 3690: Widget build(BuildContext context) {
+ 3762: Widget build(BuildContext context) {
+ 3806: Widget build(BuildContext context) {
+ 3852: Widget build(BuildContext context) {
+ 3912: Widget build(BuildContext context) {
+ 3949: enum LaneSort { best, newest }
+ 3977: void initState() {
+ 3996: int _countForLane(String lane) => (perspectivesByLane[lane] ?? const []).length;
+ 3998: void _postPerspective() {
+ 4016: void _upvotePerspective(int index) {
+ 4034: void dispose() {
+ 4040: Widget build(BuildContext context) {
+
+3. CLASS INVENTORY
+------------------------------------------------------------------------
+    8-   94  ScenagramApp
+   95-  123  SceneTypeMeta
+  124-  421  SceneTypePrediction
+  422-  532  PerspectiveLanePrediction
+  533-  613  PerspectiveRoutingDecision
+  614-  634  Scene
+  635-  684  FeedController
+  685-  704  ScenagramFrame
+  705-  835  _ScenagramFrameState
+  836- 1012  _TopBar
+ 1013- 1029  _WindowDot
+ 1030- 1039  _TopIcon
+ 1040- 1090  _TopBadgeIcon
+ 1091- 1292  _LeftSidebar
+ 1293- 1310  _SidebarNavItem
+ 1311- 1373  _SidebarNavItemState
+ 1374- 1408  _SceneTypeStrip
+ 1409- 1423  _SceneTypeTab
+ 1424- 1479  _SceneTypeTabState
+ 1480- 1501  _SideLabel
+ 1502- 1510  _SidebarHideButton
+ 1511- 1543  _SidebarHideButtonState
+ 1544- 1587  _SidebarRestoreButton
+ 1588- 1594  HomePage
+ 1595- 1668  _HomePageState
+ 1669- 1752  _HomeFeedHeader
+ 1753- 1805  _EmptyStateCard
+ 1806- 1820  ApprovedFeedCard
+ 1821- 2084  _ApprovedFeedCardState
+ 2085- 2177  _FeedHeaderRow
+ 2178- 2205  _LanePill
+ 2206- 2254  _PerspectiveLinkPill
+ 2255- 2283  _CustomShareAction
+ 2284- 2344  ApprovedRightSidebar
+ 2345- 2369  _RightSectionCard
+ 2370- 2415  _RightSectionTitle
+ 2416- 2435  _MiniTrendItem
+ 2436- 2517  _MiniTrendItemState
+ 2518- 2549  _RadarDot
+ 2550- 2591  _MiniLegendDot
+ 2592- 2645  _MiniStat
+ 2646- 2716  TrendingPage
+ 2717- 2731  _TrendingSceneCard
+ 2732- 2864  _TrendingSceneCardState
+ 2865- 2871  CreateScenePage
+ 2872- 3306  _CreateScenePageState
+ 3307- 3352  _RightSidebarHeader
+ 3353- 3533  _SceneMapRadarCard
+ 3534- 3622  _RightStatsCard
+ 3623- 3675  _LaneSelectorChip
+ 3676- 3757  _PerspectiveCard
+ 3758- 3798  ProfilePage
+ 3799- 3840  _ProfileStatCard
+ 3841- 3894  SimpleSceneCard
+ 3895- 3907  _ActionPill
+ 3908- 3950  _ActionPillState
+ 3951- 3957  PerspectiveItem
+ 3958- 3966  SceneDetailPage
+ 3967- 4398  _SceneDetailPageState
+
+4. SECTION / HEADING COMMENTS
+------------------------------------------------------------------------
+
+5. IMPORTANT FEATURE MARKERS
+------------------------------------------------------------------------
+ScenagramApp: 6, 8, 9
+ScenagramFrame: 685, 692, 702, 705, 1624, 2653, 3040, 3767
+HomePage: 20, 1588, 1589, 1592, 1595
+ApprovedFeedCard: 1649, 1806, 1810, 1817, 1818, 1821, 3298
+SimpleSceneCard: 3791, 3841, 3845
+CreateScenePage: 22, 2865, 2866, 2869, 2872
+SceneDetailPage: 1655, 2703, 3958, 3961, 3964, 3967
+ProfilePage: 23, 3758, 3759
+TrendingPage: 21, 2646, 2647
+ApprovedRightSidebar: 1663, 2284, 2285, 2711, 3302, 3794
+FeedController: 635, 1596, 1602, 1603, 1614, 1615, 1622, 1626, 1629, 1641
+SceneType: 38, 40, 42, 44, 46, 48, 50, 52, 57, 59, 61, 63, 65, 67, 69, 71, 76, 78, 80, 82 ...
+Perspective: 422, 426, 432, 435, 472, 478, 500, 504, 508, 531, 533, 539, 547, 552, 554, 564, 680, 1998, 2004, 2009 ...
+Pulse: NOT FOUND
+Perspective Pulse: NOT FOUND
+Scene Map: 3366, 3519
+Scene Radar: NOT FOUND
+Scene Context: NOT FOUND
+Search: 908, 915
+Notification: 944
+Settings: 1184, 1185
+
+6. PRIVATE / PUBLIC CLASS COUNTS
+------------------------------------------------------------------------
+PUBLIC CLASSES: 17
+  - ScenagramApp
+  - SceneTypeMeta
+  - SceneTypePrediction
+  - PerspectiveLanePrediction
+  - PerspectiveRoutingDecision
+  - Scene
+  - FeedController
+  - ScenagramFrame
+  - HomePage
+  - ApprovedFeedCard
+  - ApprovedRightSidebar
+  - TrendingPage
+  - CreateScenePage
+  - ProfilePage
+  - SimpleSceneCard
+  - PerspectiveItem
+  - SceneDetailPage
+
+PRIVATE CLASSES: 42
+  - _ScenagramFrameState
+  - _TopBar
+  - _WindowDot
+  - _TopIcon
+  - _TopBadgeIcon
+  - _LeftSidebar
+  - _SidebarNavItem
+  - _SidebarNavItemState
+  - _SceneTypeStrip
+  - _SceneTypeTab
+  - _SceneTypeTabState
+  - _SideLabel
+  - _SidebarHideButton
+  - _SidebarHideButtonState
+  - _SidebarRestoreButton
+  - _HomePageState
+  - _HomeFeedHeader
+  - _EmptyStateCard
+  - _ApprovedFeedCardState
+  - _FeedHeaderRow
+  - _LanePill
+  - _PerspectiveLinkPill
+  - _CustomShareAction
+  - _RightSectionCard
+  - _RightSectionTitle
+  - _MiniTrendItem
+  - _MiniTrendItemState
+  - _RadarDot
+  - _MiniLegendDot
+  - _MiniStat
+  - _TrendingSceneCard
+  - _TrendingSceneCardState
+  - _CreateScenePageState
+  - _RightSidebarHeader
+  - _SceneMapRadarCard
+  - _RightStatsCard
+  - _LaneSelectorChip
+  - _PerspectiveCard
+  - _ProfileStatCard
+  - _ActionPill
+  - _ActionPillState
+  - _SceneDetailPageState
+
+7. ADVISORY MODULE CANDIDATES ? NOT APPLIED
+------------------------------------------------------------------------
+lib/main.dart
+lib/app/scenagram_app.dart
+lib/app/app_routes.dart
+lib/models/
+lib/shell/
+lib/widgets/
+lib/features/scenes/
+lib/features/perspectives/
+lib/features/create_scene/
+lib/features/discovery/
+lib/features/search/
+lib/features/notifications/
+lib/features/profile/
+lib/features/settings/
+lib/features/safety/
+
+IMPORTANT: These are advisory candidates only.
+Actual extraction order must be based on dependency relationships.
+
+NO SOURCE FILES WERE MODIFIED.
