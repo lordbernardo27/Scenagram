@@ -1,7 +1,6 @@
 import 'dart:typed_data';
 
 import 'scene_type.dart';
-import 'scene_type_intelligence.dart';
 
 class Scene {
   final SceneType type;
@@ -15,7 +14,4 @@ class Scene {
     this.images = const [],
     this.heat = 0,
   });
-
-  List<String> get lanes => lanesForType(type);
-  String get typeLabel => sceneTypeLabel(type);
 }
