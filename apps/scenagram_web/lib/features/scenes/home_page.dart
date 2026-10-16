@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../controllers/feed_controller.dart';
 import 'scene_type_presentation.dart';
+import 'scene_type_strip.dart';
 import '../../shell/scenagram_frame.dart';
 import '../../widgets/approved_right_sidebar.dart';
 import 'approved_feed_card.dart';
@@ -46,12 +47,14 @@ class _HomePageState extends State<HomePage> {
 
     return ScenagramFrame(
       currentRoute: '/',
-      selectedSceneType: _feedController.activeFeed,
-      onSelectSceneType: (value) {
-        if (value != null) {
-          _feedController.selectFeed(value);
-        }
-      },
+      secondaryHeader: SceneTypeStrip(
+        selected: _feedController.activeFeed,
+        onSelect: (value) {
+          if (value != null) {
+            _feedController.selectFeed(value);
+          }
+        },
+      ),
       centerContent: ListView(
         padding: const EdgeInsets.fromLTRB(24, 18, 24, 34),
         children: [

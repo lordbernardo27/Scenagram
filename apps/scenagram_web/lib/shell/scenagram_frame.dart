@@ -1,22 +1,17 @@
 import 'package:flutter/material.dart';
 
-import '../models/scene_type.dart';
-import '../features/scenes/scene_type_presentation.dart';
-
 class ScenagramFrame extends StatefulWidget {
   final String currentRoute;
   final Widget centerContent;
   final Widget? rightSidebar;
-  final SceneType? selectedSceneType;
-  final ValueChanged<SceneType?>? onSelectSceneType;
+  final Widget? secondaryHeader;
 
   const ScenagramFrame({
     super.key,
     required this.currentRoute,
     required this.centerContent,
     this.rightSidebar,
-    this.selectedSceneType,
-    this.onSelectSceneType,
+    this.secondaryHeader,
   });
 
   @override
@@ -26,8 +21,6 @@ class ScenagramFrame extends StatefulWidget {
 class _ScenagramFrameState extends State<ScenagramFrame> {
   bool _leftHidden = false;
   bool _rightHidden = false;
-
-  bool get _showSceneTabs => widget.currentRoute == '/';
 
   @override
   Widget build(BuildContext context) {
@@ -47,11 +40,8 @@ class _ScenagramFrameState extends State<ScenagramFrame> {
               child: Column(
                 children: [
                   _TopBar(currentRoute: widget.currentRoute),
-                  if (_showSceneTabs)
-                    _SceneTypeStrip(
-                      selected: widget.selectedSceneType,
-                      onSelect: widget.onSelectSceneType,
-                    ),
+                  if (widget.secondaryHeader != null)
+                    widget.secondaryHeader!,
                   Expanded(
                     child: Row(
                       children: [
@@ -328,33 +318,6 @@ class _TopBar extends StatelessWidget {
         ],
       ),
     );
-  }
-}
-
-class _WindowDot extends StatelessWidget {
-  final Color color;
-  const _WindowDot(this.color);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 12,
-      height: 12,
-      decoration: BoxDecoration(
-        color: color,
-        shape: BoxShape.circle,
-      ),
-    );
-  }
-}
-
-class _TopIcon extends StatelessWidget {
-  final IconData icon;
-  const _TopIcon({required this.icon});
-
-  @override
-  Widget build(BuildContext context) {
-    return Icon(icon, size: 24, color: const Color(0xFF111827));
   }
 }
 
@@ -691,112 +654,6 @@ class _SidebarNavItemState extends State<_SidebarNavItem> {
   }
 }
 
-
-class _SceneTypeStrip extends StatelessWidget {
-  final SceneType? selected;
-  final ValueChanged<SceneType?>? onSelect;
-
-  const _SceneTypeStrip({
-    this.selected,
-    this.onSelect,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 82,
-      padding: const EdgeInsets.fromLTRB(28, 20, 28, 16),
-      decoration: const BoxDecoration(
-        color: Colors.white,
-      ),
-      child: Center(
-        child: Wrap(
-          alignment: WrapAlignment.center,
-          spacing: 12,
-          runSpacing: 10,
-          children: SceneType.values.map((type) {
-            return _SceneTypeTab(
-              type: type,
-              selected: selected == type,
-              onTap: () => onSelect?.call(type),
-            );
-          }).toList(),
-        ),
-      ),
-    );
-  }
-}
-
-class _SceneTypeTab extends StatefulWidget {
-  final SceneType type;
-  final bool selected;
-  final VoidCallback onTap;
-
-  const _SceneTypeTab({
-    required this.type,
-    required this.selected,
-    required this.onTap,
-  });
-
-  @override
-  State<_SceneTypeTab> createState() => _SceneTypeTabState();
-}
-
-class _SceneTypeTabState extends State<_SceneTypeTab> {
-  bool _hovering = false;
-
-  @override
-  Widget build(BuildContext context) {
-    final color = sceneTypeColor(widget.type);
-    final selected = widget.selected;
-
-    return MouseRegion(
-      onEnter: (_) => setState(() => _hovering = true),
-      onExit: (_) => setState(() => _hovering = false),
-      child: InkWell(
-        onTap: widget.onTap,
-        borderRadius: BorderRadius.circular(10),
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 150),
-          height: 40,
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          decoration: BoxDecoration(
-            color: selected
-                ? color.withOpacity(0.08)
-                : (_hovering
-                    ? const Color(0xFFF8F8FB)
-                    : Colors.white),
-            borderRadius: BorderRadius.circular(10),
-            border: Border.all(
-              color: selected
-                  ? color.withOpacity(0.22)
-                  : const Color(0xFFE8E9F0),
-            ),
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(
-                sceneTypeIcon(widget.type),
-                size: 16,
-                color: color,
-              ),
-              const SizedBox(width: 8),
-              Text(
-                sceneTypeLabel(widget.type),
-                style: TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w700,
-                  color: color,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
 
 class _SideLabel extends StatelessWidget {
   final String text;

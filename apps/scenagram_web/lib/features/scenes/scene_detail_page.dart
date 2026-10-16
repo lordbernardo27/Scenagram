@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'feed_header_row.dart';
+
 import '../../models/scene.dart';
-import '../../widgets/feed_header_row.dart';
 import '../perspectives/perspective_item.dart';
 import '../perspectives/perspective_intelligence.dart';
 import 'scene_store.dart';
