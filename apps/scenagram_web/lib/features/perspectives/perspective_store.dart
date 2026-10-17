@@ -1,0 +1,1 @@
+int totalPerspectivesPosted = 0;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../controllers/feed_controller.dart';
+import 'feed_controller.dart';
 import 'scene_type_presentation.dart';
 import 'scene_type_strip.dart';
 import '../../shell/scenagram_frame.dart';

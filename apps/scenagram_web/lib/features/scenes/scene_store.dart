@@ -22,4 +22,3 @@ final List<Scene> homeScenes = [
   ),
 ];
 
-int totalPerspectivesPosted = 0;

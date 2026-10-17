@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 
-import '../models/scene.dart';
-import '../models/scene_type.dart';
+import '../../models/scene.dart';
+import '../../models/scene_type.dart';
 
 class FeedController extends ChangeNotifier {
   SceneType _activeFeed = SceneType.media;

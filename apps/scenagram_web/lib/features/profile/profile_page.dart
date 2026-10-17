@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../perspectives/perspective_store.dart';
+
 import '../../models/scene.dart';
 import '../../shell/scenagram_frame.dart';
 import '../../widgets/approved_right_sidebar.dart';
